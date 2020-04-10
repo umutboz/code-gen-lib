@@ -50,16 +50,23 @@ class TemplateStreaming(Base):
                 hasParentKey, parentObjects = self.filterParentNode(tFile.dict)
                 if hasParentKey:
                     #loop parentObject
+                    childContent = ""
                     for parent in parentObjects:
                         #findChildFile By ParentObjects
-                        childFile = self.findTemplateFileByKey(mustacheKey=parent[0],isChild=True)
+                        foundedFiles = self.findTemplateFileByKey(mustacheKey=parent[0],isChild=True)
                         #find hasChild File
-                        if childFile != None:
-                            #get Child Content
-                            childContent = self.fileContent(file=childFile)
-                            print(tFile.dict)
-                            print(childContent)
-                    return
+                        if len(foundedFiles) > 0:
+                            for childFile in foundedFiles:
+                                #get Child Content
+                                #print(childFile)
+                                loopChildContent = self.fileContent(file=childFile)
+                                loopChildContent = Parser.string_multiple_replace(loopChildContent,self.dictToMustache(childFile.dict))
+                                #print(loopChildContent)
+                                childContent = childContent + CODING.NEWLINE + loopChildContent
+
+                    tFile.dict[parent[0]] = MUSTACHE.LEFT_BRACKET + MUSTACHE.LEFT_BRACKET + parent[0] + MUSTACHE.RIGHT_BRACKET + MUSTACHE.RIGHT_BRACKET + childContent
+                    #print(tFile.dict[parent[0]])
+                    #print(tFile.dict)
                 content = self.fileOp.readContent(filePath= self.getModulePath() + CODING.SLASH + tFile.name)
                 print(Parser.string_multiple_replace(content,self.dictToMustache(tFile.dict)))
 
@@ -73,19 +80,18 @@ class TemplateStreaming(Base):
         return modulePath
 
     def findTemplateFileByKey(self,mustacheKey,isChild):
-        findFile = None
+        foundFiles = []
         for tFile in self.templateModule.templates:
             if tFile.isChildTemplate == isChild and self.findChildMustachFilter(file=tFile,mustacheKey=mustacheKey):
-                findFile = tFile
-                break
-        return findFile
+                foundFiles.append(tFile)
+        return foundFiles
 
     def fileContent(self,file):
         content = self.fileOp.readContent(filePath= self.getModulePath() + CODING.SLASH + file.name)
         return content
     
     def findChildMustachFilter(self,file, mustacheKey):
-        print(file.name, mustacheKey)
+        #print(file.name, mustacheKey)
         if file.parentMustache == mustacheKey:
             return True
         else:

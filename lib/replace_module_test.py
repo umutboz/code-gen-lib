@@ -41,10 +41,18 @@ testGetRequestFuncTF = TemplateFile(
     isChildTemplate=True,
     parentMustache="request_func"
 )
+testPostRequestFuncTF = TemplateFile(
+    name="request_post_func_mustache",
+    dict={"result_model_name" : "UserModel"},
+    outputFile = None,
+    isChildTemplate=True,
+    parentMustache="request_func"
+)
+
 
 testModule = TemplateModule(
     name="networking-swagger-swift",
-    templates=[testManagerClassTF,testGetRequestFuncTF]
+    templates=[testManagerClassTF,testGetRequestFuncTF, testPostRequestFuncTF]
 )
  
 tStreaming = TemplateStreaming(
