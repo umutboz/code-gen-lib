@@ -1,0 +1,4 @@
+public func {{function_name}}({{func_param}}success: @escaping (ResultModel<{{result_model_name}}>) -> (),
+    fail: @escaping (ErrorModel) -> Void ) {
+        manager.get({{query_path}}, success: success, fail: fail).fetch()
+}
