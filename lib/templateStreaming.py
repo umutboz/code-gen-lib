@@ -44,6 +44,7 @@ class TemplateStreaming(Base):
     def execute(self):
         #search all template files
         for tFile in self.templateModule.templates:
+            print(tFile.name)
             #only work parent files
             if tFile.isChildTemplate == False:
                 #get filter Node return tupple (x,y)

@@ -1,0 +1,33 @@
+{
+    "module" : {
+        "name" : "networking-swagger-swift",
+        "templateFiles": [
+            {
+                "name": "manager_class_mustache",
+                "dict": {
+                    "service_name": "OneframeMobile",
+                    "request_func": "PARENT"
+                },
+                "outputFile": "Manager.swift"
+            },
+            {
+                "name": "request_get_func_mustache",
+                "dict": {
+                    "result_model_name": "String"
+                },
+                "outputFile": "",
+                "isChildTemplate": true,
+                "parentMustache": "request_func"
+            },
+            {
+                "name": "request_get_func_mustache",
+                "dict": {
+                    "result_model_name": "UserModel"
+                },
+                "outputFile": "",
+                "isChildTemplate": true,
+                "parentMustache": "request_func"
+            }
+        ]
+    }
+}
