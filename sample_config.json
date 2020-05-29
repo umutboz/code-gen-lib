@@ -8,7 +8,8 @@
                     "service_name": "OneframeMobile",
                     "request_func": "PARENT"
                 },
-                "outputFile": "Manager.swift"
+                "outputFile": "Manager.swift",
+                "isChildTemplate": false
             },
             {
                 "name": "request_get_func_mustache",

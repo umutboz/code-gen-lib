@@ -12,10 +12,11 @@
 ############################################################
 
 # Built-in/Generic Imports
-import os
-import sys
+
 import re
 import json
+import os
+import sys
 
 # Owned
 from abstract import Base
@@ -29,12 +30,12 @@ class Parser(Base):
 
     def jsonToTemplateModule(jsonFile):
         module = TemplateModule(name="",templates=[])
-        with open(jsonFile, 'r', encoding='utf-8') as json_file:
+        with open(jsonFile, 'r') as json_file:
             try:
                 json_decode=json.load(json_file)
                 json_decode_dump = json.dumps(json_decode)
                 for tempFile in json_decode["module"]["templateFiles"]:
-                    name = tempFile["name"]
+                    name = str(tempFile["name"])
                     dictionary = None
                     outputFile = None
                     isChildTemplate = False
@@ -42,19 +43,19 @@ class Parser(Base):
                     if not (tempFile.get('dict') is None):
                         dictionary = eval(json.dumps(tempFile["dict"]))
                     if not (tempFile.get('outputFile') is None):
-                        outputFile = tempFile["outputFile"]
+                        outputFile = str(tempFile["outputFile"])
                     if not (tempFile.get('isChildTemplate') is None):
                         isChildTemplate = tempFile.get('isChildTemplate')
                     if not (tempFile.get('parentMustache') is None):
-                        parentMustache = tempFile.get('parentMustache')
+                        parentMustache = str(tempFile.get('parentMustache'))
 
                     module.templates.append(TemplateFile(
                         name=name,
                         dict=dictionary,
                         outputFile = outputFile,
-                        isChildTemplate=True,
+                        isChildTemplate=isChildTemplate,
                         parentMustache=parentMustache))
-                module.name = json_decode["module"]["name"]
+                module.name = str(json_decode["module"]["name"])
             except OSError:
                 print "Could not open/read file:", json_file
                 json_file.seek(0)
