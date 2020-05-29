@@ -12,16 +12,16 @@
 ############################################################
 
 
-
 # Owned
 from abstract import Base
 from enums import MESSAGETYPE
+
 
 class TemplateModule(Base):
     name = ""
     templates = []
 
-    def __init__(self, name,templates):
+    def __init__(self, name, templates):
         Base.__init__(self)
         self.name = name
         self.templates = templates

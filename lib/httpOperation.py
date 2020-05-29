@@ -59,8 +59,7 @@ class HttpOperation(Base):
             Base.log(self, message="HttpOperation " + "request : "
                       + " \HTTPError : \n " + str(e.code), messageType=MESSAGETYPE.ERROR)
         except urllib2.URLError as e:
-            Base.log(self, message="HttpOperation " + "request : "
-                      + " \URLError : \n " + str(e.reason), messageType=MESSAGETYPE.ERROR)
+            Base.log(self, message="HttpOperation " + "request : " + " \\URLError : \n " + str(e.reason), messageType=MESSAGETYPE.ERROR)
         except Exception as e:
             Base.log(self, message="HttpOperation " + "request : "
                       + " \generic exception : \n " + str(e), messageType=MESSAGETYPE.ERROR)
@@ -93,8 +92,7 @@ class HttpOperation(Base):
             Base.log(self, message="HttpOperation " + "request : "
                       + " \HTTPError : \n " + str(e.code), messageType=MESSAGETYPE.ERROR)
         except urllib2.URLError as e:
-            Base.log(self, message="HttpOperation " + "request : "
-                      + " \URLError : \n " + str(e.reason), messageType=MESSAGETYPE.ERROR)
+            Base.log(self, message="HttpOperation " + "request : " + " \\URLError : \n " + str(e.reason), messageType=MESSAGETYPE.ERROR)
         except Exception as e:
             Base.log(self, message="HttpOperation " + "request : "
                       + " \generic exception : \n " + str(e), messageType=MESSAGETYPE.ERROR)

@@ -18,15 +18,18 @@ import re
 import json
 
 # Own modules
-from enums import MUSTACHE
-from log import Log
-from environment import Environment
-from templateStreaming import TemplateStreaming
-from templateFile import TemplateFile
-from templateModule import TemplateModule
-from parser import Parser
+from lib.enums import MUSTACHE
+from lib.log import Log
+from lib.environment import Environment
+from lib.templateStreaming import TemplateStreaming
+from lib.templateFile import TemplateFile
+from lib.templateModule import TemplateModule
+from lib.parser import Parser
 
-sampleJsonModule = Parser.jsonToTemplateModule("sample_config.json")
+json_file_path = os.getcwd() + "/sample_config.json"
+if ~os.path.exists(json_file_path):
+    print("sada")
+sampleJsonModule = Parser.jsonToTemplateModule()
 print(sampleJsonModule.templates)
 for template in sampleJsonModule.templates:
     print(template.name)

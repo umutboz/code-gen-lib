@@ -17,7 +17,7 @@ import sys
 import re
 import json
 
-#Owned
+# Owned
 from abstract import Base
 from templateModule import TemplateModule
 from templateFile import TemplateFile
@@ -26,41 +26,44 @@ from templateFile import TemplateFile
 class Parser(Base):
     def __init__(self):
         Base.__init__(self)
-    
+
     def jsonToTemplateModule(jsonFile):
         module = TemplateModule(name="",templates=[])
+        with open(jsonFile, 'r', encoding='utf-8') as json_file:
+            try:
+                json_decode=json.load(json_file)
+                json_decode_dump = json.dumps(json_decode)
+                for tempFile in json_decode["module"]["templateFiles"]:
+                    name = tempFile["name"]
+                    dictionary = None
+                    outputFile = None
+                    isChildTemplate = False
+                    parentMustache = ""
+                    if not (tempFile.get('dict') is None):
+                        dictionary = eval(json.dumps(tempFile["dict"]))
+                    if not (tempFile.get('outputFile') is None):
+                        outputFile = tempFile["outputFile"]
+                    if not (tempFile.get('isChildTemplate') is None):
+                        isChildTemplate = tempFile.get('isChildTemplate')
+                    if not (tempFile.get('parentMustache') is None):
+                        parentMustache = tempFile.get('parentMustache')
 
-        input_file=open(jsonFile, 'r')
-        json_decode=json.load(input_file)
-        json_decode_dump = json.dumps(json_decode)
-        for tempFile in json_decode["module"]["templateFiles"]:
-            name = tempFile["name"]
-            dictionary = None
-            outputFile = None
-            isChildTemplate = False
-            parentMustache = ""
-            if not (tempFile.get('dict') is None):
-                dictionary = eval(json.dumps(tempFile["dict"]))
-            if not (tempFile.get('outputFile') is None):
-                outputFile = tempFile["outputFile"]
-            if not (tempFile.get('isChildTemplate') is None):
-                isChildTemplate = tempFile.get('isChildTemplate')
-            if not (tempFile.get('parentMustache') is None):
-                parentMustache = tempFile.get('parentMustache')
-            
-            module.templates.append(TemplateFile(
-                name=name,
-                dict=dictionary,
-                outputFile = outputFile,
-                isChildTemplate=True,
-                parentMustache=parentMustache))
-        module.name = json_decode["module"]["name"]    
+                    module.templates.append(TemplateFile(
+                        name=name,
+                        dict=dictionary,
+                        outputFile = outputFile,
+                        isChildTemplate=True,
+                        parentMustache=parentMustache))
+                module.name = json_decode["module"]["name"]
+            except OSError:
+                print "Could not open/read file:", json_file
+                json_file.seek(0)
         return module
 
     def string_multiple_replace(string, replacement_dict):
         pattern = re.compile("|".join([re.escape(k) for k in sorted(
         replacement_dict, key=len, reverse=True)]), flags=re.DOTALL)
         return pattern.sub(lambda x: replacement_dict[x.group(0)], string)
-    
+
     string_multiple_replace = staticmethod(string_multiple_replace)
     jsonToTemplateModule = staticmethod(jsonToTemplateModule)
