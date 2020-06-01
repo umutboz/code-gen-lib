@@ -37,24 +37,24 @@ class Parser(Base):
                 for tempFile in json_decode["module"]["templateFiles"]:
                     name = str(tempFile["name"])
                     dictionary = None
-                    outputFile = None
-                    isChildTemplate = False
-                    parentMustache = ""
+                    output_file = None
+                    is_child_template = False
+                    parent_mustache = ""
                     if not (tempFile.get('dict') is None):
                         dictionary = eval(json.dumps(tempFile["dict"]))
                     if not (tempFile.get('outputFile') is None):
-                        outputFile = str(tempFile["outputFile"])
+                        output_file = str(tempFile["outputFile"])
                     if not (tempFile.get('isChildTemplate') is None):
-                        isChildTemplate = tempFile.get('isChildTemplate')
+                        is_child_template = tempFile.get('isChildTemplate')
                     if not (tempFile.get('parentMustache') is None):
-                        parentMustache = str(tempFile.get('parentMustache'))
+                        parent_mustache = str(tempFile.get('parentMustache'))
 
                     module.templates.append(TemplateFile(
                         name=name,
                         dict=dictionary,
-                        outputFile = outputFile,
-                        isChildTemplate=isChildTemplate,
-                        parentMustache=parentMustache))
+                        output_file=output_file,
+                        is_child_template=is_child_template,
+                        parent_mustache=parent_mustache))
                 module.name = str(json_decode["module"]["name"])
             except OSError:
                 print "Could not open/read file:", json_file
@@ -62,8 +62,7 @@ class Parser(Base):
         return module
 
     def string_multiple_replace(string, replacement_dict):
-        pattern = re.compile("|".join([re.escape(k) for k in sorted(
-        replacement_dict, key=len, reverse=True)]), flags=re.DOTALL)
+        pattern = re.compile("|".join([re.escape(k) for k in sorted(replacement_dict, key=len, reverse=True)]), flags=re.DOTALL)
         return pattern.sub(lambda x: replacement_dict[x.group(0)], string)
 
     string_multiple_replace = staticmethod(string_multiple_replace)

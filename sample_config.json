@@ -23,9 +23,8 @@
             {
                 "name": "request_get_func_mustache",
                 "dict": {
-                    "result_model_name": "UserModel"
+                    "result_model_name": "UserModel", "function_name" : "getProductList"
                 },
-                "outputFile": "",
                 "isChildTemplate": true,
                 "parentMustache": "request_func"
             }

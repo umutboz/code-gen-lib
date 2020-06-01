@@ -12,18 +12,12 @@
 ############################################################
 
 # Built-in/Generic Imports
-import os
-import sys
-import re
-import json
 
 # Own modules
-from enums import MUSTACHE
-from log import Log
-from environment import Environment
+from lib.enums import MUSTACHE
 from templateStreaming import TemplateStreaming
-from templateFile import TemplateFile
-from templateModule import TemplateModule
+from lib.templateFile import TemplateFile
+from lib.templateModule import TemplateModule
 
 
 

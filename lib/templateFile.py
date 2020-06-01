@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 
 ############################################################
-## TemplateFile
+# TemplateFile
 ############################################################
-## Author: Umut Boz
-## Copyright (c) 2020, OneframeMobile, KoçSistem
-## Email: oneframemobile@gmail.com
+# Author: Umut Boz
+# Copyright (c) 2020, OneframeMobile, KoçSistem
+# Email: oneframemobile@gmail.com
 ############################################################
-## Version: 0.1.0
+# Version: 0.1.0
 ############################################################
-
 
 
 # Owned
@@ -23,12 +22,13 @@ class TemplateFile(Base):
     outputFile = ""
     dict = None
     isChildTemplate = False
-    subTemplates = []
+    # subTemplates = []
     parentMustache = ""
-    def __init__(self, name,dict,outputFile,isChildTemplate=False,parentMustache=""):
+
+    def __init__(self, name, dict, output_file, is_child_template=False, parent_mustache=""):
         Base.__init__(self)
         self.name = name
         self.dict = dict
-        self.outputFile = outputFile
-        self.isChildTemplate = isChildTemplate
-        self.parentMustache = parentMustache
+        self.outputFile = output_file
+        self.isChildTemplate = is_child_template
+        self.parentMustache = parent_mustache

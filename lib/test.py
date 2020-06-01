@@ -26,7 +26,7 @@ MESSAGE = MessageType()
 CODE = CodeLine()
 
 path = "/Users/umut/Desktop/Architecture/CodeGenerationCore"
-fileName = "test.swift"
+fileName = "../test.swift"
 #eger bir path belirlenmis ise
 #op = FileOperation("/Users/umut/Desktop/Architecture/CodeGenerationCore/lib")
 #run path kullanılmak isteniyorsa

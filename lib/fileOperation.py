@@ -20,118 +20,132 @@ from abstract import Base
 from enums import CODING
 from enums import MESSAGETYPE
 
+
 class FileOperation(Base):
     _path = ""
+
     def __init__(self, path=None):
         Base.__init__(self)
         self._path = path
 
     def getPath(self):
-        #path has not chars and is none
-        if self._path == None or not str(self._path).strip():
+        # path has not chars and is none
+        if self._path is None or not str(self._path).strip():
             return os.getcwd()
         else:
             return self._path
 
-    def create(self,filePath, content):
+    def create(self, file_path, content):
         try:
-            filePath = open(filePath, "w")
-            filePath.write(content)
-            filePath.close()
-            Base.log(self, message="FileOperation " + "create : " + str(filePath) + " \ncontent : \n" + content,
-             messageType=MESSAGETYPE.INFO)
+            file_path = open(file_path, "w")
+            file_path.write(content)
+            file_path.close()
+            Base.log(self, message="FileOperation " + "create : " + str(file_path) + " \ncontent : \n" + content,
+                     messageType=MESSAGETYPE.INFO)
         except OSError as e:
-            Base.log(self,message = "FileOperation " + "create : " 
-            + " \error : \n" + str(e), messageType=MESSAGETYPE.ERROR)
+            Base.log(self, message="FileOperation " + "create : "
+                                   + " \error : \n" + str(e), messageType=MESSAGETYPE.ERROR)
 
-    def createFile(self,fileName, content):
-        filePath = self.getPath() + CODING.SLASH + fileName
+    def createFile(self, file_name, content):
+        file_path = self.getPath() + CODING.SLASH + file_name
         try:
-            filePath = open(filePath, "w")
-            filePath.write(content)
-            filePath.close()
+            file_path = open(file_path, "w")
+            file_path.write(content)
+            file_path.close()
             Base.log(self, message="FileOperation " + "createFile : " +
-            str(filePath) + " \ncontent : \n" + content, messageType=MESSAGETYPE.INFO)
+                                   str(file_path) + " \ncontent : \n" + content, messageType=MESSAGETYPE.INFO)
         except OSError as e:
             Base.log(self, message="FileOperation " + "createFile : "
-            + " \error : \n" + str(e), messageType=MESSAGETYPE.ERROR)
+                                   + " \error : \n" + str(e), messageType=MESSAGETYPE.ERROR)
 
-    def createFolder(self, folderName):
-        folderPath = self.getPath() + CODING.SLASH + folderName
+    def createFolder(self, folder_name):
+        folder_path = self.getPath() + CODING.SLASH + folder_name
         try:
-            if not os.path.isdir(folderPath):
-                os.makedirs(folderPath)
-                Base.log(self,message = "FileOperation " + "createFolder : " + 
-                folderPath + "\n", messageType=MESSAGETYPE.INFO)
-            else :
-                Base.log(self,message = "FileOperation " + "createFolder : " + 
-                folderPath + "\n already path", messageType=MESSAGETYPE.INFO)
+            if not os.path.isdir(folder_path):
+                os.makedirs(folder_path)
+                Base.log(self, message="FileOperation " + "createFolder : " +
+                                       folder_path + "\n", messageType=MESSAGETYPE.INFO)
+            else:
+                Base.log(self, message="FileOperation " + "createFolder : " +
+                                       folder_path + "\n already path", messageType=MESSAGETYPE.INFO)
         except OSError as e:
-            Base.log(self,message = "FileOperation " + "createFileWithPath : " + " \error : \n" + 
-            str(e), messageType=MESSAGETYPE.ERROR)
+            Base.log(self, message="FileOperation " + "createFileWithPath : " + " \error : \n" +
+                                   str(e), messageType=MESSAGETYPE.ERROR)
 
-    def appendFile(self, fileName, content,isTruncate=False):
-        filePath = self.getPath() + CODING.SLASH + fileName
+    def createFolderWithoutPath(self, folder_name):
+        folder_path = folder_name
         try:
-            with open(filePath, "a+") as f:
-            # f.seek(0)
-                if isTruncate:
+            if not os.path.isdir(folder_path):
+                os.makedirs(folder_path)
+                Base.log(self, message="FileOperation " + "createFolder : " +
+                                       folder_path + "\n", messageType=MESSAGETYPE.INFO)
+            else:
+                Base.log(self, message="FileOperation " + "createFolder : " +
+                                       folder_path + "\n already path", messageType=MESSAGETYPE.INFO)
+        except OSError as e:
+            Base.log(self, message="FileOperation " + "createFileWithPath : " + " \error : \n" +
+                                   str(e), messageType=MESSAGETYPE.ERROR)
+
+    def appendFile(self, file_name, content, is_truncate=False):
+        file_path = self.getPath() + CODING.SLASH + file_name
+        try:
+            with open(file_path, "a+") as f:
+                # f.seek(0)
+                if is_truncate:
                     f.truncate()
                 f.write(content)
                 f.close()
-                Base.log(self,message = "FileOperation " + "appendFile : " + 
-                    filePath + "\n", messageType=MESSAGETYPE.INFO)
+                Base.log(self, message="FileOperation " + "appendFile : " +
+                                       file_path + "\n", messageType=MESSAGETYPE.INFO)
         except OSError as e:
-            Base.log(self,message = "FileOperation " + "appendFile : " + " \error : \n" + 
-            str(e), messageType=MESSAGETYPE.ERROR)
-    
-    #has path valid and exist return true
-    def isExist(self,path):
+            Base.log(self, message="FileOperation " + "appendFile : \error : \n" +
+                                   str(e), messageType=MESSAGETYPE.ERROR)
+
+    # has path valid and exist return true
+    def isExist(self, path):
         if os.path.exists(path):
             return True
         else:
             return False
 
-    #for content of file with filePath
-    def readContent(self,filePath):
+    # for content of file with filePath
+    def readContent(self, file_path):
         global content
-        if self.isExist(filePath):
-            with open(filePath, "r") as data:
+        if self.isExist(file_path):
+            with open(file_path, "r") as data:
                 content = data.read()
             return content
         else:
-            Base.log(self, message="FileOperation " + "readContent : " + filePath +
-                     "\n has not found file", messageType=MESSAGETYPE.INFO)
+            Base.log(self, message="FileOperation " + "readContent : " + file_path +
+                                   "\n has not found file", messageType=MESSAGETYPE.INFO)
             return ""
-    
-    #for content of file with fileName
-    def getFileContent(self,fileName):
-        filePath = self.getPath() + CODING.SLASH + fileName
-        return self.readContent(filePath=filePath)
-    
-    #for remove file with filePath
-    def remove(self, filePath):
-        if self.isExist(filePath):
-            os.remove(filePath)
-            Base.log(self, message="FileOperation " + "remove : " + filePath +
-                     "\n file was removed", messageType=MESSAGETYPE.INFO)
+
+    # for content of file with fileName
+    def getFileContent(self, file_name):
+        file_path = self.getPath() + CODING.SLASH + file_name
+        return self.readContent(filePath=file_path)
+
+    # for remove file with filePath
+    def remove(self, file_path):
+        if self.isExist(file_path):
+            os.remove(file_path)
+            Base.log(self, message="FileOperation " + "remove : " + file_path +
+                                   "\n file was removed", messageType=MESSAGETYPE.INFO)
         else:
-            Base.log(self, message="FileOperation " + "remove : " + filePath +
-                     "\n has not found file", messageType=MESSAGETYPE.INFO)
+            Base.log(self, message="FileOperation " + "remove : " + file_path +
+                                   "\n has not found file", messageType=MESSAGETYPE.INFO)
             return ""
 
-    #for remove file with fileName
-    def removeFile(self, fileName):
-        filePath = self.getPath() + CODING.SLASH + fileName
-        self.remove(filePath)
+    # for remove file with fileName
+    def removeFile(self, file_name):
+        file_path = self.getPath() + CODING.SLASH + file_name
+        self.remove(file_path)
 
-    def aboveNewPath(self,path):
-        return os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', path))
-    
-    def belowNewPath(self,path):
-        return os.path.abspath(os.path.join(os.path.dirname( __file__ ), '', path))
-    
-    def createNewPath(self,pathLocate,folderName):
-        return os.path.abspath(os.path.join(os.path.dirname( __file__ ), pathLocate, folderName))
-    
+    def aboveNewPath(self, path):
+        return os.path.abspath(os.path.join(os.path.dirname(__file__), '..', path))
 
+    def belowNewPath(self, path):
+        return os.path.abspath(os.path.join(os.path.dirname(__file__), '', path))
+
+    def createNewPath(self, pathLocate, folderName):
+        return os.path.abspath(os.path.join(os.path.dirname(__file__), pathLocate, folderName))

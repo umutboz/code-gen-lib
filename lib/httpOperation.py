@@ -33,18 +33,18 @@ class HttpOperation(Base):
         self._url = url
 
     def url(self):
-        if self._url == None or not str(self._url).strip():
+        if self._url is None or not str(self._url).strip():
             return None
         else:
             return self._url
 
     def request(self,url=None):
         request_url = None
-        if url != None:
+        if url is not None:
             request_url = str(url)
         else:
             request_url = self.url()
-        if request_url == None:
+        if request_url is None:
             Base.log(self, message="HttpOperation " + "request : "
                       + " \error : \n url cannot be None", messageType=MESSAGETYPE.ERROR)
             return
