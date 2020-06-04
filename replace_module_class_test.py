@@ -24,7 +24,7 @@ from lib.templateModule import TemplateModule
 fileName = "test.swift"
 
 testManagerClassTF = TemplateFile(
-    name="manager_class_mustache",
+    name="learning_class_mustache",
     dict={"service_name" : "OneframeMobile", "request_func" : MUSTACHE.PARENT},
     outputFile = "Manager.swift"
 )
@@ -46,7 +46,7 @@ testPostRequestFuncTF = TemplateFile(
 
 testModule = TemplateModule(
     name="networking-swagger-swift",
-    templates=[testManagerClassTF,testGetRequestFuncTF, testPostRequestFuncTF]
+    templates_files=[testManagerClassTF, testGetRequestFuncTF, testPostRequestFuncTF]
 )
  
 tStreaming = TemplateStreaming(

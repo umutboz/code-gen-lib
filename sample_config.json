@@ -1,6 +1,13 @@
 {
     "module" : {
         "name" : "networking-swagger-swift",
+        "templateFolders" : [
+            {
+                "source" : "",
+                "outputPath" : "",
+                "isOnline" : false
+            }
+        ],
         "templateFiles": [
             {
                 "name": "manager_class_mustache",

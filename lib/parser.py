@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 ############################################################
-## parser
+# parser
 ############################################################
-## Author: Umut Boz
-## Copyright (c) 2020, OneframeMobile, KoçSistem
-## Email: oneframemobile@gmail.com
+# Author: Umut Boz
+# Copyright (c) 2020, OneframeMobile, KoçSistem
+# Email: oneframemobile@gmail.com
 ############################################################
-## Version: 0.1.0
+# Version: 0.1.0
 ############################################################
 
 # Built-in/Generic Imports
@@ -22,15 +22,16 @@ import sys
 from abstract import Base
 from templateModule import TemplateModule
 from templateFile import TemplateFile
+from templateFolder import TemplateFolder
 
 
 class Parser(Base):
     def __init__(self):
         Base.__init__(self)
 
-    def jsonToTemplateModule(jsonFile):
-        module = TemplateModule(name="",templates=[])
-        with open(jsonFile, 'r') as json_file:
+    def jsonToTemplateModule(json_file):
+        module = TemplateModule(name="", templates_files=[])
+        with open(json_file, 'r') as json_file:
             try:
                 json_decode=json.load(json_file)
                 json_decode_dump = json.dumps(json_decode)
@@ -49,12 +50,31 @@ class Parser(Base):
                     if not (tempFile.get('parentMustache') is None):
                         parent_mustache = str(tempFile.get('parentMustache'))
 
-                    module.templates.append(TemplateFile(
+                    module.templateFiles.append(TemplateFile(
                         name=name,
                         dict=dictionary,
                         output_file=output_file,
                         is_child_template=is_child_template,
                         parent_mustache=parent_mustache))
+
+                # template folder generate
+                for tempFolder in json_decode["module"]["templateFolders"]:
+                    source = ""
+                    output_path = ""
+                    is_online = False
+                    if not (tempFolder.get('source') is None):
+                        source = eval(json.dumps(tempFolder["source"]))
+                    if not (tempFolder.get('output_path') is None):
+                        output_path = str(tempFile["output_path"])
+                    if not (tempFolder.get('isOnline') is None):
+                        is_online = tempFolder.get('isOnline')
+
+                module.templateFolders.append(TemplateFolder(
+                    source=source,
+                    output_path=output_path,
+                    is_online=is_online
+                ))
+
                 module.name = str(json_decode["module"]["name"])
             except OSError:
                 print "Could not open/read file:", json_file

@@ -48,7 +48,7 @@ class TemplateStreaming(Base):
     def execute(self):
         # search all template files
         # if it has output directory in module, it is generating
-        if self.templateModule.templates > 0 and str(self.templateModule.outputDirectory).strip():
+        if self.templateModule.templateFiles > 0 and str(self.templateModule.outputDirectory).strip():
             if self.fileOp.isExist(
                     self.templateModule.getOutputDirectoryPath()) and self.templateModule.isAppendOutputPath:
                 # TODO : delete folder
@@ -70,7 +70,7 @@ class TemplateStreaming(Base):
                                                            self.templateModule.outputDirectory)
                 self.fileOp.createFolderWithoutPath(directory_path)
 
-        for t_file in self.templateModule.templates:
+        for t_file in self.templateModule.templateFiles:
             # print(t_file.name)
             # only work parent files
             if not t_file.isChildTemplate:
@@ -116,7 +116,7 @@ class TemplateStreaming(Base):
 
     def findTemplateFileByKey(self, mustache_key, is_child):
         found_files = []  # type: List[TemplateFile]
-        for tFile in self.templateModule.templates:
+        for tFile in self.templateModule.templateFiles:
             if tFile.isChildTemplate == is_child and self.findChildMustachFilter(file=tFile, mustache_key=mustache_key):
                 found_files.append(tFile)
         return found_files

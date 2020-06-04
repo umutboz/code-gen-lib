@@ -24,7 +24,7 @@ pathname = os.path.dirname(sys.argv[0])
 json_file_name = "sample_config.json"
 json_file_path = pathname + "/" + json_file_name
 
-sampleJsonModule = Parser.jsonToTemplateModule(jsonFile=json_file_path)
+sampleJsonModule = Parser.jsonToTemplateModule(json_file=json_file_path)
 sampleJsonModule.outputDirectory = "test_module"
 sampleJsonModule.isAppendOutputPath = True
 print(sampleJsonModule.getOutputDirectoryPath())

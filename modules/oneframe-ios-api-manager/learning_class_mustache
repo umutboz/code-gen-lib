@@ -1,0 +1,106 @@
+//
+//  OneFrameLearning.swift
+//  OneframeMobile iOS Api
+//
+//  Created by Umut Boz on 02.06.2020.
+//  Copyright © 2020 Kocsistem. All rights reserved.
+//
+
+import Foundation
+import Networking
+import Mapper
+
+class OneFrameLearning: NetworkLearning {
+
+    func sendError(errorModel: ErrorModel, fail: (ErrorModel) -> Void) {
+        guard let data = errorModel.getData() else {return}
+        if let dictionary = Mapper.jsonToDictionary(json: data), let errorDictionary = dictionary["error"] as? [String:Any]{
+            if let error = Mapper.dictionaryToModel(dictionary: errorDictionary, toType: OFError.self){
+                errorModel.setErrorModel(model: error)
+            }
+
+        }
+        fail(errorModel)
+
+    }
+
+    func checkCustomError<ResultType>(errorModel: ErrorModel, success: (ResultModel<ResultType>) -> Void, fail: (ErrorModel) -> Void) where ResultType : Serializable {
+        // TODO
+    }
+
+    func checkSuccess<ResultType>(responseModel: ResultModel<ResultType>, success: (ResultModel<ResultType>) -> Void, fail: (ErrorModel) -> Void) where ResultType : Serializable {
+        let response = getMappedModel(json: responseModel.getJson())
+        let isSuccessful = response?["isSuccessful"] as? Bool
+
+        if let _ = isSuccessful {
+            if let resultDictionary = response?["result"] as? [String: Any], let token = resultDictionary["token"] as? String {
+                responseModel.setToken(token: token)
+                UserDefaultsManager.token(token:token)
+                print(token)
+            }
+            if let resultModel = getMappedModel(json: responseModel.getJson(), type: OFResultModel<ResultType>.self){
+                responseModel.setModel(model: resultModel.result, type: ResultType.self)
+                success(responseModel)
+            }
+        }else{
+            sendError(errorModel: ErrorModel(), fail: fail)
+        }
+    }
+
+
+}
+
+class OFResultModel<T: Serializable>: Serializable{
+
+    var result: T?
+    var isSuccessful : Bool?
+    var error: OFError?
+
+    enum CodingKeys: String, CodingKey {
+        case result
+        case error
+        case isSuccessful
+    }
+
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        result = try values.decode(T.self, forKey: OFResultModel<T>.CodingKeys.result)
+        isSuccessful = try values.decode(Bool.self, forKey: OFResultModel<T>.CodingKeys.isSuccessful)
+        error = try values.decode(OFError?.self, forKey: OFResultModel<T>.CodingKeys.error)
+    }
+
+    func encode(to encoder: Encoder) throws {
+
+    }
+
+}
+
+class OFError : Serializable {
+    var correlationId : String
+    var code: Int
+    var message : String
+    var details: String?
+    var validationErrors : String?
+
+    enum CodingKeys: String, CodingKey {
+        case correlationId
+        case code
+        case message
+        case details
+        case validationErrors
+    }
+
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        correlationId = try values.decode(String.self, forKey: OFError.CodingKeys.correlationId)
+        code = try values.decode(Int.self, forKey: OFError.CodingKeys.code)
+        message = try values.decode(String.self, forKey: OFError.CodingKeys.message)
+        details = try values.decode(String?.self, forKey: OFError.CodingKeys.details)
+        validationErrors = try values.decode(String?.self, forKey: OFError.CodingKeys.validationErrors)
+       }
+
+    func encode(to encoder: Encoder) throws {
+
+    }
+
+}
