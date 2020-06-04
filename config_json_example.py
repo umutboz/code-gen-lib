@@ -27,6 +27,7 @@ json_file_path = pathname + "/" + json_file_name
 sampleJsonModule = Parser.jsonToTemplateModule(json_file=json_file_path)
 sampleJsonModule.outputDirectory = "test_module"
 sampleJsonModule.isAppendOutputPath = True
+sampleJsonModule.initializeTemplateFolder()
 print(sampleJsonModule.getOutputDirectoryPath())
 '''
 print(sampleJsonModule.templates)
@@ -38,6 +39,6 @@ for template in sampleJsonModule.templates:
 '''
 tStreaming = TemplateStreaming(
     template_module=sampleJsonModule,
-    enable_log=True,
+    enable_log=False,
 )
 tStreaming.execute()

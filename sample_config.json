@@ -3,8 +3,8 @@
         "name" : "networking-swagger-swift",
         "templateFolders" : [
             {
-                "source" : "",
-                "outputPath" : "",
+                "source" : "modules/oneframe-ios-api-manager",
+                "outputPath" : "test_module",
                 "isOnline" : false
             }
         ],

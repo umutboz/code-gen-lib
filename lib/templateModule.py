@@ -34,7 +34,6 @@ class TemplateModule(Base):
         self.templateFiles = templates_files
         self.outputRootPath = output_root_path
         self.templateFolders = template_folders
-        self.initializeTemplateFolder()
 
     def getOutputDirectoryPath(self):
         return self.outputRootPath + "/" + self.outputDirectory
