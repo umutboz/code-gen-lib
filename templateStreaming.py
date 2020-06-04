@@ -28,7 +28,7 @@ from lib.templateFile import TemplateFile
 from lib.templateModule import TemplateModule
 from lib.httpOperation import HttpOperation
 from lib.parser import Parser
-from lib.enums import MESSAGETYPE
+from lib.enums import MESSAGE_TYPE
 
 
 class TemplateStreaming(Base):
@@ -52,7 +52,11 @@ class TemplateStreaming(Base):
             if self.fileOp.isExist(
                     self.templateModule.getOutputDirectoryPath()) and self.templateModule.isAppendOutputPath:
                 # TODO : delete folder
-                print("delete folder")
+                self.fileOp.removeRecursively(folder_path=self.templateModule.getOutputDirectoryPath())
+                directory_path = self.fileOp.createNewPath(self.templateModule.outputRootPath,
+                                                           self.templateModule.outputDirectory)
+                self.fileOp.createFolderWithoutPath(directory_path)
+
             elif self.fileOp.isExist(
                     self.templateModule.getOutputDirectoryPath()) and not self.templateModule.isAppendOutputPath:
                 # folder has already
@@ -60,7 +64,7 @@ class TemplateStreaming(Base):
                          message="This Folder already exists \n" + self.templateModule.getOutputDirectoryPath() +
                                  "\n if you renew re-creation this folder, you should set 'isAppendOutputPath' field "
                                  "to True. But all files will be deleted",
-                         messageType=MESSAGETYPE.INFO)
+                         message_type=MESSAGE_TYPE.INFO)
             else:
                 directory_path = self.fileOp.createNewPath(self.templateModule.outputRootPath,
                                                            self.templateModule.outputDirectory)
@@ -70,7 +74,7 @@ class TemplateStreaming(Base):
             # print(t_file.name)
             # only work parent files
             if not t_file.isChildTemplate:
-                # get filter Node return tupple (x,y)
+                # get filter Node return tuple (x,y)
                 has_parent_key, parent_objects = self.filterParentNode(t_file.dict)
                 if has_parent_key:
                     # loop parentObject
@@ -98,6 +102,10 @@ class TemplateStreaming(Base):
                 replaced_template_content = Parser.string_multiple_replace(content, self.dictToMustache(t_file.dict))
                 if self.enableLog:
                     print(replaced_template_content)
+
+                # generate output file
+                if str(t_file.outputFile).strip():
+                    self.fileOp.create(file_path=self.templateModule.getOutputDirectoryPath() + CODING.SLASH + t_file.outputFile, content=replaced_template_content)
 
     def getModulePath(self):
         module_path = self.fileOp.createNewPath(

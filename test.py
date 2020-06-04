@@ -13,20 +13,20 @@
 
 
 
-from enums import MessageType
+from lib.enums import MessageType
 
-from enums import CodeLine
-from log import Log
-from fileOperation import FileOperation
-from environment import Environment
+from lib.enums import CodeLine
+from lib.log import Log
+from lib.fileOperation import FileOperation
+from lib.environment import Environment
 
 
 MESSAGE = MessageType()
 
 CODE = CodeLine()
 
-path = "/Users/umut/Desktop/Architecture/CodeGenerationCore"
-fileName = "../test.swift"
+path = "/"
+fileName = "test.swift"
 #eger bir path belirlenmis ise
 #op = FileOperation("/Users/umut/Desktop/Architecture/CodeGenerationCore/lib")
 #run path kullanılmak isteniyorsa

@@ -2,19 +2,22 @@
 # -*- coding: utf-8 -*-
 
 ############################################################
-## Enums
+# Enums
 ############################################################
-## Author: Umut Boz
-## Copyright (c) 2020, OneframeMobile, KoçSistem
-## Email: oneframemobile@gmail.com
+# Author: Umut Boz
+# Copyright (c) 2020, OneframeMobile, KoçSistem
+# Email: oneframemobile@gmail.com
 ############################################################
-## Version: 0.1.0
+# Version: 0.1.0
 ############################################################
 
 
 from constantType import constant
 
-#choose these enums for user feedback
+
+# choose these enums for user feedback
+
+
 class MessageType(object):
     @constant
     def INFO():
@@ -28,8 +31,11 @@ class MessageType(object):
     def SUCCESS():
         return "SUCCESS"
 
+
 # TemplateFile choose what development environment you want
 # github raw templates or local template files
+
+
 class DevelopmentEnvironment(object):
     @constant
     def LOCAL():
@@ -43,7 +49,10 @@ class DevelopmentEnvironment(object):
     def DEBUG():
         return "DEBUG"
 
-#choose these enums for code syntax
+
+# choose these enums for code syntax
+
+
 class CodeLine(object):
     @constant
     def NEWLINE():
@@ -61,7 +70,10 @@ class CodeLine(object):
     def DOT():
         return "."
 
-#choose these Mustache enums for code syntax
+
+# choose these Mustache enums for code syntax
+
+
 class Mustache(object):
     @constant
     def PARENT():
@@ -70,7 +82,7 @@ class Mustache(object):
     @constant
     def SUB():
         return "SUB"
-    
+
     @constant
     def LEFT_BRACKET():
         return "{"
@@ -79,6 +91,7 @@ class Mustache(object):
     def RIGHT_BRACKET():
         return "}"
 
+
 CODING = CodeLine()
-MESSAGETYPE = MessageType()
+MESSAGE_TYPE = MessageType()
 MUSTACHE = Mustache()

@@ -14,7 +14,7 @@
 import os, sys
 # Owned
 from abstract import Base
-from enums import MESSAGETYPE
+from enums import MESSAGE_TYPE
 
 pathname = os.path.dirname(sys.argv[0])
 

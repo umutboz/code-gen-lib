@@ -14,11 +14,12 @@
 # Built-in/Generic Imports
 import os
 import sys
+import shutil
 
 # Own modules
 from abstract import Base
 from enums import CODING
-from enums import MESSAGETYPE
+from enums import MESSAGE_TYPE
 
 
 class FileOperation(Base):
@@ -41,10 +42,10 @@ class FileOperation(Base):
             file_path.write(content)
             file_path.close()
             Base.log(self, message="FileOperation " + "create : " + str(file_path) + " \ncontent : \n" + content,
-                     messageType=MESSAGETYPE.INFO)
+                     message_type=MESSAGE_TYPE.INFO)
         except OSError as e:
             Base.log(self, message="FileOperation " + "create : "
-                                   + " \error : \n" + str(e), messageType=MESSAGETYPE.ERROR)
+                                   + " \error : \n" + str(e), message_type=MESSAGE_TYPE.ERROR)
 
     def createFile(self, file_name, content):
         file_path = self.getPath() + CODING.SLASH + file_name
@@ -53,10 +54,10 @@ class FileOperation(Base):
             file_path.write(content)
             file_path.close()
             Base.log(self, message="FileOperation " + "createFile : " +
-                                   str(file_path) + " \ncontent : \n" + content, messageType=MESSAGETYPE.INFO)
+                                   str(file_path) + " \ncontent : \n" + content, message_type=MESSAGE_TYPE.INFO)
         except OSError as e:
             Base.log(self, message="FileOperation " + "createFile : "
-                                   + " \error : \n" + str(e), messageType=MESSAGETYPE.ERROR)
+                                   + " \error : \n" + str(e), message_type=MESSAGE_TYPE.ERROR)
 
     def createFolder(self, folder_name):
         folder_path = self.getPath() + CODING.SLASH + folder_name
@@ -64,13 +65,13 @@ class FileOperation(Base):
             if not os.path.isdir(folder_path):
                 os.makedirs(folder_path)
                 Base.log(self, message="FileOperation " + "createFolder : " +
-                                       folder_path + "\n", messageType=MESSAGETYPE.INFO)
+                                       folder_path + "\n", message_type=MESSAGE_TYPE.INFO)
             else:
                 Base.log(self, message="FileOperation " + "createFolder : " +
-                                       folder_path + "\n already path", messageType=MESSAGETYPE.INFO)
+                                       folder_path + "\n already path", message_type=MESSAGE_TYPE.INFO)
         except OSError as e:
             Base.log(self, message="FileOperation " + "createFileWithPath : " + " \error : \n" +
-                                   str(e), messageType=MESSAGETYPE.ERROR)
+                                   str(e), message_type=MESSAGE_TYPE.ERROR)
 
     def createFolderWithoutPath(self, folder_name):
         folder_path = folder_name
@@ -78,13 +79,13 @@ class FileOperation(Base):
             if not os.path.isdir(folder_path):
                 os.makedirs(folder_path)
                 Base.log(self, message="FileOperation " + "createFolder : " +
-                                       folder_path + "\n", messageType=MESSAGETYPE.INFO)
+                                       folder_path + "\n", message_type=MESSAGE_TYPE.INFO)
             else:
                 Base.log(self, message="FileOperation " + "createFolder : " +
-                                       folder_path + "\n already path", messageType=MESSAGETYPE.INFO)
+                                       folder_path + "\n already path", message_type=MESSAGE_TYPE.INFO)
         except OSError as e:
             Base.log(self, message="FileOperation " + "createFileWithPath : " + " \error : \n" +
-                                   str(e), messageType=MESSAGETYPE.ERROR)
+                                   str(e), message_type=MESSAGE_TYPE.ERROR)
 
     def appendFile(self, file_name, content, is_truncate=False):
         file_path = self.getPath() + CODING.SLASH + file_name
@@ -96,10 +97,10 @@ class FileOperation(Base):
                 f.write(content)
                 f.close()
                 Base.log(self, message="FileOperation " + "appendFile : " +
-                                       file_path + "\n", messageType=MESSAGETYPE.INFO)
+                                       file_path + "\n", message_type=MESSAGE_TYPE.INFO)
         except OSError as e:
             Base.log(self, message="FileOperation " + "appendFile : \error : \n" +
-                                   str(e), messageType=MESSAGETYPE.ERROR)
+                                   str(e), message_type=MESSAGE_TYPE.ERROR)
 
     # has path valid and exist return true
     def isExist(self, path):
@@ -117,7 +118,7 @@ class FileOperation(Base):
             return content
         else:
             Base.log(self, message="FileOperation " + "readContent : " + file_path +
-                                   "\n has not found file", messageType=MESSAGETYPE.INFO)
+                                   "\n has not found file", message_type=MESSAGE_TYPE.INFO)
             return ""
 
     # for content of file with fileName
@@ -130,11 +131,15 @@ class FileOperation(Base):
         if self.isExist(file_path):
             os.remove(file_path)
             Base.log(self, message="FileOperation " + "remove : " + file_path +
-                                   "\n file was removed", messageType=MESSAGETYPE.INFO)
+                                   "\n file was removed", message_type=MESSAGE_TYPE.INFO)
         else:
             Base.log(self, message="FileOperation " + "remove : " + file_path +
-                                   "\n has not found file", messageType=MESSAGETYPE.INFO)
+                                   "\n has not found file", message_type=MESSAGE_TYPE.INFO)
             return ""
+
+    def removeRecursively(self, folder_path):
+        if self.isExist(folder_path):
+            shutil.rmtree(folder_path)
 
     # for remove file with fileName
     def removeFile(self, file_name):

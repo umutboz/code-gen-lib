@@ -2,22 +2,23 @@
 # -*- coding: utf-8 -*-
 
 ############################################################
-## Environment
+# Environment
 ############################################################
-## Author: Umut Boz
-## Copyright (c) 2020, OneframeMobile, KoçSistem
-## Email: oneframemobile@gmail.com
+# Author: Umut Boz
+# Copyright (c) 2020, OneframeMobile, KoçSistem
+# Email: oneframemobile@gmail.com
 ############################################################
-## Version: 0.1.0
+# Version: 0.1.0
 ############################################################
 
 # Built-in/Generic Imports
-#from __future__ import annotations
-#rom typing import Optional
+# from __future__ import annotations
+# rom typing import Optional
 
 # Own modules
 from enums import DevelopmentEnvironment
 from singleton import Singleton
+
 
 @Singleton
 class Environment(object):

@@ -21,7 +21,7 @@ import ssl
 
 # Own modules
 from abstract import Base
-from enums import MESSAGETYPE
+from enums import MESSAGE_TYPE
 
 
 class HttpOperation(Base):
@@ -38,7 +38,7 @@ class HttpOperation(Base):
         else:
             return self._url
 
-    def request(self,url=None):
+    def request(self, url=None):
         request_url = None
         if url is not None:
             request_url = str(url)
@@ -46,54 +46,56 @@ class HttpOperation(Base):
             request_url = self.url()
         if request_url is None:
             Base.log(self, message="HttpOperation " + "request : "
-                      + " \error : \n url cannot be None", messageType=MESSAGETYPE.ERROR)
+                                   + " \error : \n url cannot be None", message_type=MESSAGE_TYPE.ERROR)
             return
         try:
             resp = urllib2.urlopen(request_url)
             dataString = resp.read().decode('utf-8')
             Base.log(self, message="HttpOperation " + "request : " + str(request_url) + " \nresponse : \n" + dataString,
-             messageType=MESSAGETYPE.INFO)
+                     message_type=MESSAGE_TYPE.INFO)
             self._response = dataString
             return self
         except urllib2.HTTPError as e:
             Base.log(self, message="HttpOperation " + "request : "
-                      + " \HTTPError : \n " + str(e.code), messageType=MESSAGETYPE.ERROR)
+                                   + " \HTTPError : \n " + str(e.code), message_type=MESSAGE_TYPE.ERROR)
         except urllib2.URLError as e:
-            Base.log(self, message="HttpOperation " + "request : " + " \\URLError : \n " + str(e.reason), messageType=MESSAGETYPE.ERROR)
+            Base.log(self, message="HttpOperation " + "request : " + " \\URLError : \n " + str(e.reason),
+                     message_type=MESSAGE_TYPE.ERROR)
         except Exception as e:
             Base.log(self, message="HttpOperation " + "request : "
-                      + " \generic exception : \n " + str(e), messageType=MESSAGETYPE.ERROR)
+                                   + " \generic exception : \n " + str(e), message_type=MESSAGE_TYPE.ERROR)
         self._response = None
-        return None 
+        return None
 
     def jsonParse(self):
-        if self._response == None or not str(self._response).strip():
+        if self._response is None or not str(self._response).strip():
             return None
-        jsonData = json.loads(self._response)
-        return jsonData
+        json_data = json.loads(self._response)
+        return json_data
 
-    def fetch(self,url=None):
+    def fetch(self, url=None):
         request_url = None
-        if url != None:
+        if url is not None:
             request_url = str(url)
         else:
             request_url = self.url()
-        if request_url == None:
+        if request_url is None:
             Base.log(self, message="HttpOperation " + "request : "
-                      + " \error : \n url cannot be None", messageType=MESSAGETYPE.ERROR)
+                                   + " \error : \n url cannot be None", message_type=MESSAGE_TYPE.ERROR)
             return
         try:
             resp = urllib2.urlopen(request_url)
-            dataString = resp.read().decode('utf-8')
-            Base.log(self, message="HttpOperation " + "request : " + str(request_url) + " \nresponse : \n" + dataString,
-             messageType=MESSAGETYPE.INFO)
-            return dataString
+            data_string = resp.read().decode('utf-8')
+            Base.log(self, message="HttpOperation " + "request : " + str(request_url) + " \nresponse : \n" + data_string,
+                     message_type=MESSAGE_TYPE.INFO)
+            return data_string
         except urllib2.HTTPError as e:
             Base.log(self, message="HttpOperation " + "request : "
-                      + " \HTTPError : \n " + str(e.code), messageType=MESSAGETYPE.ERROR)
+                                   + " \HTTPError : \n " + str(e.code), message_type=MESSAGE_TYPE.ERROR)
         except urllib2.URLError as e:
-            Base.log(self, message="HttpOperation " + "request : " + " \\URLError : \n " + str(e.reason), messageType=MESSAGETYPE.ERROR)
+            Base.log(self, message="HttpOperation " + "request : " + " \\URLError : \n " + str(e.reason),
+                     message_type=MESSAGE_TYPE.ERROR)
         except Exception as e:
             Base.log(self, message="HttpOperation " + "request : "
-                      + " \generic exception : \n " + str(e), messageType=MESSAGETYPE.ERROR)
+                                   + " \generic exception : \n " + str(e), message_type=MESSAGE_TYPE.ERROR)
         return None

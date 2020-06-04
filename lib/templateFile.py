@@ -14,7 +14,7 @@
 
 # Owned
 from abstract import Base
-from enums import MESSAGETYPE
+from enums import MESSAGE_TYPE
 
 
 class TemplateFile(Base):
