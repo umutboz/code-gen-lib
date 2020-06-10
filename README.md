@@ -27,7 +27,7 @@ config_json_example.py
 ```
 
 ## code-gen-lib generation programming example
-You should add modules path which your folder path name. You can add mustache files and template folder/files
+You should add your module containing your folder pathname to the 'modules' path. You can add mustache files and template folder/files in your module path
 ```python
 from lib.enums import MUSTACHE
 from templateStreaming import TemplateStreaming
