@@ -18,7 +18,9 @@ from enums import MESSAGE_TYPE
 
 
 class TemplateFolder(Base):
+    # root templateStreaming file path + append your source path
     source = ""
+    # root templateModule path + append your target path
     outputPath = ""
     isOnline = False
 

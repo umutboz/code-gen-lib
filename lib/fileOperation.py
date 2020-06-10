@@ -146,6 +146,12 @@ class FileOperation(Base):
         file_path = self.getPath() + CODING.SLASH + file_name
         self.remove(file_path)
 
+    def files(self, directory_path):
+        if self.isExist(path=directory_path):
+            return os.listdir(directory_path)
+        else:
+            return []
+
     def aboveNewPath(self, path):
         return os.path.abspath(os.path.join(os.path.dirname(__file__), '..', path))
 

@@ -1,13 +1,6 @@
 {
     "module" : {
         "name" : "networking-swagger-swift",
-        "templateFolders" : [
-            {
-                "source" : "modules/oneframe-ios-api-manager",
-                "outputPath" : "test_module",
-                "isOnline" : false
-            }
-        ],
         "templateFiles": [
             {
                 "name": "manager_class_mustache",

@@ -58,22 +58,23 @@ class Parser(Base):
                         parent_mustache=parent_mustache))
 
                 # template folder generate
-                for tempFolder in json_decode["module"]["templateFolders"]:
-                    source = ""
-                    output_path = ""
-                    is_online = False
-                    if not (tempFolder.get('source') is None):
-                        source = eval(json.dumps(tempFolder["source"]))
-                    if not (tempFolder.get('output_path') is None):
-                        output_path = str(tempFile["output_path"])
-                    if not (tempFolder.get('isOnline') is None):
-                        is_online = tempFolder.get('isOnline')
+                if not (json_decode.get('module').get('templateFolders') is None):
+                    for tempFolder in json_decode["module"]["templateFolders"]:
+                        source = ""
+                        output_path = ""
+                        is_online = False
+                        if not (tempFolder.get('source') is None):
+                            source = eval(json.dumps(tempFolder["source"]))
+                        if not (tempFolder.get('outputPath') is None):
+                            output_path = str(tempFolder["outputPath"])
+                        if not (tempFolder.get('isOnline') is None):
+                            is_online = tempFolder.get('isOnline')
 
-                module.templateFolders.append(TemplateFolder(
-                    source=source,
-                    output_path=output_path,
-                    is_online=is_online
-                ))
+                    module.templateFolders.append(TemplateFolder(
+                        source=source,
+                        output_path=output_path,
+                        is_online=is_online
+                    ))
 
                 module.name = str(json_decode["module"]["name"])
             except OSError:
@@ -82,6 +83,8 @@ class Parser(Base):
         return module
 
     def string_multiple_replace(string, replacement_dict):
+        if len(replacement_dict) == 0:
+            return string
         pattern = re.compile("|".join([re.escape(k) for k in sorted(replacement_dict, key=len, reverse=True)]), flags=re.DOTALL)
         return pattern.sub(lambda x: replacement_dict[x.group(0)], string)
 

@@ -1,0 +1,24 @@
+{
+    "module" : {
+        "name" : "oneframe-ios-api-manager",
+        "templateFolders" : [
+            {
+                "source" : "modules/oneframe-ios-api-manager/models",
+                "outputPath" : "models",
+                "isOnline" : false
+            }
+        ],
+        "templateFiles": [
+            {
+                "name": "manager_class_mustache",
+                "outputFile": "CanikServiceManager.swift",
+                "isChildTemplate": false
+            },
+             {
+                "name": "manager_class_mustache",
+                "outputFile": "OneFrameLearning.swift",
+                "isChildTemplate": false
+            }
+        ]
+    }
+}

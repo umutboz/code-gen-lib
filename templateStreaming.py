@@ -70,6 +70,9 @@ class TemplateStreaming(Base):
                                                            self.templateModule.outputDirectory)
                 self.fileOp.createFolderWithoutPath(directory_path)
 
+        # initialize template folders
+        self.templateModule.initializeTemplateFolder()
+
         for t_file in self.templateModule.templateFiles:
             # print(t_file.name)
             # only work parent files
@@ -141,11 +144,15 @@ class TemplateStreaming(Base):
 
     def filterParentNode(self, dict):
         find_parent_filter = lambda x: x[1] == MUSTACHE.PARENT
+        if dict is None:
+            return False, ""
         filter_output = filter(find_parent_filter, dict.items())
         return (len(filter_output) > 0 if True else False), filter_output
 
     def dictToMustache(self, dictionary):
         new_dict = dict()
+        if dictionary is None:
+            return new_dict
         for key in dictionary.keys():
             new_key = MUSTACHE.LEFT_BRACKET + MUSTACHE.LEFT_BRACKET + key + MUSTACHE.RIGHT_BRACKET + MUSTACHE.RIGHT_BRACKET
             new_dict[new_key] = dictionary[key]
