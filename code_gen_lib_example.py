@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 ############################################################
-## replace_module_test.py
+# replace_module_test.py
 ############################################################
-## Author: Umut Boz
-## Copyright (c) 2020, OneframeMobile, KoçSistem
-## Email: oneframemobile@gmail.com
+# Author: Umut Boz
+# Copyright (c) 2020, OneframeMobile, KoçSistem
+# Email: oneframemobile@gmail.com
 ############################################################
-## Version: 0.1.0
+# Version: 0.1.0
 ############################################################
 
 # Built-in/Generic Imports
