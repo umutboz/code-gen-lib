@@ -16,11 +16,13 @@ import sys
 # Owned
 from abstract import Base
 from fileOperation import FileOperation
-from lib.enums import CODING
+from enums import CODING
 from enums import MESSAGE_TYPE
 
-pathname = os.path.dirname(sys.argv[0])
-
+from inspect import getsourcefile
+from os.path import abspath
+#pathname = os.path.dirname(sys.argv[0])
+pathname = os.getcwd()
 
 class TemplateModule(Base):
     name = ""
@@ -39,8 +41,20 @@ class TemplateModule(Base):
         self.templateFolders = template_folders
 
     def getOutputDirectoryPath(self):
-        return self.outputRootPath + "/" + self.outputDirectory
+        return self.outputRootPath + CODING.SLASH + self.getModulePath() + CODING.SLASH + self.outputDirectory
+    
+    def getModulePath(self):
+        module_path = self.fileOp.createNewPath(
+            pathLocate="..",
+            folderName="modules/" + self.name
+        )
+        module_path = "modules/" + self.name
+        return module_path
 
+    def getModuleOutputPath(self):
+        module_directory_path = self.outputRootPath + CODING.SLASH + "modules" +  CODING.SLASH  + self.name + CODING.SLASH  + self.outputDirectory
+        return module_directory_path
+        
     def initializeTemplateFolder(self):
         for t_folder in self.templateFolders:
             t_folder_source_full_path = self.outputRootPath + CODING.SLASH + t_folder.source

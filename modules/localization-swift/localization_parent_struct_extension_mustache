@@ -1,0 +1,12 @@
+//
+//
+//  Localization-Swift Code Generate Creater 1.0
+//  Localization-{{extension_parent_struct_name}}+Extensions.swift
+//  Copyright © 2021 OneFrame Mobile - Koçsistem All rights reserved.
+//
+ 
+extension Localization {
+    struct {{extension_parent_struct_name}}{ 
+    {{extension_parent_add}}
+    }
+}

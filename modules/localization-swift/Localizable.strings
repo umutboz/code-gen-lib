@@ -1,0 +1,480 @@
+/*
+  Localizable.strings
+  Telemedic
+
+  Created by Gökhan Alp on 20.05.2020.
+  Copyright © 2020 KocSistem. All rights reserved.
+*/
+
+"General.UI.tryAgainUppercased" = "TEKRAR DENEYİNİZ";
+"General.UI.okUppercased" = "TAMAM";
+"General.UI.continueUppercased" = "DEVAM ET";
+"General.UI.followingNextUppercased" = "SONRAKİ";
+"General.UI.nextUppercased" = "İLERİ";
+"General.UI.save" = "Kaydet";
+"General.UI.doSearch" = "Arama yap..";
+"General.UI.opened" = "Açık";
+"General.UI.closed" = "Kapalı";
+"General.UI.turkish" = "Türkçe";
+"General.UI.english" = "İngilizce";
+"General.UI.close" = "Kapat";
+"General.UI.countryCodes" = "Ülke Kodları";
+"General.UI.add" = "Ekle";
+"General.UI.yes" = "Evet";
+"General.UI.no" = "Hayır";
+"General.UI.delete" = "Sil";
+"General.UI.edit" = "Düzenle";
+"General.UI.cancel" = "Vazgeç";
+"General.UI.cancel2" = "İptal";
+"General.UI.choose" = "Seç";
+"General.UI.chooseRemove" = "Seçimi Kaldır";
+"General.UI.tckn" = "T.C. Kimlik No";
+"General.UI.passaportNo" = "Pasaport No";
+"General.UI.retry" = "Tekrar Dene";
+"General.UI.orSmall" = "veya";
+
+"General.Errors.anErrorOccured" = "İşleminizi yaparken bir hata oluştu.\nLütfen tekrar deneyiniz.";
+"General.Errors.validateFieldsError" = "Alanlarda hatalı bilgiler mevcut.\nLütfen alanlardaki yanlışları düzeltip tekrar deneyiniz.";
+"General.Errors.failedJob" = "İşlem başarısız oldu";
+
+"General.Errors.requestMissingValues" = "Eksik bilgiler olduğundan işlem başlatılamadı";
+"General.Errors.responseModelConvertFail" = "Dönüş tipi tanınmadığından bir sorun oluştu";
+"General.Errors.timeout" = "İşlem zaman aşımına uğradı";
+"General.Errors.unkownError" = "Bilinmeyen bir hata ile karşılaşıldı";
+"General.Errors.noConnectionError" = "İnternet bağlantınızda sorun var. Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz.";
+"General.Errors.noContent" = "İçerik bulunmamaktadır";
+
+"General.Errors.InputErrors.empty" = "Bu alanın doldurulması zorunludur";
+"General.Errors.InputErrors.emptyShort" = "Zorunlu alan";
+"General.Errors.InputErrors.passwordMatch" = "Şifreler eşleşmiyor";
+"General.Errors.InputErrors.phone" = "Telefon bilgisi hatalı";
+"General.Errors.InputErrors.email" = "E-posta bilgisi hatalı";
+"General.Errors.InputErrors.tcknFail" = "TCKN bilgisi hatalı";
+"General.Errors.InputErrors.passwordFormatFail" = "Şifre formatı hatalı";
+"General.Errors.InputErrors.emailFormatFail" = "E-posta formatı hatalı";
+"General.Errors.InputErrors.creditCardNoFail" = "Kredi kartı numarası formatı hatalı";
+
+"Pages.OnBoarding.OnlineAppealCreate.UI.title" = "Kolay Randevu";
+"Pages.OnBoarding.OnlineAppealCreate.UI.description" = "Sadece birkaç adımı tamamlayarak kolay ve hızlı şekilde randevu alabilirsiniz. Ödemenizi kredi kartı aracılığıyla yapabilirsiniz.";
+
+"Pages.OnBoarding.OnlineExamination.UI.title" = "Online Görüşme";
+"Pages.OnBoarding.OnlineExamination.UI.description" = "Doktorunuzla mobil uygulamamız üzerinden veya web portalimiz üzerinden, bilgisayarınıza hiçbir uygulama yüklemeden online görüşme yapabilirsiniz.";
+
+"Pages.OnBoarding.OnlineMeeting.UI.title" = "Raporlara Hızlı Ulaşım";
+"Pages.OnBoarding.OnlineMeeting.UI.description" = "Doktorunuzun size ilettiği raporlara uygulama üzerinden kolaylıkla ulaşım sağlayabilirsiniz.";
+
+"Pages.Authentication.Login.UI.title" = "Hoş Geldiniz!";
+"Pages.Authentication.Login.UI.description" = "Lütfen Giriş Yaparak İlerleyiniz";
+"Pages.Authentication.Login.UI.password" = "Şifre";
+"Pages.Authentication.Login.UI.faq" = "Sık Sorulan Sorular";
+"Pages.Authentication.Login.UI.forgotPassword" = "Şifremi Unuttum";
+"Pages.Authentication.Login.UI.login" = "GİRİŞ YAP";
+"Pages.Authentication.Login.UI.dontYouHavePassword" = "Hesabınız yok mu?";
+"Pages.Authentication.Login.UI.register" = "Üye Ol!";
+
+"Pages.Authentication.Login.Errors.token" = "Giriş anahtar bilgisi hatalıdır. Lütfen tekrar deneyin.";
+
+"Pages.Authentication.ForgotPassword.UI.title" = "Şifremi Unuttum";
+"Pages.Authentication.ForgotPassword.UI.send" = "Gönder";
+"Pages.Authentication.ForgotPassword.UI.popupSuccessForgotPassword" = "Yeni şifreniz kayıtlı <b>“E-Posta Adresinize ve Cep Telefonu Numaranıza”</b> gönderilmiştir. Oturum açmak için lütfen butona basınız.";
+"Pages.Authentication.ForgotPassword.UI.popupSuccessLoginButton" = "Giriş Yap";
+
+"Pages.Authentication.Validation.UI.title" = "Doğrulama Kodu";
+"Pages.Authentication.Validation.UI.code" = "Doğrulama Kodu";
+"Pages.Authentication.Validation.UI.info" = "<b>\"%@\"</b> numaralı telefona 6 basamaklı doğrulama kodunu içeren mesaj ve <b>\"%@\"</b> eposta adresinize doğrulama linki gönderilmiştir.\nKalan Süre:";
+"Pages.Authentication.Validation.UI.continue" = "İLERİ";
+"Pages.Authentication.Validation.UI.sendAgainLeftText" = "Kod Gelmedi mi?";
+"Pages.Authentication.Validation.UI.sendAgainButton" = "Tekrar Gönder!";
+"Pages.Authentication.Validation.UI.restartSuccessPopupText" = "Kod tekrar gönderilmiştir.";
+"Pages.Authentication.Validation.UI.validationSuccess" = "Doğrulama başarılı. Artık yeni hesabınız ile giriş yapabilirsiniz.";
+"Pages.Authentication.Validation.UI.validationSuccessToHome" = "Doğrulama başarılı.";
+
+"Pages.Authentication.Validation.Error.timeout" = "Doğrulama süresi doldu. Dilerseniz tekrar kod gönderebilirsiniz.";
+"Pages.Authentication.Validation.Error.validationFailed" = "Doğrulama başarısız oldu lütfen tekrar deneyiniz.";
+
+"Pages.Authentication.Register.First.UI.title" = "Üye Ol";
+"Pages.Authentication.Register.First.UI.birthDate" = "Doğum Tarihi";
+"Pages.Authentication.Register.First.UI.alreadyAvailableUser" = "Bu kullanıcı hali hazırda mevcuttur.";
+"Pages.Authentication.Register.First.UI.availableButNeedsCreatePasswordUser" = "Bu kullanıcı için şifre belirlemeniz gerekmektedir";
+"Pages.Authentication.Register.First.UI.createPassword" = "Şifre Belirle";
+
+"Pages.Authentication.Register.NextRegisterDetail.UI.title" = "Üye Ol";
+"Pages.Authentication.Register.NextRegisterDetail.UI.name" = "Ad";
+"Pages.Authentication.Register.NextRegisterDetail.UI.surname" = "Soyad";
+"Pages.Authentication.Register.NextRegisterDetail.UI.phone" = "Telefon Numarası";
+"Pages.Authentication.Register.NextRegisterDetail.UI.email" = "E-Posta Adresi";
+"Pages.Authentication.Register.NextRegisterDetail.UI.adress" = "Adres Bigileri";
+"Pages.Authentication.Register.NextRegisterDetail.UI.password" = "Şifre";
+"Pages.Authentication.Register.NextRegisterDetail.UI.passwordConfirmation" = "Şifre Tekrarı";
+"Pages.Authentication.Register.NextRegisterDetail.UI.checkBoxFirstText" = "%@ okudum, kabul ediyorum";
+"Pages.Authentication.Register.NextRegisterDetail.UI.checkBoxFirstLinkText" = "Kullanıcı Sözleşmesini";
+"Pages.Authentication.Register.NextRegisterDetail.UI.checkBoxSecondText" = "%@ kanunu hakkında bilgilendirme metnini okudum, kabul ediyorum";
+"Pages.Authentication.Register.NextRegisterDetail.UI.checkBoxSecondLinkText" = "Kişisel Verilerin Korunması";
+"Pages.Authentication.Register.NextRegisterDetail.UI.registerButton" = "ÜYE OL";
+"Pages.Authentication.Register.NextRegisterDetail.UI.gender" = "Cinsiyet";
+"Pages.Authentication.Register.NextRegisterDetail.UI.nation" = "Uyruk";
+"Pages.Authentication.Register.NextRegisterDetail.UI.passportEmailValidation" = "E-posta adresinizden hesabınızı onaylayarak giriş yapabilirsiniz.";
+
+"Pages.Main.Home.UI.appointmentInfosTitle" = "Randevu Bilgileri";
+"Pages.Main.Home.UI.userInfosTitle" = "Kullanıcı Bilgileri";
+"Pages.Main.Home.UI.yearsOld" = "%@ Yaş";
+"Pages.Main.Home.UI.AppointmentButtons.createAppointment" = "Randevu Oluştur";
+"Pages.Main.Home.UI.AppointmentButtons.plannedAppointments" = "Planlanan Randevular";
+"Pages.Main.Home.UI.AppointmentButtons.passedAppointments" = "Geçmiş Randevular";
+
+"Pages.Main.Home.UI.BottomUserInfos.personalInfo" = "Kişisel Bilgiler";
+"Pages.Main.Home.UI.BottomUserInfos.identityInfo" = "Kimlik Bilgileri";
+"Pages.Main.Home.UI.BottomUserInfos.contactInfo" = "İletişim Bilgileri";
+"Pages.Main.Home.UI.BottomUserInfos.emergeCallPersonsInfo" = "Acil Durumda Aranacak Kişi";
+"Pages.Main.Home.UI.BottomUserInfos.takenFromFormInfo" = "Sağlık Formu";
+
+"Pages.Main.Notifications.UI.title" = "Bildirimler";
+
+"Pages.Appointment.UI.title" = "Randevu Oluştur";
+"Pages.Appointment.UI.TopSelector.hospital" = "Hastane";
+"Pages.Appointment.UI.TopSelector.department" = "Bölüm";
+"Pages.Appointment.UI.TopSelector.doctor" = "Doktor";
+"Pages.Appointment.UI.TopSelector.calendar" = "Takvim";
+"Pages.Appointment.UI.TopSelector.appointmentType" = "Randevu Tipi";
+"Pages.Appointment.UI.TopSelector.form" = "Form";
+"Pages.Appointment.UI.TopSelector.payment" = "Ödeme";
+
+"Pages.Appointment.UI.SubPages.Calendar.choosedDay" = "Seçili Gün";
+"Pages.Appointment.UI.SubPages.Calendar.fullDay" = "Dolu Gün";
+
+"Pages.Appointment.Error.SubPages.Calendar.dayAndTimeMustSelected" = "Gün ve saat seçilmelidir";
+
+"Pages.Appointment.UI.SubPages.Form.Shared.quit" = "Bıraktım";
+"Pages.Appointment.UI.SubPages.Form.Shared.options" = "Seçenekler";
+"Pages.Appointment.UI.SubPages.Form.GeneralInfo.title" = "Genel Bilgi";
+"Pages.Appointment.UI.SubPages.Form.GeneralInfo.height" = "Boy (cm)";
+"Pages.Appointment.UI.SubPages.Form.GeneralInfo.weight" = "Kilo (kg)";
+"Pages.Appointment.UI.SubPages.Form.GeneralInfo.vki" = "Vücut Kitle Endeksi (VKİ)";
+"Pages.Appointment.UI.SubPages.Form.ImportantAndCronicalSickness.title" = "Önemli ve Kronik Hastalık Geçmişi";
+"Pages.Appointment.UI.SubPages.Form.UsedMedicines.title" = "Kullanılan İlaçlar";
+"Pages.Appointment.UI.SubPages.Form.UsedMedicines.addMedicine" = "İlaç Ekleme";
+"Pages.Appointment.UI.SubPages.Form.UsedMedicines.addMedicineMedicineName" = "İlaç İsmi";
+"Pages.Appointment.UI.SubPages.Form.UsedMedicines.addMedicineMedicineDose" = "İlaç Dozu";
+"Pages.Appointment.UI.SubPages.Form.UsedMedicines.addMedicineMedicineFrequency" = "İlaç Sıklığı";
+"Pages.Appointment.UI.SubPages.Form.UsedMedicines.addMedicineLastTakenTime" = "En Son Ne Zaman Aldı?";
+"Pages.Appointment.UI.SubPages.Form.UsesBloodThinners.title" = "Kan Sulandırıcı Kullanıyor Mu?";
+"Pages.Appointment.UI.SubPages.Form.DiagnosedChronicDiseases.title" = "Tanısı Konmuş Kronik Hastalıklar";
+"Pages.Appointment.UI.SubPages.Form.Habits.title" = "Alışkanlıklar";
+"Pages.Appointment.UI.SubPages.Form.Habits.alcoholUsage" = "Alkol Kullanımı";
+"Pages.Appointment.UI.SubPages.Form.Habits.cigaratteUsage" = "Sigara Kullanımı";
+"Pages.Appointment.UI.SubPages.Form.Habits.drugUse" = "Madde Kullanımı";
+"Pages.Appointment.UI.SubPages.Form.Habits.askHowQuantity" = "Günde Kaç Adet/Paket?";
+"Pages.Appointment.UI.SubPages.Form.Habits.askHowManyUnit" = "Günde Kaç Birim?";
+"Pages.Appointment.UI.SubPages.Form.Habits.askHowLong" = "Ne Kadar Süredir?";
+"Pages.Appointment.UI.SubPages.Form.OperationHistory.title" = "Operasyon Geçmişi";
+"Pages.Appointment.UI.SubPages.Form.OperationHistory.operationName" = "Operasyon İsmi";
+"Pages.Appointment.UI.SubPages.Form.OperationHistory.operationDate" = "Operasyon Tarihi";
+"Pages.Appointment.UI.SubPages.Form.OperationHistory.operationAdd" = "Operasyon Ekleme";
+"Pages.Appointment.UI.SubPages.Form.Alergy.title" = "Alerji";
+"Pages.Appointment.UI.SubPages.Form.Alergy.alergyAdd" = "Alerji Ekleme";
+"Pages.Appointment.UI.SubPages.Form.Alergy.medicineAlergy" = "İlaç Alerjisi";
+"Pages.Appointment.UI.SubPages.Form.Alergy.foodAlergy" = "Besin Alerjisi";
+"Pages.Appointment.UI.SubPages.Form.Alergy.otherAlergy" = "Diğer Alerji";
+"Pages.Appointment.UI.SubPages.Form.SuddenDeath.title" = "Ailede Yaşanan Ani Ölüm";
+"Pages.Appointment.UI.SubPages.Form.SuddenDeath.detail" = "Detay";
+"Pages.Appointment.UI.SubPages.Form.Cancer.title" = "Geçirdiyse Kanser Türü";
+"Pages.Appointment.UI.SubPages.Form.CurrentComplaint.title" = "Güncel Şikayet";
+"Pages.Appointment.UI.SubPages.Form.CurrentComplaint.painRate" = "Ağrı Şiddeti";
+
+"Pages.Appointment.UI.SubPages.Purchase.completeButton" = "ÖDEME İŞLEMİNİ TAMAMLA";
+"Pages.Appointment.UI.SubPages.Purchase.Summary.title" = "Özet Bilgi";
+"Pages.Appointment.UI.SubPages.Purchase.CardInfo.title" = "Kart Bilgisi";
+"Pages.Appointment.UI.SubPages.Purchase.CardInfo.lastUseDate" = "Son Kullanma Tarihi";
+"Pages.Appointment.UI.SubPages.Purchase.CardInfo.cardNo" = "Kart Numarası";
+"Pages.Appointment.UI.SubPages.Purchase.CardInfo.cardOwnerName" = "Kart Üzerindeki İsim";
+"Pages.Appointment.UI.SubPages.Purchase.CardInfo.month" = "Ay";
+"Pages.Appointment.UI.SubPages.Purchase.CardInfo.year" = "Yıl";
+"Pages.Appointment.UI.SubPages.Purchase.CardInfo.ccv" = "CCV Kodu";
+"Pages.Appointment.UI.SubPages.Purchase.PriceInfo.title" = "Ödenecek Tutar Bilgisi";
+"Pages.Appointment.UI.SubPages.Purchase.PriceInfo.total" = "Toplam";
+
+"Pages.Appointment.Error.chooseAlert.hospital" = "Hastane seçimi yapmanız gerekmektedir";
+"Pages.Appointment.Error.chooseAlert.doctor" = "Doktor seçimi yapmanız gerekmektedir";
+"Pages.Appointment.Error.chooseAlert.appointmentType" = "Randevu tipi seçimi yapmanız gerekmektedir";
+
+
+"Pages.Settings.UI.Main.title" = "Ayarlar";
+"Pages.Settings.UI.Main.appointmentRemember" = "Randevu Hatırlatma";
+"Pages.Settings.UI.Main.languageSettings" = "Dil Ayarı";
+"Pages.Settings.UI.Main.passwordChangeDescription" = "Hesabınızı korumak için özgün bir şifre seçin";
+"Pages.Settings.UI.Main.passwordChange" = "Şifre Değiştir";
+"Pages.Settings.UI.Main.frequentlyAskedQuestions" = "Sık Sorulan Sorular";
+"Pages.Settings.UI.Main.logout" = "Çıkış Yap";
+"Pages.Settings.UI.Main.logoutAsk" = "Çıkış yapmak istediğinizden emin misiniz?";
+"Pages.Settings.UI.Main.version" = "Sürüm";
+
+"Pages.Settings.UI.ChangePassword.title" = "Şifre Değiştir";
+"Pages.Settings.UI.ChangePassword.topText" = "Şifreniz en az 1 büyük, 1 küçük harf, 1 rakam ve 1 sembol içerecek şekilde 8 karakter uzunluğunda olmalıdır";
+"Pages.Settings.UI.ChangePassword.currentPassword" = "Mevcut Şifreniz";
+"Pages.Settings.UI.ChangePassword.newPassword" = "Yeni Şifre";
+"Pages.Settings.UI.ChangePassword.confirmPassword" = "Yeni Şifre Tekrar";
+"Pages.Settings.UI.ChangePassword.passwordChangedDone" = "Şifreniz başarılı bir şekilde değiştirilmiştir.";
+"Pages.Settings.UI.ChangePassword.forgotPassword" = "Şifrenizi mi unuttunuz?";
+"Pages.Settings.UI.ChangePassword.reLogin" = "TEKRAR GİRİŞ YAP";
+
+"Pages.Settings.UI.Notifications.title" = "Bildirimler";
+"Pages.Settings.UI.Notifications.sms" = "SMS";
+"Pages.Settings.UI.Notifications.email" = "E-Posta";
+"Pages.Settings.UI.Notifications.pushNotification" = "Anlık Bildirim";
+
+"Pages.Main.Home.UI.UserInfoDetails.PersonalInfo.protocolNo" = "Protokol Numarası";
+"Pages.Main.Home.UI.UserInfoDetails.PersonalInfo.name" = "Adı";
+"Pages.Main.Home.UI.UserInfoDetails.PersonalInfo.surname" = "Soyadı";
+"Pages.Main.Home.UI.UserInfoDetails.PersonalInfo.gender" = "Cinsiyet";
+"Pages.Main.Home.UI.UserInfoDetails.PersonalInfo.bloodGroup" = "Kan Grubu";
+
+"Pages.Main.Home.UI.UserInfoDetails.IdentityInfo.nation" = "Uyruk";
+"Pages.Main.Home.UI.UserInfoDetails.IdentityInfo.momName" = "Anne Adı";
+"Pages.Main.Home.UI.UserInfoDetails.IdentityInfo.fatherName" = "Baba Adı";
+"Pages.Main.Home.UI.UserInfoDetails.IdentityInfo.birthPlace" = "Doğum Yeri";
+"Pages.Main.Home.UI.UserInfoDetails.IdentityInfo.birthDate" = "Doğum Tarihi";
+
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.phoneNo" = "Telefon No";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.email" = "E-posta";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.adress" = "Adres";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.postCode" = "Posta Kodu";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.country" = "Ülke";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.province" = "İl";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.district" = "İlçe";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.defaultAddress" = "Varsayılan Adres";
+
+"Pages.Main.Home.UI.UserInfoDetails.EmergeCallInfo.relativesOfPatient" = "Hasta Yakını";
+"Pages.Main.Home.UI.UserInfoDetails.EmergeCallInfo.proximityDegree" = "Yakınlık Derecesi";
+"Pages.Main.Home.UI.UserInfoDetails.EmergeCallInfo.relativePhone" = "Hasta Yakını Tel No";
+
+// V2
+"General.UI.savedInfos" = "Bilgileriniz kaydedilmiştir";
+"General.UI.skip" = "Atla";
+"Pages.Authentication.Login.UI.turkishCitizen" = "Türk Vatandaşıyım";
+"Pages.Authentication.Register.First.UI.needToValidate" = "Bu kullanıcının doğrulanması gerekmektedir";
+"Pages.Authentication.Register.First.UI.validateAccount" = "Hesabı Doğrula";
+
+"Pages.AddedAppointment.List.UI.detail" = "Detay";
+"Pages.AddedAppointment.List.UI.cardHide" = "Randevuyu Gösterme";
+"Pages.AddedAppointment.List.UI.cardHideWarning" = "Bu randevunuza ait bilgiler kalıcı olarak gizlenecektir. Onaylıyor musunuz?";
+"Pages.AddedAppointment.List.UI.hideComplete" = "Randevu bilginiz başarılı bir şekilde gizlenmiştir";
+
+"Pages.AddedAppointment.Detail.UI.title" = "Muayene Randevu Detayı";
+"Pages.AddedAppointment.Detail.UI.cellTitle" = "Randevu Durumu";
+"Pages.AddedAppointment.Detail.UI.awaitingTitle" = "Beklemede";
+"Pages.AddedAppointment.Detail.UI.awaitingDetail" = "Henüz randevu tarihiniz gelmedi.";
+"Pages.AddedAppointment.Detail.UI.completedTitle" = "Tamamlandı";
+"Pages.AddedAppointment.Detail.UI.completedDetail" = "Randevunuz tamamlanmıştır.";
+"Pages.AddedAppointment.Detail.UI.canceledTitle" = "İptal Edildi";
+"Pages.AddedAppointment.Detail.UI.canceledDetail" = "Randevunuz iptal edilmiştir.";
+"Pages.AddedAppointment.Detail.UI.edit" = "Düzenle";
+"Pages.AddedAppointment.Detail.UI.cancel" = "İptal Et";
+"Pages.AddedAppointment.Detail.UI.areYouSureToCancel" = "Randevuyu iptal etmek istediğinizden emin misiniz?";
+"Pages.AddedAppointment.Detail.UI.joinMeeting" = "Görüşmeye Katıl";
+
+"Pages.Settings.UI.FAQ.title" = "Sık Sorulan Sorular";
+
+"General.UI.changingLanguage" = "Uygulamada kullanılan dilin değişmesi için uygulamanın kapanıp tekrar açılması gereklidir. Değişimi onaylıyor musunuz?";
+"PushNotification.changeLanguageTitle" = "Uygulama dili değiştirildi";
+"PushNotification.changeLanguageDescription" = "Bu bildirime tıklayarak uygulamayı tekrar açabilirsiniz";
+
+"Pages.Main.Home.UI.PhotoAdd.addPhoto" = "Fotoğraf Ekle";
+"Pages.Main.Home.UI.PhotoAdd.addFromGallery" = "Galeriden Ekle";
+"Pages.Main.Home.UI.PhotoAdd.addFromCamera" = "Kameradan Ekle";
+
+"General.Errors.responseMissingValues" = "Eksik bilgi geldiğinden işleme devam edilemiyor";
+"General.Errors.deviceJailBroken" = "Cihazınızda Jailbreak yüklü olduğundan bu uygulamayı kullanamazsınız.";
+
+"Pages.Authentication.Login.UI.useLocalAuthNextLogin" = "Sonraki girişlerinizde %@ ile girmek ister misiniz?";
+"Pages.Authentication.Login.UI.localAuthReason" = "%@ ile giriş yapılmasını onaylıyor musunuz?";
+"Pages.Authentication.Login.Errors.localAuthNotAvaible" = "Cihazınızda TouchID veya FaceID bulunmamaktadır.";
+"Pages.Authentication.Login.Errors.localAuthFailed" = "%@ ile giriş başarısız oldu";
+
+"Pages.Settings.UI.ChangePassword.createPasswordTitle"  = "Şifre Oluştur";
+
+"Pages.Appointment.UI.editTitle" = "Randevu Düzenleme";
+"Pages.Appointment.UI.SubPages.Calendar.editTitle" = "Güncelleme Yapılacak Randevu Bilgisi";
+"Pages.Appointment.UI.SubPages.Calendar.editComplete" = "Randevunuz başarılı bir şekilde güncellenmiştir";
+
+"General.UI.update" = "Güncelle";
+"Pages.Main.Home.UI.upcomingAppointments" = "Yaklaşan %@ Randevunuz Var";
+"Pages.Main.Home.UI.appointmentWillStart" = "%@dk sonra görüşmeniz başlayacaktır";
+"Pages.Main.Home.UI.appointmentStarted" = "Görüşmeniz başlamıştır";
+"General.UI.join" = "Katıl";
+
+"General.Errors.unAuthorized" = "Oturumunuz sonlandığından çıkış yapmanız gerekmektedir";
+
+"Pages.Appointment.UI.SubPages.Purchase.purchaseComplete" = "Ödeme işleminiz yapılmış ve tüm randevu adımları tamamlanmıştır";
+"Pages.Appointment.UI.SubPages.Purchase.completeButtonForControl" = "TAMAMLA";
+"Pages.Appointment.UI.SubPages.Purchase.PriceInfo.controlNotHaveAmount" = "Kontrol randevusu için ödeme alınmamaktadır";
+"Pages.Appointment.UI.SubPages.Purchase.appointmentCompletedForControl" = "Tüm randevu adımları tamamlanmış ve randevunuz başarılı bir şekilde oluşturulmuştur.";
+"General.UI.approve" = "Onayla";
+
+"Pages.Appointment.UI.SubPages.AppointmentType.appointmentCreateQuestion" = "Randevunuz oluşturulacak, önceki adımlara geri dönülemeyecek ve değişiklik yapılamayacaktır. Onaylıyor musunuz?";
+"Pages.Appointment.UI.SubPages.AppointmentType.appointmentCreatedForDefault" = "Randevunuz oluşturulmuştur, randevu görüşmenize katılabilmek için ödemenin tamamlanması gerekmektedir. Devam eden adımlarda form bilgilerini doldurabilir ve ödemeyi tamamlayabilirsiniz";
+"Pages.Appointment.UI.SubPages.AppointmentType.appointmentCreatedForControl" = "Randevunuz oluşturulmuştur. Devam eden adımlarda form bilgilerini doldurabilirsiniz";
+
+"Pages.Appointment.UI.SubPages.Doctor.chooseDepartment" = "Randevu almak istediğiniz departmanı seçiniz";
+
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.phoneAndEmail" = "Telefon ve E-Posta Bilgisi";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.adressInfos" = "Adres Bilgileri";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.adressAdd" = "Adres Ekle";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.adressDetail" = "Adres Detay";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.adressEdit" = "Adres Düzenle";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.adressInfo" = "Adres Bilgisi";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.adressName" = "Adres Adı";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.areYouSureToRemoveAdress" = "Adresi silmek istediğiniz emin misiniz?";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.addressAdded" = "Adres başarılı bir şekilde eklenmiştir";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.addressUpdated" = "Adres başarılı bir şekilde güncellenmiştir";
+"Pages.Main.Home.UI.UserInfoDetails.ContactInfo.addressRemoved" = "Adres başarılı bir şekilde silinmiştir";
+
+"General.Errors.ComponentErrors.needsCountryForCity" = "İlin seçilebilmesi için önce ülke seçilmelidir";
+"General.Errors.ComponentErrors.needsCityForCounty" = "İlçenin seçilebilmesi için önce il seçilmelidir";
+
+"Pages.Main.Home.UI.BottomUserInfos.children" = "Çocuklarım";
+"Pages.Main.Home.UI.BottomUserInfos.files" = "Dosyalarım";
+
+"Pages.Appointment.UI.TopSelector.files" = "Dosya İşlemleri";
+"Pages.Appointment.UI.SubPages.Files.title" = "Dosyalarım";
+"Pages.Appointment.UI.SubPages.Files.fileAdd" = "Dosya Ekleme";
+"Pages.Appointment.UI.SubPages.Files.fileCategory" = "Dosya Kategorisi";
+"Pages.Appointment.UI.SubPages.Files.fileName" = "Dosya İsmi";
+"Pages.Appointment.UI.SubPages.Files.fileAddText" = "Dosya Ekleyiniz";
+"Pages.Appointment.UI.SubPages.Files.fileAddedText" = "Dosya Eklendi";
+"Pages.Appointment.UI.SubPages.Files.fileAddButton" = "Ekle";
+"Pages.Appointment.UI.SubPages.Files.fileUploadedSuccess" = "Dosya başarılı bir şekilde yüklenmiştir";
+"Pages.Appointment.UI.SubPages.Files.fileDeletedSuccess" = "Dosya başarılı bir şekilde silinmiştir";
+"Pages.Appointment.UI.SubPages.Files.filesEmptyInAppointment" = "Varsa doktorla randevuda paylaşmak istediğiniz röntgen, film, tahlil bilgilerini ekleyebilirsiniz.";
+"Pages.Appointment.UI.SubPages.Files.filesEmptyInNonAppointment" = "Henüz eklenen bir dosyanız bulunmamaktadır.";
+
+
+"Pages.Appointment.UI.SubPages.Calendar.needsCallCenterText" = "Seçtiğiniz doktor özelinde randevunuzu oluşturmak için butona tıkladığınızda Çağrı Merkezimiz sizi arayacaktır.";
+"Pages.Appointment.UI.SubPages.Calendar.needsCallCenterButton" = "ARANMA TALEP ET";
+"Pages.Appointment.UI.SubPages.Calendar.requestCallCenterCallSuccess" = "Talebiniz alınmıştır, Çağrı Merkezimiz en kısa sürede sizinle iletişime geçecektir";
+
+"General.UI.returnHome" = "ANA SAYFAYA DÖN";
+"Pages.Appointment.Error.SubPages.Files.fileSize10MB" = "Dosya boyutu 10 Mb'dan büyük olamaz";
+
+"Pages.Main.Home.UI.UserInfoDetails.Children.childAdd" = "Çocuk Ekle";
+"Pages.Main.Home.UI.UserInfoDetails.Children.childEdit" = "Çocuk Bilgisi Düzenle";
+"Pages.Main.Home.UI.UserInfoDetails.Children.childProfile" = "Çocuğumun Profili";
+"Pages.Main.Home.UI.UserInfoDetails.Children.turkishCitizen" = "Türk Vatandaşı";
+"Pages.Main.Home.UI.UserInfoDetails.Children.empty" = "Henüz eklenen çocuk bilgisi bulunmamaktadır.";
+"Pages.Main.Home.UI.UserInfoDetails.Children.successAddChild" = "Çocuk ekleme işleminiz başarılı şekilde Çağrı Merkezi'ne ulaşmıştır. Gerekli bilgiler alındıktan sonra çocuk kaydınız tamamlanacaktır.";
+"Pages.Main.Home.UI.UserInfoDetails.Children.successUpdateChild" = "Çocuk bilgisi başarılı bir şekilde güncellendi";
+
+"General.UI.areYouSureToDelete" = "Silmek istediğiniz emin misiniz?";
+"General.UI.deleteSuccess" = "Başarılı bir şekilde silinmiştir";
+
+"Pages.Main.Home.UI.backToProfile" = "Profilime Geri Dön";
+"Pages.Main.Home.UI.AppointmentButtons.waitingPayments" = "Bekleyen Ödemeler";
+"Pages.AddedAppointment.List.UI.leftTime" = "Ödeme işlemi için kalan süre: %@";
+"Pages.AddedAppointment.List.UI.continueToPayment" = "Ödemeye Geç";
+"Pages.AddedAppointment.List.Error.differentHospitalForPayment" = "Seçimler aynı hastane için olmalıdır.";
+"Pages.AddedAppointment.List.Error.chooseOnePaymentAtLeast" = "En az bir ödeme seçmelisiniz.";
+"Pages.AddedAppointment.Detail.UI.tests" = "Tetkikler";
+
+// V3
+"Pages.Appointment.Error.SubPages.Purchase.purchaseFailed" = "Ödeme işlemi sırasında bir problem ile karşılaşıldı. Lütfen tekrar deneyiniz";
+"Pages.Main.Home.UI.AppointmentButtons.waitingPaymentsEmpty" = "Bekleyen ödemeniz bulunmamaktadır.";
+"Pages.Main.Home.UI.AppointmentButtons.plannedAppointmentsEmpty" = "Planlanan randevunuz bulunmamaktadır.";
+"Pages.Main.Home.UI.AppointmentButtons.passedAppointmentsEmpty" = "Geçmiş randevunuz bulunmamaktadır.";
+
+"General.UI.forceUpdateText" = "Uygulamayı kullanmaya devam etmek için uygulamayı güncellemeniz gerekmektedir.";
+"General.UI.optionalUpdateText" = "Uygulamanın daha güncel bir sürümü mevcuttur.";
+"General.UI.exit" = "Çıkış";
+"General.UI.updateFromStore" = "Güncelle";
+
+"Pages.Main.Home.Error.UserInfoDetails.Children.childNotApproved" = "Çocuk kaydı henüz onaylanmadığı için çocuk profiline geçiş yapamazsınız.";
+
+"Pages.Meeting.UI.meeting" = "Görüşme";
+"Pages.Meeting.UI.join" = "Katıl";
+"Pages.Meeting.UI.noUserAvaibleText" = "Diğer katılımcı beklenmektedir";
+"Pages.Meeting.UI.speakerChooseTitle" = "Ses Kaynağı Seçin";
+"Pages.Meeting.UI.speakerChooseHandset" = "Ahize";
+"Pages.Meeting.UI.speakerChooseSpeaker" = "Hoparlör";
+"Pages.Meeting.UI.speakerChooseCloseSound" = "Sesi Kapat";
+
+"Pages.Meeting.Error.joinFailedError" = "Görüşmeye katılamadınız. Lütfen tekrar deneyin.";
+
+"General.UI.done" = "Bitti";
+
+"General.Errors.certificatePinningError" = "Sunucu güvenilirliği doğrulanamadı lütfen tekrar deneyiniz. Bu sorun sunucudaki problemlerden, internetinizden kaynaklanan problemlerden veya güvensiz bir ağda olmanızdan kaynaklanmış olabilir. Sorun devam ediyorsa lütfen bağlı bulunduğunuz internet ağını değiştirip tekrar deneyiniz.";
+"General.Errors.localizationChangeApiFetchFail" = "Uygulamada kullandığınız dil değiştirildi ancak servisten gelen bazı bilgiler yenilenemedi. Bu sebeple bazı yerlerdeki yazılarda dil hatalı olabilir. Problemi gidermek için tekrar denemek ister misiniz?";
+
+"Pages.Appointment.UI.SubPages.Purchase.Agreement.onamForm" = "Sağlık Onam Formu";
+"Pages.Appointment.UI.SubPages.Purchase.Agreement.onamFormSwitchText" = "%@'nu eksiksiz olarak okudum ve anladım. Uzaktan sağlık danışmanlığı hizmeti uygulamasından nasıl yararlanabileceğim, başvuru, ödeme, kabul süreci ile işleyiş hakkında bilgilendirildim. Verilecek hizmetleri kabul ediyorum.";
+"Pages.Appointment.UI.SubPages.Purchase.Agreement.distanceSaleAgreementForm" = "Mesafeli Satış Sözleşmesi";
+"Pages.Appointment.UI.SubPages.Purchase.Agreement.distanceSaleAgreementFormSwitchText" = "%@'ni okudum, anladım ve onaylıyorum.";
+
+"Pages.Appointment.Error.SubPages.Purchase.mustCheckAllAgreementForms" = "Ödemenizi tamamlayabilmek için sözleşmeyi ve onam formunu onaylamanız gerekmektedir.";
+
+"Pages.Appointment.Error.SubPages.Calendar.requestCallCenterCallFailed" = "Talebiniz alınırken bir sorunla karşılaşıldı. Lütfen tekrar deneyiniz";
+
+// V4
+"Pages.Appointment.UI.TopSelector.insurance" = "Sigorta";
+"Pages.Appointment.UI.TopSelector.meetingType" = "Görüşme Tipi";
+"Pages.Appointment.UI.SubPages.Insurance.insuranceChoose" = "Sigorta Seçimi";
+"Pages.Appointment.UI.SubPages.Insurance.policyOptionUsePolicy" = "Poliçem kapsamında sigortamdan yararlanmak istiyorum.";
+"Pages.Appointment.UI.SubPages.Insurance.policyOptionUseNegotiatedPrices" = "Anlaşmalı fiyatlar üzerinden bireysel ödemeli olarak yararlanmak istiyorum.";
+"Pages.Appointment.UI.SubPages.Insurance.policyOptionUseIndividual" = "Bireysel Ödemeli olarak yararlanmak istiyorum.";
+"Pages.Appointment.UI.SubPages.Insurance.wishToUseInsurance" = "Özel Sağlık sigortanızdan yararlanmak istiyor musunuz?";
+
+"Pages.AddedAppointment.List.UI.provisionApproved" = "Provizyon Onaylandı - Ödeme Bekleniyor";
+"Pages.AddedAppointment.List.UI.provisionDeclined" = "Provizyon Reddedildi - Ödeme Bekleniyor";
+"Pages.AddedAppointment.List.UI.provisionAwaiting" = "Provizyon Onayı Bekleniyor";
+
+"Pages.Appointment.UI.SubPages.Insurance.contractedTopInfo" = "Allianz Sigorta KHEV/KFS* poliçe sahiplerinin poliçe teminatları kapsamında kullanabilecekleri iki (2) adet online görüşme hakkı tanımlanmıştır. Kişiler online görüşme haklarını kullandıktan sonra yeni talepleri olması durumunda anlaşmalı fiyatlar üzerinden bireysel ödemeli olarak hizmet alabileceklerdir.";
+"Pages.Appointment.UI.SubPages.Insurance.contractedBottomInfo" = "*KHEV: Koç Holding Emekli ve Yardım Sandığı Vakfı\nKFS: Koç Finans Sistemleri- Yapı ve Kredi Bankası Çalışanları\nPsikiyatri, psikolog, diyetisyen görüşmeleri e öğretim görevlisi randevusu almak isteyen poliçe sahipleri KHEV/KFS* poliçe sahipleri dışındaki Allianz Sigortalılar \"Bireysel Ödemeli olarak yararlanmak istiyorum.\" Seçeneğini işaretlemelidir.";
+
+"Pages.AddedAppointment.List.UI.waitingApprove" = "Onay Bekleniyor";
+
+"Components.Insurance.UI.title" = "Özel Sağlık Sigortanız var mı?";
+"Components.Insurance.UI.policyChooseTitle" = "Lütfen sahip olduğunuz poliçe seçimini yapınız;";
+"Components.Insurance.UI.insuranceChooseTitle" = "Kurum Seçimi";
+"Components.Insurance.Errors.pleaseSelectInsurance" = "Lütfen bir kurum seçiniz";
+
+"Pages.Main.Home.UI.UserInfoDetails.PersonalInfo.insuranceInfo" = "Sigorta Bilgileri";
+"Pages.Main.Home.UI.UserInfoDetails.PersonalInfo.saveSuccess" = "Sigorta bilgileriniz güncellenmiştir.";
+
+"Pages.Appointment.UI.SubPages.Purchase.InsuranceTopInfo.title" = "PROVİZYON TALEBİNİZ ALINMIŞTIR.\nProvizyon sonucu hakkında sizi tekrar bilgilendireceğiz.";
+"Pages.Appointment.UI.SubPages.Purchase.InsuranceTopInfo.infoTop" = "Provizyon talebiniz onaylandığında Allianz anlaşmalı fiyat üzerinden ödemenizi gerçekleştirebilirsiniz.";
+
+"Pages.Appointment.UI.SubPages.Purchase.InsuranceTopInfo.infoBottom" = "Provizyon talebiniz reddedildiğinde cari fiyat üzerinden ödemenizi gerçekleştirebilirsiniz.";
+
+"Pages.AddedAppointment.Detail.UI.tytoCareInfo" = "Tytocare görüşmesi için, tytocare uygulamasını cihazınıza indirmeniz gerekmektedir.";
+
+"Pages.Appointment.UI.SubPages.MeetingType.normalMeeting" = "Normal görüşme yapmak istiyorum.";
+"Pages.Appointment.UI.SubPages.MeetingType.tytocareMeeting" = "Tytocare görüşmesi yapmak istiyorum.";
+
+"Pages.Appointment.Error.chooseAlert.meetingType" = "Görüşme tipi seçimi yapmanız gerekmektedir";
+
+"Pages.Appointment.UI.SubPages.MeetingPackage.fitBitTopText" = "Koç Sağlık Yanımda doktorlarıyla Fitbit paketinizde %1$@ tarihine kadar ücretsiz %2$@ muayene randevusu hakkınız bulunmaktadır.";
+"Pages.Appointment.UI.SubPages.MeetingPackage.fitBitBottomText" = "Fitbit Paketi kapsamında ücretsiz muayene hakkınızı kullanmak istiyor musunuz?";
+"Pages.Appointment.UI.SubPages.MeetingPackage.tytoCareTopText" = "Size özel %1$@ tarihine kadar Koç Sağlık Yanımda doktorlarıyla yapabileceğiniz ücretsiz %2$@ Tytocare muayene randevusu hakkınız bulunmaktadır.";
+"Pages.Appointment.UI.SubPages.MeetingPackage.tytoCareBottomText" = "Muayene hakkınızı kullanmak istiyor musunuz?";
+
+"Shared.MeetingType.UI.normalPackage" = "Normal Görüşme";
+"Shared.MeetingType.UI.tytocareMeeting" = "Tytocare";
+"Shared.MeetingType.UI.tytocarePackage" = "Tytocare Paketi";
+"Shared.MeetingType.UI.tytocareFitbitPackage" = "Tytocare Fitbit Paketi";
+"Shared.MeetingType.UI.fitbitPackage" = "Fitbit Paketi";
+
+"Shared.MeetingType.UI.meetingTextAdd" = "Görüşmesi";
+
+"Pages.Appointment.UI.SubPages.Purchase.MeetingPackageInfo.title" = "%@ KAPSAMINDA MUAYENE RANDEVUNUZ OLUŞTURULMUŞTUR.\nÖdeme yapmadan randevu görüşmenizi yapabilirsiniz.";
+"Pages.Appointment.UI.SubPages.Purchase.MeetingPackageInfo.infoTop" = "Koç Sağlık Yanımda doktorları ile %@ ücretsiz muayene hakkınız daha bulunmaktadır.";
+"Pages.Appointment.UI.SubPages.Purchase.MeetingPackageInfo.infoBottom" = "Muayene haklarınızı kullanmak için son tarih %@, unutmayın!";
+
+"Pages.Appointment.UI.SubPages.Purchase.MeetingPackageInfo.infoTopLeftNothing" = "Koç Sağlık Yanımda doktorları ile ücretsiz muayene hakkınız kalmamıştır. Bir sonraki muayene randevunuz için ücret ödemeniz gerekecektir.";
+"Pages.Appointment.UI.SubPages.Purchase.MeetingPackageInfo.infoBottomLeftNothing" = "İlginiz için teşekkür ederiz.";
+
+"General.Errors.InputErrors.phoneNoFail" = "Telefon bilgisi hatalı veya eksik";
+
+"Pages.Appointment.Error.SubPages.AppointmentType.notAvaibleReservation" = "Aynı doktordan aynı gün için birden fazla randevu oluşturamazsınız.";
+
+"Pages.AddedAppointment.Detail.UI.callRequestText" = "Randevunuzu güncellemek için aranma talep ettiğinizde Çağrı Merkezimiz sizi arayacaktır.";
+
+"Pages.Meeting.Error.unableToJoin" = "Görüşmeye katılınamadı";
+"Pages.Meeting.Error.joinFailedNotGranted" = "Görüşme bağlantısı kurulamadı";
+

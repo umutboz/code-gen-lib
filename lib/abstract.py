@@ -22,7 +22,8 @@ class Base():
         if type(self) is Base:
             raise Exception('Base is an abstract class and cannot be instantiated directly')
         # Any initialization code
-        print('In the __init__  method of the Base class' + ' call child from : ' + self.toString())
+        if Environment.Shared().current() == DevelopmentEnvironment().DEBUG:
+            print('In the __init__  method of the Base class' + ' call child from : ' + self.toString())
 
     def log(self, message, message_type):
         print("base'den " + str(Environment.Shared().current()))

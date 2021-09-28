@@ -88,5 +88,13 @@ class Parser(Base):
         pattern = re.compile("|".join([re.escape(k) for k in sorted(replacement_dict, key=len, reverse=True)]), flags=re.DOTALL)
         return pattern.sub(lambda x: replacement_dict[x.group(0)], string)
 
+    def string_multiple_replace_with_child(string, replacement_dict):
+        if len(replacement_dict) == 0:
+            return string
+        pattern = re.compile("|".join([re.escape(k) for k in sorted(replacement_dict, key=len, reverse=True)]), flags=re.DOTALL)
+        return pattern.sub(lambda x: replacement_dict[x.group(0)], string)
+    
+
     string_multiple_replace = staticmethod(string_multiple_replace)
     jsonToTemplateModule = staticmethod(jsonToTemplateModule)
+    string_multiple_replace_with_child = staticmethod(string_multiple_replace_with_child)

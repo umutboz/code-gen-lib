@@ -24,11 +24,13 @@ class TemplateFile(Base):
     isChildTemplate = False
     # subTemplates = []
     parentMustache = ""
+    childTemplateFiles = []
 
-    def __init__(self, name, dict, output_file, is_child_template=False, parent_mustache=""):
+    def __init__(self, name, dict, output_file, is_child_template=False, parent_mustache="", child_template_files = []):
         Base.__init__(self)
         self.name = name
         self.dict = dict
         self.outputFile = output_file
         self.isChildTemplate = is_child_template
         self.parentMustache = parent_mustache
+        self.childTemplateFiles = child_template_files

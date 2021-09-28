@@ -1,0 +1,1 @@
+static var {{field_name}}: String { get {  NSLocalizedString("{{localization_string_key}}", comment: "") }}

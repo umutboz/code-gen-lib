@@ -16,7 +16,6 @@ class Logger:
     """This class now shares all its attributes among its various instances"""
 
     # This essentially makes the singleton objects an object-oriented global variable
-
     def __init__(self):
         pass
 

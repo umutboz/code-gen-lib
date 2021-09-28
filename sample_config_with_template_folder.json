@@ -15,7 +15,7 @@
                 "isChildTemplate": false
             },
              {
-                "name": "manager_class_mustache",
+                "name": "learning_class_mustache",
                 "outputFile": "OneFrameLearning.swift",
                 "isChildTemplate": false
             }

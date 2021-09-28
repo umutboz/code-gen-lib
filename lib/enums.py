@@ -69,6 +69,10 @@ class CodeLine(object):
     @constant
     def DOT():
         return "."
+    
+    @constant
+    def TAB():
+        return "\t"
 
 
 # choose these Mustache enums for code syntax
