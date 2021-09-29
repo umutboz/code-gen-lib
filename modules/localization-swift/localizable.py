@@ -22,25 +22,38 @@ from lib.enums import CODING
 
 class Localizable(Base):
     key = ""
-    split = []
+    data = []
     parent = ""
     childs = []
     lastKey = ""
 
-    def __init__(self, key, split, parent):
+    def __init__(self, key, data, parent):
         Base.__init__(self)
         self.key = key
-        self.split = split
+        self.data = data
         self.parent = parent
-        for word in split:
+        for word in data:
             if self.parent <> word:
                 # is last object ?
-                if split[len(split)-1] == word:
+                if data[len(data)-1] == word:
                     self.lastKey = word
                     self.childs.append(word)
                 else:
                     self.childs.append(word)
-             
+
+class LocalizableCodeGen(Base):
+    key = ""
+    childs = []
+    lastKey = ""
+    parent = ""
+
+    def __init__(self, key):
+        Base.__init__(self)
+        self.key = key
+
+    def __str__(self):
+        return self.key
+
                 
                 
                 

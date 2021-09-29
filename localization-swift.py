@@ -32,6 +32,7 @@ from os.path import dirname, join, abspath,sys
 module = os.path.abspath(os.path.join(os.path.dirname(__file__), 'modules/localization-swift'))
 sys.path.append(module)
 from localizable import Localizable
+from localizable import LocalizableCodeGen
 
 '''
 # START - written for lib module
@@ -44,7 +45,7 @@ sys.path.append(root_dir)
 sys.path.append(lib_dir)
 # END - written for lib module
 '''
-localizables = []
+
 struct_file_tf = TemplateFile(
     name = "localization_struct_file_mustache",
     dict = {},
@@ -82,7 +83,7 @@ child_inline_appointment_struct_tf = TemplateFile(
 parent_page_struct_file = TemplateFile(
     name = "localization_parent_struct_extension_mustache",
     dict = {"extension_parent_struct_name":"Page", "extension_parent_add" : MUSTACHE.PARENT},
-    output_file="Localization-Page+Extensions.swift",
+    output_file="Localization-Pages+Extensions.swift",
     child_template_files = [child_inline_appointment_struct_tf]
 )
 
@@ -115,6 +116,11 @@ def checkStringFileExists(string_file):
         Log.w(string_file)
     return result
 
+def contains(list, filter):
+    for x in list:
+        if filter(x):
+            return True
+    return False
 #tStreaming.execute()
 
 # -localizable-string-file -params "-p/-fp/--info"
@@ -143,16 +149,58 @@ if len(sys.argv) >= 3:
         op = FileOperation()
         localizable_string_file_content = op.readContent(localizable_string_file_path)
         #print(localizable_string_file_content)
-        
+
         # load localizable content
+        parsed_data = []
         for line in localizable_string_file_content.splitlines():
             if "=" in line:
                 first_split = str(line).split('"')
                 dot_split = str(first_split[1]).split(".")
-                localizable = Localizable(key = str(first_split[1]), split = dot_split, parent = dot_split[0])
-                #print(localizable.lastKey)
+                localizable = Localizable(key = str(first_split[1]), data = dot_split, parent = dot_split[0])
+                parsed_data.append(localizable)
+                #print(localizable.split)
                 #print(localizable.childs)
-                break
+
+        localizables = []
+        for parsed in parsed_data:
+            #print(data.data)
+            # for each split member
+            if len(localizables) == 0:
+                localizable = LocalizableCodeGen(key = parsed.data[0])
+                localizables.append(localizable)
+            else:
+                if contains(localizables, lambda x: x.key == parsed.data[0]):
+                    continue
+                else:
+                    localizable = LocalizableCodeGen(key = parsed.data[0])
+                    localizables.append(localizable)
+                    
+
+           
+        
+        for loc in localizables:
+            print(loc)
+        '''
+        for loc in localizables:
+            print(loc)
+        for localize in parsed_data:
+            localizable = LocalizableCodeGen(key = localizable.key)
+            result = False
+            if len(localizables) == 0:
+                localizables.append(localizable)
+            else:
+                for obj in localizables:
+                    if obj.key <> localize.data[0]:
+                        localizables.append(localizable)  
+
+            
+            if localize.data[0] <>  
+            for obj in localize.data:    
+                localizable = Localizable(key = localizable.key, is_parent parent = dot_split[0])
+        '''
+        #print(localizables)
+
+
         
         
         
