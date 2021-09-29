@@ -27,6 +27,9 @@ class Logger:
 
     def s(self, message):
         print ("\x1b[6;30;42m" + message + "\x1b[0m")
+    
+    def w(self, message):
+        print ("\x1b[6;30;43m" + message + "\x1b[0m")
 
 
 Log = Logger()
