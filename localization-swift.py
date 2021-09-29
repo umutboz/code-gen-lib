@@ -26,7 +26,13 @@ from templateStreaming import TemplateStreaming
 from lib.fileOperation import FileOperation
 from lib.log import Log
 
-#print(Environment.Shared().current())
+
+# for localization import
+from os.path import dirname, join, abspath,sys
+module = os.path.abspath(os.path.join(os.path.dirname(__file__), 'modules/localization-swift'))
+sys.path.append(module)
+from localizable import Localizable
+
 '''
 # START - written for lib module
 import sys
@@ -38,7 +44,7 @@ sys.path.append(root_dir)
 sys.path.append(lib_dir)
 # END - written for lib module
 '''
-
+localizables = []
 struct_file_tf = TemplateFile(
     name = "localization_struct_file_mustache",
     dict = {},
@@ -97,6 +103,7 @@ def checkStringFileExtension(string_file):
         result = True
     else :
         Log.e("** must be localizable string file ! **")
+        Log.w(string_file)
     return result
 
 def checkStringFileExists(string_file):
@@ -105,34 +112,51 @@ def checkStringFileExists(string_file):
         result = True
     else :
         Log.e("** localizable string file not found **")
+        Log.w(string_file)
     return result
 
 #tStreaming.execute()
 
-# -localizable-string-file -params
+# -localizable-string-file -params "-p/-fp/--info"
 if len(sys.argv) >= 3:
     Environment.Shared().online()
     op = FileOperation()
     is_okay_string_file = False
     params = str(sys.argv[1])
     localizable_string_file_path_param = str(sys.argv[2])
+    localizable_string_file_path = ""
 
-
-    if params == "--info":
-        Log.i("you can string file with under folder path -p")
-        #Log.s("you can string file with full path -fp")
-
-    elif params == "-p":
+    if params == "-p":
         path_name = os.getcwd()
         localizable_string_file_path = path_name + CODING.SLASH + localizable_string_file_path_param
-        print(localizable_string_file_path)
+        #print(localizable_string_file_path)
         if checkStringFileExtension(string_file=localizable_string_file_path) and checkStringFileExists(localizable_string_file_path):
             is_okay_string_file = True
-
+    
+    elif params == "-fp":
+        localizable_string_file_path = localizable_string_file_path_param
+        #print(localizable_string_file_path)
+        if checkStringFileExtension(string_file=localizable_string_file_path) and checkStringFileExists(localizable_string_file_path):
+            is_okay_string_file = True
+    
     if is_okay_string_file:
-        param_serviceName = str(sys.argv[2])
         op = FileOperation()
-        print(is_okay_string_file, op.getPath())
+        localizable_string_file_content = op.readContent(localizable_string_file_path)
+        #print(localizable_string_file_content)
+        
+        # load localizable content
+        for line in localizable_string_file_content.splitlines():
+            if "=" in line:
+                first_split = str(line).split('"')
+                dot_split = str(first_split[1]).split(".")
+                localizable = Localizable(key = str(first_split[1]), split = dot_split, parent = dot_split[0])
+                #print(localizable.lastKey)
+                #print(localizable.childs)
+                break
+        
+        
+        
+        
 
 
 
@@ -140,8 +164,11 @@ else:
     if len(sys.argv) >= 2:
         params = str(sys.argv[1])
         if params == "--info":
-            Log.i("you can string file with path -p")
-            Log.i("-p /string-file-path")
+            Log.i("you can string file with under folder path -p")
+            Log.w("-p /string-file-path")
+            Log.i("you can string file with full path -fp")
+            Log.w("-fp /Users/***/Desktop/..")
+
         else:
             Log.e("must be use min. 2 parameters ")
             Log.i("or u can use params --info")
