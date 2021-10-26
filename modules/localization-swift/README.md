@@ -1,7 +1,5 @@
-# code-gen-library
-code-gen-library for Python
-
-![alt text](https://github.com/umutboz/code-gen-lib/blob/master/code_gen_diagram.png?raw=true)
+# code-gen-library - localization-swift module
+code-gen-library - localization-swift module with Python bash script execute to localization swift files(struct and extension) by localization strings file
 
 
 ## using example
