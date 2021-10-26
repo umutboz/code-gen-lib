@@ -1,0 +1,31 @@
+# code-gen-library
+code-gen-library for Python
+
+![alt text](https://github.com/umutboz/code-gen-lib/blob/master/code_gen_diagram.png?raw=true)
+
+
+## using example
+```python
+sh code_gen_lib_example.py
+```
+
+## code-gen-lib localization module parameters --info
+```python
+sh localization-swift.py --info                                            
+In the __init__  method of the Base class call child from : FileOperation
+you can string file with under folder path -p
+-p /string-file-path
+you can string file with full path -fp
+-fp /Users/***/Desktop/..
+```
+
+
+## code-gen-lib localization module parameters with full path -fp for strings file
+```python
+sh localization-swift.py -fp /Users/***/Desktop/App/localization-swift/Localizable.strings
+```
+
+## code-gen-lib localization module parameters  with sub path -p for strings file
+```python
+sh localization-swift.py -p modules/localization-swift/Localizable.strings
+```
