@@ -21,9 +21,25 @@ you can string file with full path -fp
 ## code-gen-lib localization module parameters with full path -fp for strings file
 ```python
 sh localization-swift.py -fp /Users/***/Desktop/App/localization-swift/Localizable.strings
+
+
+generated files ...
+Localization-General+Extensions.swift
+Localization-Components+Extensions.swift
+Localization-Pages+Extensions.swift
+Localization-Shared+Extensions.swift
+Localization-PushNotification+Extensions.swift
 ```
 
 ## code-gen-lib localization module parameters  with sub path -p for strings file
 ```python
 sh localization-swift.py -p modules/localization-swift/Localizable.strings
+
+
+generated files ...
+Localization-General+Extensions.swift
+Localization-Components+Extensions.swift
+Localization-Pages+Extensions.swift
+Localization-Shared+Extensions.swift
+Localization-PushNotification+Extensions.swift
 ```
