@@ -19,6 +19,8 @@ lib_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../lib'))
 from lib.abstract import Base
 from lib.enums import MESSAGE_TYPE
 from lib.enums import CODING
+from lib.parser import Parser
+from lib.enums import MUSTACHE
 
 class Localizable(Base):
     key = ""
@@ -33,7 +35,7 @@ class Localizable(Base):
         self.data = data
         self.parent = parent
         for word in data:
-            if self.parent <> word:
+            if self.parent != word:
                 # is last object ?
                 if data[len(data)-1] == word:
                     self.lastKey = word
@@ -44,17 +46,56 @@ class Localizable(Base):
 class LocalizableCodeGen(Base):
     key = ""
     childs = []
-    lastKey = ""
+    generatedFieldContent = ""
+    generatedStructContent = ""
     parent = ""
+    parentObject = None
+    isLastKey = False
+    index = -1
+    fullKey = ""
+    templateFile = None
+    resultContent = ""
+    content = ""
 
     def __init__(self, key):
         Base.__init__(self)
         self.key = key
+        results = []
 
     def __str__(self):
         return self.key
 
-                
+    def get_last_struct_content(self):
+        temp_dict = { "{{extension_child_add}}" : self.generatedFieldContent }
+        replaced_template_content = Parser.string_multiple_replace(self.generatedStructContent, temp_dict)
+        return replaced_template_content
+
+    def get_last_struct_content_by_obj(self,obj):
+        temp_dict = { "{{extension_child_add}}" : obj.generatedFieldContent }
+        replaced_template_content = Parser.string_multiple_replace(obj.generatedStructContent, temp_dict)
+        return replaced_template_content
+
+    def get_last_struct_merge_content(self):
+        loop_replaced_template_content = ""
+
+        if len(self.childs) > 0:
+            for idx, child in enumerate(self.childs):
+                loop_content = self.get_last_struct_content_by_obj(obj=child)
+                loop_replaced_template_content += loop_content + CODING.NEWLINE
+        else:
+            temp_dict = { "{{extension_child_add}}" : self.generatedFieldContent }
+            loop_replaced_template_content = Parser.string_multiple_replace(self.generatedStructContent, temp_dict)
+
+        return loop_replaced_template_content
+
+    def dictToMustache(self, dictionary):
+        new_dict = dict()
+        if dictionary is None:
+            return new_dict
+        for key in dictionary.keys():
+            new_key = MUSTACHE.LEFT_BRACKET + MUSTACHE.LEFT_BRACKET + key + MUSTACHE.RIGHT_BRACKET + MUSTACHE.RIGHT_BRACKET
+            new_dict[new_key] = dictionary[key]
+        return new_dict            
                 
                 
 

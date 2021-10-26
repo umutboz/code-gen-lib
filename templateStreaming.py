@@ -82,7 +82,12 @@ class TemplateStreaming(Base):
             # print(t_file.name)
             # do file has own child files?
             if len(t_file.childTemplateFiles) > 0:
-                child_loop_all_content = self.getOwnChildContent(t_file)
+                child_loop_all_content = ''
+                if t_file.content != '':
+                    child_loop_all_content = t_file.content
+                else:
+                    child_loop_all_content = self.getOwnChildContent(t_file)
+
                 if self.enableLog:
                     print(child_loop_all_content)
                 # generate output file
@@ -93,33 +98,37 @@ class TemplateStreaming(Base):
                     self.fileOp.create(file_path = module_directory_path + CODING.SLASH + t_file.outputFile, content=child_loop_all_content)
 
             else :
+                replaced_template_content = ''
+                if t_file.content != '':
+                    replaced_template_content = t_file.content
+                else:
                 # only work parent files
                 # get filter Node return tuple (x,y)
-                has_parent_key, parent_objects = self.filterParentNode(t_file.dict)
-                if has_parent_key:
-                    # loop parentObject
-                    child_content = ""
-                    for parent in parent_objects:
-                        # findChildFile By ParentObjects
-                        founded_files = self.findTemplateFileByKey(mustache_key=parent[0], is_child=True)
-                        # find hasChild File
-                        if len(founded_files) > 0:
-                            for child_file in founded_files:
-                                # get Child Content
-                                # print(childFile)
-                                loop_child_content = self.fileContent(file=child_file)
-                                loop_child_content = Parser.string_multiple_replace(loop_child_content,
-                                                                                    self.dictToMustache(
-                                                                                        child_file.dict))
-                                # print(loopChildContent)
-                                child_content = child_content + CODING.NEWLINE + loop_child_content
+                    has_parent_key, parent_objects = self.filterParentNode(t_file.dict)
+                    if has_parent_key:
+                        # loop parentObject
+                        child_content = ""
+                        for parent in parent_objects:
+                            # findChildFile By ParentObjects
+                            founded_files = self.findTemplateFileByKey(mustache_key=parent[0], is_child=True)
+                            # find hasChild File
+                            if len(founded_files) > 0:
+                                for child_file in founded_files:
+                                    # get Child Content
+                                    # print(childFile)
+                                    loop_child_content = self.fileContent(file=child_file)
+                                    loop_child_content = Parser.string_multiple_replace(loop_child_content,
+                                                                                        self.dictToMustache(
+                                                                                            child_file.dict))
+                                    # print(loopChildContent)
+                                    child_content = child_content + CODING.NEWLINE + loop_child_content
 
-                    t_file.dict[parent[0]] = MUSTACHE.LEFT_BRACKET + MUSTACHE.LEFT_BRACKET + parent[0] + MUSTACHE.RIGHT_BRACKET + MUSTACHE.RIGHT_BRACKET + child_content
-                    # print(t_file.dict[parent[0]])
-                    # print(t_file.dict)
+                        t_file.dict[parent[0]] = MUSTACHE.LEFT_BRACKET + MUSTACHE.LEFT_BRACKET + parent[0] + MUSTACHE.RIGHT_BRACKET + MUSTACHE.RIGHT_BRACKET + child_content
+                        # print(t_file.dict[parent[0]])
+                        # print(t_file.dict)
 
-                content = self.fileOp.readContent(file_path=self.getModulePath() + CODING.SLASH + t_file.name)
-                replaced_template_content = Parser.string_multiple_replace(content, self.dictToMustache(t_file.dict))
+                    content = self.fileOp.readContent(file_path=self.getModulePath() + CODING.SLASH + t_file.name)
+                    replaced_template_content = Parser.string_multiple_replace(content, self.dictToMustache(t_file.dict))
                 if self.enableLog:
                     print(replaced_template_content)
                 # generate output file
@@ -135,7 +144,7 @@ class TemplateStreaming(Base):
         if self.enableLog:
             print("t", file.name) 
         content = self.fileContent(file=file)
-        if previous_content <> None:
+        if previous_content != None:
             content = previous_content
         else:
             self.child_all_content = ""
@@ -171,8 +180,25 @@ class TemplateStreaming(Base):
                         
                        
                         self.getOwnChildContent(child_file, previous_content = loop_child_content)
-                         
-                
+            else:
+                # only work parent files
+                # get filter Node return tuple (x,y)
+                has_parent_key, parent_objects = self.filterParentNode(file.dict)
+                if has_parent_key:
+                    child_content = self.fileContent(file=file)
+                    tab_string_started_content = ""
+                    #print(tab_string_started_content)
+                    for i in range(self.tabCount):
+                        tab_string_started_content = CODING.TAB + tab_string_started_content 
+                        
+                    tabbed_child_content = ""
+                    for line in child_content.splitlines():
+                        tabbed_child_content = tabbed_child_content + tab_string_started_content + line + CODING.NEWLINE
+        
+                    replaced_dictionary = self.replaceDictToChildContent(parent_dict=file.dict, parent_objects=parent_objects,child_file_content=tabbed_child_content, child_file=file)
+                    loop_child_content = Parser.string_multiple_replace(content,self.dictToMustache(replaced_dictionary))
+                    self.child_all_content = loop_child_content
+                    return self.child_all_content
         else:
             # fill content
             self.child_all_content = Parser.string_multiple_replace(content,self.dictToMustache(file.dict))
@@ -246,3 +272,15 @@ class TemplateStreaming(Base):
             new_key = MUSTACHE.LEFT_BRACKET + MUSTACHE.LEFT_BRACKET + key + MUSTACHE.RIGHT_BRACKET + MUSTACHE.RIGHT_BRACKET
             new_dict[new_key] = dictionary[key]
         return new_dict
+    
+    def tabbedContent(self,content, tab_index):
+        tab_started_string = ""
+        for i in range(tab_index):
+            tab_started_string = CODING.TAB + tab_started_string 
+                        
+        tabbed_content = ""
+        for line in content.splitlines():
+            tabbed_content = tabbed_content + tab_started_string + line + CODING.NEWLINE
+        
+        return tabbed_content
+        

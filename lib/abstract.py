@@ -26,7 +26,7 @@ class Base():
             print('In the __init__  method of the Base class' + ' call child from : ' + self.toString())
 
     def log(self, message, message_type):
-        print("base'den " + str(Environment.Shared().current()))
+        #print("base'den " + str(Environment.Shared().current()))
         # ÇALIŞMA ORTAMI FARKET meksizin tüm hatalar(exceptions) gösterilir.
         if message_type == MESSAGE_TYPE.ERROR:
             Log.e(message=message)
@@ -35,8 +35,10 @@ class Base():
             if Environment.Shared().current() == DevelopmentEnvironment().DEBUG:
                 print("base log çalıştı")
                 Log.i(message=message)
+            '''
             else:
                 print("base log çalışmadı")
-
+            '''
+            
     def toString(self):
         return self.__class__.__name__

@@ -1,3 +1,2 @@
-struct {{extension_child_struct_name}}{
-{{extension_child_add}}
+struct {{extension_child_struct_name}}{{{extension_child_add}}
     }
