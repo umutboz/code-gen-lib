@@ -93,3 +93,6 @@ tStreaming = TemplateStreaming(
 )
 tStreaming.execute()
 ```
+
+Can be Contribution, join us!
+![alt text](https://github.com/umutboz/code-gen-lib/blob/master/contribution_model.png?raw=true)

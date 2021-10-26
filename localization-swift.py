@@ -30,7 +30,7 @@ from lib.enums import MUSTACHE
 from lib.enums import CODING
 from lib.templateFile import TemplateFile
 from lib.templateModule import TemplateModule
-from templateStreaming import TemplateStreaming
+from lib.templateStreaming import TemplateStreaming
 from lib.fileOperation import FileOperation
 from lib.log import Log
 from lib.parser import Parser
