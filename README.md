@@ -68,6 +68,34 @@ tStreaming.execute()
 ```
 
 ## code-gen-lib generation programming example with your json file
+# this is written module code by json
+```json
+{
+    "module" : {
+        "name" : "oneframe-ios-api-manager",
+        "templateFolders" : [
+            {
+                "source" : "modules/oneframe-ios-api-manager/models",
+                "outputPath" : "models",
+                "isOnline" : false
+            }
+        ],
+        "templateFiles": [
+            {
+                "name": "manager_class_mustache",
+                "outputFile": "CanikServiceManager.swift",
+                "isChildTemplate": false
+            },
+             {
+                "name": "learning_class_mustache",
+                "outputFile": "OneFrameLearning.swift",
+                "isChildTemplate": false
+            }
+        ]
+    }
+}
+```
+
 ```python
 import os
 import sys
