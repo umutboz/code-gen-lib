@@ -8,10 +8,20 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "program": "/Users/starforce/Desktop/Architecture/CodeGenerationCore/localization-swift.py",
+            "program": "/Users/starforce/Desktop/Architecture/CodeGenerationCore/code_gen_lib_example.py",
             "console": "integratedTerminal",
-            "args": ["-p", "modules/localization-swift/Localizable.strings"]
+            "args": []
+
+        },
+        {
+            "name": "Python: Localization-swift module File",
+            "type": "python",
+            "request": "launch",
+            "program": "/Users/starforce/Desktop/Architecture/CodeGenerationCore/modules/localization-swift/localization-swift.py",
+            "console": "integratedTerminal",
+            "args": ["-p", "modules/localization-swift/Localizable.strings", "-o", "output"]
 
         }
+
     ],
 }

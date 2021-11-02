@@ -78,7 +78,7 @@ class Parser(Base):
 
                 module.name = str(json_decode["module"]["name"])
             except OSError:
-                print "Could not open/read file:", json_file
+                print ("Could not open/read file:", json_file)
                 json_file.seek(0)
         return module
 

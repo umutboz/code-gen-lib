@@ -20,25 +20,25 @@ import os
 import sys
 import numpy as np
 
+# for importing added sub module python files 
+from localizable import Localizable, LocalizableCodeGen
+
 # for localization import
 from os.path import dirname,join, abspath,sys
-module_path =  os.path.join(os.path.dirname(__file__), 'modules/localization-swift')
+module_path =  os.path.join(os.path.dirname(__file__), '../../codegen')
 module = os.path.abspath(module_path)
+sys.path.append(module)
 
 # Own modules
-from lib.enums import MUSTACHE
-from lib.enums import CODING
-from lib.templateFile import TemplateFile
-from lib.templateModule import TemplateModule
-from lib.templateStreaming import TemplateStreaming
-from lib.fileOperation import FileOperation
-from lib.log import Log
-from lib.parser import Parser
-from lib.environment import Environment
-
-# for importing added sub module python files 
-sys.path.append(module)
-from localizable import Localizable, LocalizableCodeGen
+from enums import MUSTACHE
+from enums import CODING
+from templateFile import TemplateFile
+from templateModule import TemplateModule
+from fileOperation import FileOperation
+from log import Log
+from parser import Parser
+from environment import Environment
+from templateStreaming import TemplateStreaming
 
 Environment.Shared().online()
 refills = []

@@ -37,28 +37,30 @@ from lib.templateModule import TemplateModule
 fileName = "test.swift"
 
 testManagerClassTF = TemplateFile(
-    name="learning_class_mustache",
+    name="manager_class_mustache",
     dict={"service_name": "OneframeMobile", "request_func": MUSTACHE.PARENT},
     output_file="Manager.swift"
 )
 testGetRequestFuncTF = TemplateFile(
     name="request_get_func_mustache",
-    dict={"result_model_name": "String"},
+    dict={"result_model_name": "String","function_name": "getTest", "query_path" : '"api/getTest?name=query"', "func_param" : "query:String, "},
     output_file=None,
     is_child_template=True,
     parent_mustache="request_func"
 )
 testPostRequestFuncTF = TemplateFile(
     name="request_post_func_mustache",
-    dict={"result_model_name": "UserModel"},
+    dict={"result_model_name": "UserModel", "function_name": "login", "query_path" : '"api/login"', "func_param" : ""},
     output_file=None,
     is_child_template=True,
     parent_mustache="request_func"
 )
+testManagerClassTF.childTemplateFiles.append(testGetRequestFuncTF)
+testManagerClassTF.childTemplateFiles.append(testPostRequestFuncTF)
 
 testModule = TemplateModule(
     name="networking-swagger-swift",
-    templates_files=[testManagerClassTF, testGetRequestFuncTF, testPostRequestFuncTF]
+    templates_files=[testManagerClassTF]
 )
 
 tStreaming = TemplateStreaming(

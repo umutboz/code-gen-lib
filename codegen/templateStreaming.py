@@ -19,16 +19,16 @@ import re
 
 # Own modules
 
-from lib.abstract import Base
-from lib.enums import MessageType
-from lib.enums import CODING
-from lib.enums import MUSTACHE
-from lib.fileOperation import FileOperation
-from lib.templateFile import TemplateFile
-from lib.templateModule import TemplateModule
-from lib.httpOperation import HttpOperation
-from lib.parser import Parser
-from lib.enums import MESSAGE_TYPE
+from abstract import Base
+from enums import MessageType
+from enums import CODING
+from enums import MUSTACHE
+from fileOperation import FileOperation
+from templateFile import TemplateFile
+from templateModule import TemplateModule
+from httpOperation import HttpOperation
+from parser import Parser
+from enums import MESSAGE_TYPE
 
 
 class TemplateStreaming(Base):
@@ -157,11 +157,11 @@ class TemplateStreaming(Base):
             #has child files
             
             if len(file.childTemplateFiles) > 0:
+                self.tabCount  = self.tabCount  + 1
                 for child_file in file.childTemplateFiles:
-                    self.tabCount  = self.tabCount  + 1
                     has_did_it_match_parent_mustache = self.didItMatchParentMustache(child_file=child_file,parent_objects=parent_objects)
                     if has_did_it_match_parent_mustache:
-                        child_content = self.fileContent(file=child_file)
+                        child_mustache_content = self.fileContent(file=child_file)
                         #print(child_content)
                         # tabbed string development
                         tab_string_started_content = ""
@@ -170,16 +170,19 @@ class TemplateStreaming(Base):
                             tab_string_started_content = CODING.TAB + tab_string_started_content 
                         
                         tabbed_child_content = ""
-                        for line in child_content.splitlines():
+                        for line in child_mustache_content.splitlines():
                             tabbed_child_content = tabbed_child_content + tab_string_started_content + line + CODING.NEWLINE
 
                         # replace parent to child content
                         # replaced_dictionary
-                        replaced_dictionary = self.replaceDictToChildContent(parent_dict=file.dict, parent_objects=parent_objects,child_file_content=tabbed_child_content, child_file=child_file)
-                        loop_child_content = Parser.string_multiple_replace(content,self.dictToMustache(replaced_dictionary))
-                        
+                        child_content_output = Parser.string_multiple_replace(tabbed_child_content,self.dictToMustache(child_file.dict))
+
+                        child_content += CODING.NEWLINE + child_content_output
+                
+                replaced_dictionary = self.replaceDictToChildContent(parent_dict=file.dict, parent_objects=parent_objects,child_file_content=child_content, child_file=child_file)
+                loop_child_content = Parser.string_multiple_replace(content,self.dictToMustache(replaced_dictionary))
                        
-                        self.getOwnChildContent(child_file, previous_content = loop_child_content)
+                self.getOwnChildContent(file, previous_content = loop_child_content)
             else:
                 # only work parent files
                 # get filter Node return tuple (x,y)

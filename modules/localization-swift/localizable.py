@@ -12,15 +12,20 @@
 ############################################################
 
 # Owned
-import os,sys
-from os.path import dirname, join, abspath,sys
-lib_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../lib'))
+import os
+import sys
 
-from lib.abstract import Base
-from lib.enums import MESSAGE_TYPE
-from lib.enums import CODING
-from lib.parser import Parser
-from lib.enums import MUSTACHE
+from os.path import dirname,join, abspath,sys
+lib_dir_path =  os.path.join(os.path.dirname(__file__), '../../codegen')
+lib_dir_module = os.path.abspath(lib_dir_path)
+sys.path.insert(0, lib_dir_module) 
+
+from abstract import Base
+from enums import MESSAGE_TYPE
+from enums import CODING
+from enums import MUSTACHE
+from parser import Parser
+
 
 class Localizable(Base):
     key = ""

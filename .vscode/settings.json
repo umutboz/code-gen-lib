@@ -1,6 +1,8 @@
 {
     "python.pythonPath": "/usr/bin/python",
     "python.analysis.extraPaths": [
-        "./modules/localization-swift"
+        "./modules/localization-swift",
+        "./lib",
+        "./codegen"
     ]
 }
