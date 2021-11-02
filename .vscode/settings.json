@@ -3,6 +3,6 @@
     "python.analysis.extraPaths": [
         "./modules/localization-swift",
         "./lib",
-        "./codegen"
+        "./codegenlib"
     ]
 }

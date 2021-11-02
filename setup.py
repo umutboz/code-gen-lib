@@ -4,7 +4,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='codegen',
+    name='codegenlib',
     author='Umut Boz',
     author_email='umut.boz@outlook.com',
     description='Code Generation library written by python. can use bash script, can be extend python code, can use mustache files or can use any string content for any code generation structure.',
@@ -20,8 +20,8 @@ setuptools.setup(
         # 'Funding': '',
         # 'Say Thanks!': '',
     },
-    package_dir={'': 'codegen'},
-    packages=setuptools.find_packages(where='codegen'),
+    package_dir={'': 'codegenlib'},
+    packages=setuptools.find_packages(where='codegenlib'),
     classifiers=[
         # see https://pypi.org/classifiers/
         'Development Status :: 5 - Production/Stable',
