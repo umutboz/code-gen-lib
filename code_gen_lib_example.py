@@ -14,10 +14,10 @@
 # Built-in/Generic Imports
 
 # Own modules
-from codegenlib.enums import MUSTACHE
-from codegenlib.templateStreaming import TemplateStreaming
-from codegenlib.templateFile import TemplateFile
-from codegenlib.templateModule import TemplateModule
+from src.codegenlib.enums import MUSTACHE
+from src.codegenlib.templateStreaming import TemplateStreaming
+from src.codegenlib.templateFile import TemplateFile
+from src.codegenlib.templateModule import TemplateModule
 
 fileName = "test.swift"
 

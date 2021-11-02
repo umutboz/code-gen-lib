@@ -21,8 +21,8 @@ setuptools.setup(
         # 'Funding': '',
         # 'Say Thanks!': '',
     },
-    package_dir={'': 'codegenlib'},
-    packages=setuptools.find_packages(where='codegenlib'),
+    package_dir={'': 'src'},
+    packages=setuptools.find_packages(where='src'),
     classifiers=[
         # see https://pypi.org/classifiers/
         'Development Status :: 5 - Production/Stable',
