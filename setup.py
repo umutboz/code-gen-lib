@@ -6,6 +6,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 setuptools.setup(
     name='codegenlib',
     author='Umut Boz',
+    version="0.1.0",
     author_email='umut.boz@outlook.com',
     description='Code Generation library written by python. can use bash script, can be extend python code, can use mustache files or can use any string content for any code generation structure.',
     keywords='code generation, file generation, pypi, package',
