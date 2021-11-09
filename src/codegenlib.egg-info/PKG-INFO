@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: codegenlib
-Version: 0.2.0
+Version: 0.3.0
 Summary: Code Generation library written by python. can use bash script, can be extend python code, can use mustache files or can use any string content for any code generation structure.
 Home-page: https://github.com/umutboz/code-gen-lib
 Author: Umut Boz
