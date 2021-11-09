@@ -3,6 +3,11 @@ code-gen-library for Python
 
 ![alt text](https://github.com/umutboz/code-gen-lib/blob/master/code_gen_diagram.png?raw=true)
 
+## code-gen-lib pip install
+
+```python
+pip install codegenlib
+```
 
 ## code-gen-lib import package
 
