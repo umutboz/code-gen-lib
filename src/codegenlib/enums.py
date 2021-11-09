@@ -11,8 +11,8 @@
 # Version: 0.1.0
 ############################################################
 
-
-from constantType import constant
+from codegenlib.constantType import constant
+#from constantType import constant
 
 
 # choose these enums for user feedback

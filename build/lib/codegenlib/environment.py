@@ -16,8 +16,8 @@
 # rom typing import Optional
 
 # Own modules
-from enums import DevelopmentEnvironment
-from singleton import Singleton
+from codegenlib.enums import DevelopmentEnvironment
+from codegenlib.singleton import Singleton
 
 
 @Singleton

@@ -17,9 +17,9 @@ import sys
 import shutil
 
 # Own modules
-from abstract import Base
-from enums import CODING
-from enums import MESSAGE_TYPE
+from codegenlib.abstract import Base
+from codegenlib.enums import CODING
+from codegenlib.enums import MESSAGE_TYPE
 
 
 class FileOperation(Base):

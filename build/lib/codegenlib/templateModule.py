@@ -14,10 +14,10 @@
 import os
 import sys
 # Owned
-from abstract import Base
-from fileOperation import FileOperation
-from enums import CODING
-from enums import MESSAGE_TYPE
+from codegenlib.abstract import Base
+from codegenlib.fileOperation import FileOperation
+from codegenlib.enums import CODING
+from codegenlib.enums import MESSAGE_TYPE
 
 pathname = os.getcwd()
 

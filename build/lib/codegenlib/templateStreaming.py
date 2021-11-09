@@ -19,16 +19,16 @@ import re
 
 # Own modules
 
-from abstract import Base
-from enums import MessageType
-from enums import CODING
-from enums import MUSTACHE
-from fileOperation import FileOperation
-from templateFile import TemplateFile
-from templateModule import TemplateModule
-from httpOperation import HttpOperation
-from parser import Parser
-from enums import MESSAGE_TYPE
+from codegenlib.abstract import Base
+from codegenlib.enums import MessageType
+from codegenlib.enums import CODING
+from codegenlib.enums import MUSTACHE
+from codegenlib.fileOperation import FileOperation
+from codegenlib.templateFile import TemplateFile
+from codegenlib.templateModule import TemplateModule
+#from codegenlib.httpOperation import HttpOperation
+from codegenlib.parser import Parser
+from codegenlib.enums import MESSAGE_TYPE
 
 
 class TemplateStreaming(Base):
@@ -42,7 +42,7 @@ class TemplateStreaming(Base):
 
     def __init__(self, template_module, enable_log=False):
         Base.__init__(self)
-        self.httpOp = HttpOperation()
+        #self.httpOp = HttpOperation()
         self.fileOp = FileOperation()
         self.templateModule = template_module
         self.enableLog = enable_log

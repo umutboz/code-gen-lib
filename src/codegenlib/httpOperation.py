@@ -20,8 +20,8 @@ import urllib2
 import ssl
 
 # Own modules
-from abstract import Base
-from enums import MESSAGE_TYPE
+from codegenlib.abstract import Base
+from codegenlib.enums import MESSAGE_TYPE
 
 
 class HttpOperation(Base):

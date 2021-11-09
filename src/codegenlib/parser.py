@@ -19,10 +19,10 @@ import os
 import sys
 
 # Owned
-from abstract import Base
-from templateModule import TemplateModule
-from templateFile import TemplateFile
-from templateFolder import TemplateFolder
+from codegenlib.abstract import Base
+from codegenlib.templateModule import TemplateModule
+from codegenlib.templateFile import TemplateFile
+from codegenlib.templateFolder import TemplateFolder
 
 
 class Parser(Base):

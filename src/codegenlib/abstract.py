@@ -10,11 +10,11 @@
 ############################################################
 # Version: 0.1.0
 ############################################################
-from enums import DevelopmentEnvironment
-from environment import Environment
-from singleton import Singleton
-from enums import MESSAGE_TYPE
-from log import Log
+from codegenlib.enums import DevelopmentEnvironment
+from codegenlib.environment import Environment
+from codegenlib.singleton import Singleton
+from codegenlib.enums import MESSAGE_TYPE
+from codegenlib.log import Log
 
 
 class Base():
