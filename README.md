@@ -12,10 +12,10 @@ pip install codegenlib
 ## code-gen-lib import package
 
 ```python
-from lib.enums import MUSTACHE
-from templateStreaming import TemplateStreaming
-from lib.templateFile import TemplateFile
-from lib.templateModule import TemplateModule
+from codegenlib.enums import MUSTACHE
+from codegenlib.templateStreaming import TemplateStreaming
+from codegenlib.templateFile import TemplateFile
+from codegenlib.templateModule import TemplateModule
 ```
 
 ## using example
@@ -34,10 +34,10 @@ config_json_example.py
 ## code-gen-lib generation programming example
 You should add your module containing your folder pathname to the 'modules' path. You can add mustache files and template folder/files in your module path
 ```python
-from lib.enums import MUSTACHE
-from templateStreaming import TemplateStreaming
-from lib.templateFile import TemplateFile
-from lib.templateModule import TemplateModule
+from codegenlib.enums import MUSTACHE
+from codegenlib.templateStreaming import TemplateStreaming
+from codegenlib.templateFile import TemplateFile
+from codegenlib.templateModule import TemplateModule
 
 fileName = "test.swift"
 
@@ -107,9 +107,9 @@ tStreaming.execute()
 import os
 import sys
 
-from lib.parser import Parser
+from codegenlib.parser import Parser
 # Own modules
-from templateStreaming import TemplateStreaming
+from codegenlib.templateStreaming import TemplateStreaming
 
 pathname = os.path.dirname(sys.argv[0])
 # current path
