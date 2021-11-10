@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: codegenlib
-Version: 0.6.0
+Version: 0.6.2
 Summary: Code Generation library written by python. can use bash script, can be extend python code, can use mustache files or can use any string content for any code generation structure.
 Home-page: https://github.com/umutboz/code-gen-lib
 Author: Umut Boz
@@ -32,14 +32,19 @@ code-gen-library for Python
 
 ![alt text](https://github.com/umutboz/code-gen-lib/blob/master/code_gen_diagram.png?raw=true)
 
+## code-gen-lib pip install
+
+```python
+pip install codegenlib
+```
 
 ## code-gen-lib import package
 
 ```python
-from lib.enums import MUSTACHE
-from templateStreaming import TemplateStreaming
-from lib.templateFile import TemplateFile
-from lib.templateModule import TemplateModule
+from codegenlib.enums import MUSTACHE
+from codegenlib.templateStreaming import TemplateStreaming
+from codegenlib.templateFile import TemplateFile
+from codegenlib.templateModule import TemplateModule
 ```
 
 ## using example
@@ -58,10 +63,10 @@ config_json_example.py
 ## code-gen-lib generation programming example
 You should add your module containing your folder pathname to the 'modules' path. You can add mustache files and template folder/files in your module path
 ```python
-from lib.enums import MUSTACHE
-from templateStreaming import TemplateStreaming
-from lib.templateFile import TemplateFile
-from lib.templateModule import TemplateModule
+from codegenlib.enums import MUSTACHE
+from codegenlib.templateStreaming import TemplateStreaming
+from codegenlib.templateFile import TemplateFile
+from codegenlib.templateModule import TemplateModule
 
 fileName = "test.swift"
 
@@ -131,9 +136,9 @@ tStreaming.execute()
 import os
 import sys
 
-from lib.parser import Parser
+from codegenlib.parser import Parser
 # Own modules
-from templateStreaming import TemplateStreaming
+from codegenlib.templateStreaming import TemplateStreaming
 
 pathname = os.path.dirname(sys.argv[0])
 # current path

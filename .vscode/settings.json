@@ -4,7 +4,9 @@
     "python.analysis.extraPaths": [
         "./modules/localization-swift",
         "./lib",
-        "./codegenlib"
+        "./src",
+        "./codegenlib",
+        "./src/codegenlib"
     ]
     //"python.defaultInterpreterPath": "/home/python39/python"
 }

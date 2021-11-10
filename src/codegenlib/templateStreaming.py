@@ -8,7 +8,7 @@
 # Copyright (c) 2020, OneframeMobile, KoçSistem
 # Email: oneframemobile@gmail.com
 ############################################################
-# Version: 0.1.0
+# Version: 0.6.0
 ############################################################
 
 
@@ -51,7 +51,7 @@ class TemplateStreaming(Base):
     def execute(self):
         # search all template files
         # if it has output directory in module, it is generating
-        if self.templateModule.templateFiles > 0 and str(self.templateModule.outputDirectory).strip():
+        if len(self.templateModule.templateFiles) > 0 and str(self.templateModule.outputDirectory).strip() != '':
             if self.fileOp.isExist(
                     self.templateModule.getOutputDirectoryPath()) and self.templateModule.isAppendOutputPath:
                 # TODO : delete folder
@@ -70,7 +70,8 @@ class TemplateStreaming(Base):
                                  "to True. But all files will be deleted",
                          message_type=MESSAGE_TYPE.INFO)
             else:
-                module_directory_path = self.templateModule.getModuleOutputPath()
+                #module_directory_path = self.templateModule.getModuleOutputPath()
+                module_directory_path = self.templateModule.getGeneratingOutputPath()
                 #directory_path = self.fileOp.createNewPath(self.templateModule.outputRootPath + CODING.SLASH + self.getModulePath(),
                 #                                           self.templateModule.outputDirectory)
                 self.fileOp.createFolderWithoutPath(module_directory_path)
@@ -92,7 +93,8 @@ class TemplateStreaming(Base):
                     print(child_loop_all_content)
                 # generate output file
                 if str(t_file.outputFile).strip():
-                    module_directory_path = self.templateModule.getModuleOutputPath()
+                    #module_directory_path = self.templateModule.getModuleOutputPath()
+                    module_directory_path = self.templateModule.getGeneratingOutputPath()
                     if self.enableLog:
                         print("output: " + module_directory_path)
                     self.fileOp.create(file_path = module_directory_path + CODING.SLASH + t_file.outputFile, content=child_loop_all_content)
@@ -133,7 +135,8 @@ class TemplateStreaming(Base):
                     print(replaced_template_content)
                 # generate output file
                 if str(t_file.outputFile).strip():
-                    module_directory_path = self.templateModule.getModuleOutputPath()
+                    #module_directory_path = self.templateModule.getModuleOutputPath()
+                    module_directory_path = self.templateModule.getGeneratingOutputPath()
                     if self.enableLog:
                         print("output: " + module_directory_path)
                     self.fileOp.create(file_path = module_directory_path + CODING.SLASH + t_file.outputFile, content=replaced_template_content)
@@ -227,11 +230,13 @@ class TemplateStreaming(Base):
         return result_dict  
           
     def getModulePath(self):
+        '''
         module_path = self.fileOp.createNewPath(
             pathLocate="..",
             folderName="modules/" + self.templateModule.name
         )
-        return module_path
+        '''
+        return self.templateModule.getModulePath()
 
     def findTemplateFileByKey(self, mustache_key, is_child):
         found_files = []  # type: List[TemplateFile]
@@ -257,14 +262,14 @@ class TemplateStreaming(Base):
         find_mustache_filter = lambda x: x[0] == mustache_key
         filter_output = filter(find_mustache_filter, file.dict.items())
         # print(filter_output)
-        return len(filter_output) > 0 if True else False
+        return len(list(filter_output)) > 0 if True else False
 
     def filterParentNode(self, dict):
         find_parent_filter = lambda x: x[1] == MUSTACHE.PARENT
         if dict is None:
             return False, ""
         filter_output = filter(find_parent_filter, dict.items())
-        return (len(filter_output) > 0 if True else False), filter_output
+        return (len(list(filter_output)) > 0 if True else False), filter_output
 
 
     def dictToMustache(self, dictionary):

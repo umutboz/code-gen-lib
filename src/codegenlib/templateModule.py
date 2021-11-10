@@ -8,7 +8,7 @@
 # Copyright (c) 2020, OneframeMobile, KoçSistem
 # Email: oneframemobile@gmail.com
 ############################################################
-# Version: 0.1.0
+# Version: 0.6.0
 ############################################################
 
 import os
@@ -27,32 +27,58 @@ class TemplateModule(Base):
     outputRootPath = ""
     outputDirectory = ""
     isAppendOutputPath = False
+    isGenerateOutPutFullPath = False
+    mustacheFolder = ""
     templateFolders = []
     fileOp = FileOperation()
 
-    def __init__(self, name, templates_files, template_folders=[], output_root_path=pathname):
+    def __init__(self, name, templates_files, mustache_folder = '', template_folders=[], output_root_path=pathname):
         Base.__init__(self)
 
         self.name = name
         self.templateFiles = templates_files
         self.outputRootPath = output_root_path
         self.templateFolders = template_folders
+        self.mustacheFolder = mustache_folder
 
     def getOutputDirectoryPath(self):
         return self.outputRootPath + CODING.SLASH + self.getModulePath() + CODING.SLASH + self.outputDirectory
     
     def getModulePath(self):
+        module_path = ''
+        '''
         module_path = self.fileOp.createNewPath(
             pathLocate="..",
             folderName="modules/" + self.name
         )
-        module_path = "modules/" + self.name
+        '''
+        if self.mustacheFolder != '':
+            module_path = pathname + CODING.SLASH + self.mustacheFolder
+        
+        if module_path != '':
+            # Check if last character is 't'
+            if str(module_path).endswith(CODING.SLASH):
+                module_path = module_path + self.name
+            else:
+                module_path = module_path + CODING.SLASH + self.name
+        else:
+            module_path = pathname + CODING.SLASH + self.name
+        
         return module_path
 
     def getModuleOutputPath(self):
         module_directory_path = self.outputRootPath + CODING.SLASH + "modules" +  CODING.SLASH  + self.name + CODING.SLASH  + self.outputDirectory
         return module_directory_path
-        
+    
+    def getGeneratingOutputPath(self):
+        module_directory_path = os.getcwd()
+        if self.isGenerateOutPutFullPath:
+            module_directory_path = self.outputDirectory
+        else:
+            if self.outputDirectory != '':
+                module_directory_path += CODING.SLASH + self.outputDirectory
+        return module_directory_path
+    
     def initializeTemplateFolder(self):
         for t_folder in self.templateFolders:
             t_folder_source_full_path = self.outputRootPath + CODING.SLASH + t_folder.source

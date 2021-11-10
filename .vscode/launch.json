@@ -14,6 +14,24 @@
 
         },
         {
+            "name": "Python: Test File",
+            "type": "python",
+            "request": "launch",
+            "program": "/Users/starforce/Desktop/Architecture/CodeGenerationCore/src/code_gen_lib_kotlin_list.py",
+            "console": "integratedTerminal",
+            "args": []
+
+        },
+        {
+            "name": "Python: codegenlib android kotlint list",
+            "type": "python",
+            "request": "launch",
+            "program": "/Users/starforce/Desktop/Architecture/CodeGenerationCore/code_gen_lib_example2.py",
+            "console": "integratedTerminal",
+            "args": [""]
+
+        },
+        {
             "name": "Python: Localization-swift module File",
             "type": "python",
             "request": "launch",
