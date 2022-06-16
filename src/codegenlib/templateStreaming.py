@@ -26,7 +26,11 @@ from codegenlib.enums import MUSTACHE
 from codegenlib.fileOperation import FileOperation
 from codegenlib.templateFile import TemplateFile
 from codegenlib.templateModule import TemplateModule
-#from codegenlib.httpOperation import HttpOperation
+try:
+    from codegenlib.httpOperation import HttpOperation
+except ImportError:
+    from codegenlib.httpOperation3 import HttpOperation3
+
 from codegenlib.parser import Parser
 from codegenlib.enums import MESSAGE_TYPE
 
@@ -39,10 +43,17 @@ class TemplateStreaming(Base):
     templateModule = None
     isCreationFile = True
     enableLog = False
+    onlineMustache = True
 
-    def __init__(self, template_module, enable_log=False):
+    def __init__(self, template_module, enable_log=False, online_mustache=True):
         Base.__init__(self)
-        #self.httpOp = HttpOperation()
+        if sys.version_info.major == 3:
+            print('Python3')
+            self.httpOp = HttpOperation3()
+        else:
+            print('Python2')
+            self.httpOp = HttpOperation()
+
         self.fileOp = FileOperation()
         self.templateModule = template_module
         self.enableLog = enable_log
@@ -53,16 +64,16 @@ class TemplateStreaming(Base):
         # if it has output directory in module, it is generating
         if len(self.templateModule.templateFiles) > 0 and str(self.templateModule.outputDirectory).strip() != '':
             if self.fileOp.isExist(
-                    self.templateModule.getOutputDirectoryPath()) and self.templateModule.isAppendOutputPath:
+                self.templateModule.getOutputDirectoryPath()) and self.templateModule.isAppendOutputPath:
                 # TODO : delete folder
                 self.fileOp.removeRecursively(folder_path=self.templateModule.getOutputDirectoryPath())
                 module_directory_path = self.templateModule.getModuleOutputPath()
-                #directory_path = self.fileOp.createNewPath(self.templateModule.outputRootPath,
+                # directory_path = self.fileOp.createNewPath(self.templateModule.outputRootPath,
                 #                                           self.templateModule.outputDirectory)
                 self.fileOp.createFolderWithoutPath(module_directory_path)
 
             elif self.fileOp.isExist(
-                    self.templateModule.getOutputDirectoryPath()) and not self.templateModule.isAppendOutputPath:
+                self.templateModule.getOutputDirectoryPath()) and not self.templateModule.isAppendOutputPath:
                 # folder has already
                 Base.log(self,
                          message="This Folder already exists \n" + self.templateModule.getOutputDirectoryPath() +
@@ -70,9 +81,9 @@ class TemplateStreaming(Base):
                                  "to True. But all files will be deleted",
                          message_type=MESSAGE_TYPE.INFO)
             else:
-                #module_directory_path = self.templateModule.getModuleOutputPath()
+                # module_directory_path = self.templateModule.getModuleOutputPath()
                 module_directory_path = self.templateModule.getGeneratingOutputPath()
-                #directory_path = self.fileOp.createNewPath(self.templateModule.outputRootPath + CODING.SLASH + self.getModulePath(),
+                # directory_path = self.fileOp.createNewPath(self.templateModule.outputRootPath + CODING.SLASH + self.getModulePath(),
                 #                                           self.templateModule.outputDirectory)
                 self.fileOp.createFolderWithoutPath(module_directory_path)
 
@@ -93,19 +104,20 @@ class TemplateStreaming(Base):
                     print(child_loop_all_content)
                 # generate output file
                 if str(t_file.outputFile).strip():
-                    #module_directory_path = self.templateModule.getModuleOutputPath()
+                    # module_directory_path = self.templateModule.getModuleOutputPath()
                     module_directory_path = self.templateModule.getGeneratingOutputPath()
                     if self.enableLog:
                         print("output: " + module_directory_path)
-                    self.fileOp.create(file_path = module_directory_path + CODING.SLASH + t_file.outputFile, content=child_loop_all_content)
+                    self.fileOp.create(file_path=module_directory_path + CODING.SLASH + t_file.outputFile,
+                                       content=child_loop_all_content)
 
-            else :
+            else:
                 replaced_template_content = ''
                 if t_file.content != '':
                     replaced_template_content = t_file.content
                 else:
-                # only work parent files
-                # get filter Node return tuple (x,y)
+                    # only work parent files
+                    # get filter Node return tuple (x,y)
                     has_parent_key, parent_objects = self.filterParentNode(t_file.dict)
                     if has_parent_key:
                         # loop parentObject
@@ -125,67 +137,77 @@ class TemplateStreaming(Base):
                                     # print(loopChildContent)
                                     child_content = child_content + CODING.NEWLINE + loop_child_content
 
-                        t_file.dict[parent[0]] = MUSTACHE.LEFT_BRACKET + MUSTACHE.LEFT_BRACKET + parent[0] + MUSTACHE.RIGHT_BRACKET + MUSTACHE.RIGHT_BRACKET + child_content
+                        t_file.dict[parent[0]] = MUSTACHE.LEFT_BRACKET + MUSTACHE.LEFT_BRACKET + parent[
+                            0] + MUSTACHE.RIGHT_BRACKET + MUSTACHE.RIGHT_BRACKET + child_content
                         # print(t_file.dict[parent[0]])
                         # print(t_file.dict)
-
-                    content = self.fileOp.readContent(file_path=self.getModulePath() + CODING.SLASH + t_file.name)
-                    replaced_template_content = Parser.string_multiple_replace(content, self.dictToMustache(t_file.dict))
+                    # TODO: ONLINE
+                    if self.onlineMustache:
+                        content = self.fileContent(t_file)
+                    else:
+                        content = self.fileOp.readContent(file_path=self.getModulePath() + CODING.SLASH + t_file.name)
+                    replaced_template_content = Parser.string_multiple_replace(content,
+                                                                               self.dictToMustache(t_file.dict))
                 if self.enableLog:
                     print(replaced_template_content)
                 # generate output file
                 if str(t_file.outputFile).strip():
-                    #module_directory_path = self.templateModule.getModuleOutputPath()
+                    # module_directory_path = self.templateModule.getModuleOutputPath()
                     module_directory_path = self.templateModule.getGeneratingOutputPath()
                     if self.enableLog:
                         print("output: " + module_directory_path)
-                    self.fileOp.create(file_path = module_directory_path + CODING.SLASH + t_file.outputFile, content=replaced_template_content)
+                    self.fileOp.create(file_path=module_directory_path + CODING.SLASH + t_file.outputFile,
+                                       content=replaced_template_content)
 
-    
     # recursive collect child content
-    def getOwnChildContent(self, file, previous_content = None):
+    def getOwnChildContent(self, file, previous_content=None):
         if self.enableLog:
-            print("t", file.name) 
+            print("t", file.name)
         content = self.fileContent(file=file)
         if previous_content != None:
             content = previous_content
         else:
             self.child_all_content = ""
             self.tabCount = 0
-        
+
         has_parent_key, parent_objects = self.filterParentNode(file.dict)
-        #has parent key
+        # has parent key
         if has_parent_key:
             child_content = ""
-            #has child files
-            
+            # has child files
+
             if len(file.childTemplateFiles) > 0:
-                self.tabCount  = self.tabCount  + 1
+                self.tabCount = self.tabCount + 1
                 for child_file in file.childTemplateFiles:
-                    has_did_it_match_parent_mustache = self.didItMatchParentMustache(child_file=child_file,parent_objects=parent_objects)
+                    has_did_it_match_parent_mustache = self.didItMatchParentMustache(child_file=child_file,
+                                                                                     parent_objects=parent_objects)
                     if has_did_it_match_parent_mustache:
                         child_mustache_content = self.fileContent(file=child_file)
-                        #print(child_content)
+                        # print(child_content)
                         # tabbed string development
                         tab_string_started_content = ""
-                        #print(tab_string_started_content)
+                        # print(tab_string_started_content)
                         for i in range(self.tabCount):
-                            tab_string_started_content = CODING.TAB + tab_string_started_content 
-                        
+                            tab_string_started_content = CODING.TAB + tab_string_started_content
+
                         tabbed_child_content = ""
                         for line in child_mustache_content.splitlines():
                             tabbed_child_content = tabbed_child_content + tab_string_started_content + line + CODING.NEWLINE
 
                         # replace parent to child content
                         # replaced_dictionary
-                        child_content_output = Parser.string_multiple_replace(tabbed_child_content,self.dictToMustache(child_file.dict))
+                        child_content_output = Parser.string_multiple_replace(tabbed_child_content,
+                                                                              self.dictToMustache(child_file.dict))
 
                         child_content += CODING.NEWLINE + child_content_output
-                
-                replaced_dictionary = self.replaceDictToChildContent(parent_dict=file.dict, parent_objects=parent_objects,child_file_content=child_content, child_file=child_file)
-                loop_child_content = Parser.string_multiple_replace(content,self.dictToMustache(replaced_dictionary))
-                       
-                self.getOwnChildContent(file, previous_content = loop_child_content)
+
+                replaced_dictionary = self.replaceDictToChildContent(parent_dict=file.dict,
+                                                                     parent_objects=parent_objects,
+                                                                     child_file_content=child_content,
+                                                                     child_file=child_file)
+                loop_child_content = Parser.string_multiple_replace(content, self.dictToMustache(replaced_dictionary))
+
+                self.getOwnChildContent(file, previous_content=loop_child_content)
             else:
                 # only work parent files
                 # get filter Node return tuple (x,y)
@@ -193,42 +215,45 @@ class TemplateStreaming(Base):
                 if has_parent_key:
                     child_content = self.fileContent(file=file)
                     tab_string_started_content = ""
-                    #print(tab_string_started_content)
+                    # print(tab_string_started_content)
                     for i in range(self.tabCount):
-                        tab_string_started_content = CODING.TAB + tab_string_started_content 
-                        
+                        tab_string_started_content = CODING.TAB + tab_string_started_content
+
                     tabbed_child_content = ""
                     for line in child_content.splitlines():
                         tabbed_child_content = tabbed_child_content + tab_string_started_content + line + CODING.NEWLINE
-        
-                    replaced_dictionary = self.replaceDictToChildContent(parent_dict=file.dict, parent_objects=parent_objects,child_file_content=tabbed_child_content, child_file=file)
-                    loop_child_content = Parser.string_multiple_replace(content,self.dictToMustache(replaced_dictionary))
+
+                    replaced_dictionary = self.replaceDictToChildContent(parent_dict=file.dict,
+                                                                         parent_objects=parent_objects,
+                                                                         child_file_content=tabbed_child_content,
+                                                                         child_file=file)
+                    loop_child_content = Parser.string_multiple_replace(content,
+                                                                        self.dictToMustache(replaced_dictionary))
                     self.child_all_content = loop_child_content
                     return self.child_all_content
         else:
             # fill content
-            self.child_all_content = Parser.string_multiple_replace(content,self.dictToMustache(file.dict))
+            self.child_all_content = Parser.string_multiple_replace(content, self.dictToMustache(file.dict))
             if self.enableLog:
                 print(self.child_all_content)
-        
+
         return self.child_all_content
 
-
-    def didItMatchParentMustache(self,parent_objects,child_file):
+    def didItMatchParentMustache(self, parent_objects, child_file):
         result = False
         for parent in parent_objects:
             if parent[0] == child_file.parentMustache:
                 result = True
         return result
 
-    def replaceDictToChildContent(self,parent_dict,parent_objects,child_file_content,child_file):
+    def replaceDictToChildContent(self, parent_dict, parent_objects, child_file_content, child_file):
         result_dict = parent_dict
-        #parent_dict["extension_parent_add"] = child_file_content
+        # parent_dict["extension_parent_add"] = child_file_content
         for parent in parent_objects:
             if parent[0] == child_file.parentMustache:
                 result_dict[child_file.parentMustache] = child_file_content
-        return result_dict  
-          
+        return result_dict
+
     def getModulePath(self):
         '''
         module_path = self.fileOp.createNewPath(
@@ -244,10 +269,15 @@ class TemplateStreaming(Base):
             if tFile.isChildTemplate == is_child and self.findChildMustachFilter(file=tFile, mustache_key=mustache_key):
                 found_files.append(tFile)
         return found_files
-    
 
     def fileContent(self, file):
-        content = self.fileOp.readContent(file_path=self.getModulePath() + CODING.SLASH + file.name)
+        if self.onlineMustache:
+            online_mustache_module_path = self.templateModule.get_online_module_path() + file.name
+            online_mustache = self.httpOp.request(url=online_mustache_module_path)
+            content = online_mustache
+            return content
+        else:
+            content = self.fileOp.readContent(file_path=self.getModulePath() + CODING.SLASH + file.name)
         return content
 
     def findChildMustachFilter(self, file, mustache_key):
@@ -271,7 +301,6 @@ class TemplateStreaming(Base):
         filter_output = filter(find_parent_filter, dict.items())
         return (len(list(filter_output)) > 0 if True else False), filter_output
 
-
     def dictToMustache(self, dictionary):
         new_dict = dict()
         if dictionary is None:
@@ -280,15 +309,14 @@ class TemplateStreaming(Base):
             new_key = MUSTACHE.LEFT_BRACKET + MUSTACHE.LEFT_BRACKET + key + MUSTACHE.RIGHT_BRACKET + MUSTACHE.RIGHT_BRACKET
             new_dict[new_key] = dictionary[key]
         return new_dict
-    
-    def tabbedContent(self,content, tab_index):
+
+    def tabbedContent(self, content, tab_index):
         tab_started_string = ""
         for i in range(tab_index):
-            tab_started_string = CODING.TAB + tab_started_string 
-                        
+            tab_started_string = CODING.TAB + tab_started_string
+
         tabbed_content = ""
         for line in content.splitlines():
             tabbed_content = tabbed_content + tab_started_string + line + CODING.NEWLINE
-        
+
         return tabbed_content
-        

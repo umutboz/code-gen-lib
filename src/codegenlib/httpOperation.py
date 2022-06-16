@@ -54,7 +54,7 @@ class HttpOperation(Base):
             Base.log(self, message="HttpOperation " + "request : " + str(request_url) + " \nresponse : \n" + dataString,
                      message_type=MESSAGE_TYPE.INFO)
             self._response = dataString
-            return self
+            return self._response
         except urllib2.HTTPError as e:
             Base.log(self, message="HttpOperation " + "request : "
                                    + " \HTTPError : \n " + str(e.code), message_type=MESSAGE_TYPE.ERROR)

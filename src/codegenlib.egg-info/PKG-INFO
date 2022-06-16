@@ -1,16 +1,14 @@
 Metadata-Version: 2.1
 Name: codegenlib
-Version: 0.6.2
+Version: 0.7.1
 Summary: Code Generation library written by python. can use bash script, can be extend python code, can use mustache files or can use any string content for any code generation structure.
 Home-page: https://github.com/umutboz/code-gen-lib
 Author: Umut Boz
 Author-email: umut.boz@outlook.com
-License: UNKNOWN
 Project-URL: Documentation, https://github.com/umutboz/code-gen-lib
 Project-URL: Bug Reports, https://github.com/umutboz/code-gen-lib/issues
 Project-URL: Source Code, https://github.com/umutboz/code-gen-lib
 Keywords: code generation,file generation,pypi,package
-Platform: UNKNOWN
 Classifier: Development Status :: 5 - Production/Stable
 Classifier: Intended Audience :: Developers
 Classifier: Topic :: Software Development :: Build Tools
@@ -160,5 +158,3 @@ tStreaming.execute()
 
 Can be Contribution, join us!
 ![alt text](https://github.com/umutboz/code-gen-lib/blob/master/contribution_model.png?raw=true)
-
-

@@ -21,6 +21,7 @@ from codegenlib.enums import MESSAGE_TYPE
 
 pathname = os.getcwd()
 
+
 class TemplateModule(Base):
     name = ""
     templateFiles = []
@@ -28,6 +29,7 @@ class TemplateModule(Base):
     outputDirectory = ""
     isAppendOutputPath = False
     isGenerateOutPutFullPath = False
+    isOutSideMustacheFullPath = False
     mustacheFolder = ""
     templateFolders = []
     fileOp = FileOperation()
@@ -43,7 +45,7 @@ class TemplateModule(Base):
 
     def getOutputDirectoryPath(self):
         return self.outputRootPath + CODING.SLASH + self.getModulePath() + CODING.SLASH + self.outputDirectory
-    
+
     def getModulePath(self):
         module_path = ''
         '''
@@ -52,9 +54,12 @@ class TemplateModule(Base):
             folderName="modules/" + self.name
         )
         '''
-        if self.mustacheFolder != '':
-            module_path = pathname + CODING.SLASH + self.mustacheFolder
-        
+        if self.isOutSideMustacheFullPath:
+            module_path = self.mustacheFolder
+        else:
+            if self.mustacheFolder != '':
+                module_path = pathname + CODING.SLASH + self.mustacheFolder
+
         if module_path != '':
             # Check if last character is 't'
             if str(module_path).endswith(CODING.SLASH):
@@ -63,13 +68,16 @@ class TemplateModule(Base):
                 module_path = module_path + CODING.SLASH + self.name
         else:
             module_path = pathname + CODING.SLASH + self.name
-        
+
         return module_path
 
     def getModuleOutputPath(self):
         module_directory_path = self.outputRootPath + CODING.SLASH + "modules" +  CODING.SLASH  + self.name + CODING.SLASH  + self.outputDirectory
         return module_directory_path
-    
+
+    def get_online_module_path(self):
+        return "https://raw.githubusercontent.com/umutboz/code-gen-lib/master/modules" + CODING.SLASH + self.name + CODING.SLASH
+
     def getGeneratingOutputPath(self):
         module_directory_path = os.getcwd()
         if self.isGenerateOutPutFullPath:
@@ -78,7 +86,7 @@ class TemplateModule(Base):
             if self.outputDirectory != '':
                 module_directory_path += CODING.SLASH + self.outputDirectory
         return module_directory_path
-    
+
     def initializeTemplateFolder(self):
         for t_folder in self.templateFolders:
             t_folder_source_full_path = self.outputRootPath + CODING.SLASH + t_folder.source

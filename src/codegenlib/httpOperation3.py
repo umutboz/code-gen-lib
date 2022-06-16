@@ -20,8 +20,8 @@ import urllib3
 import ssl
 
 # Own modules
-from abstract import Base
-from enums import MESSAGE_TYPE
+from codegenlib.abstract import Base
+from codegenlib.enums import MESSAGE_TYPE
 
 
 class HttpOperation3(Base):
@@ -55,7 +55,7 @@ class HttpOperation3(Base):
             Base.log(self, message="HttpOperation " + "request : " + str(request_url) + " \nresponse : \n" + data_string,
                      message_type=MESSAGE_TYPE.INFO)
             self._response = data_string
-            return self
+            return self._response
         except urllib3.exceptions.HTTPError as e:
             Base.log(self, message="HttpOperation " + "request : "
                                    + " \HTTPError : \n " + str(e.code), message_type=MESSAGE_TYPE.ERROR)

@@ -28,6 +28,7 @@ class TemplateModule(Base):
     outputDirectory = ""
     isAppendOutputPath = False
     isGenerateOutPutFullPath = False
+    isOutSideMustacheFullPath = False
     mustacheFolder = ""
     templateFolders = []
     fileOp = FileOperation()
@@ -52,8 +53,11 @@ class TemplateModule(Base):
             folderName="modules/" + self.name
         )
         '''
-        if self.mustacheFolder != '':
-            module_path = pathname + CODING.SLASH + self.mustacheFolder
+        if self.isOutSideMustacheFullPath:
+            module_path = self.mustacheFolder
+        else:   
+            if self.mustacheFolder != '':
+                module_path = pathname + CODING.SLASH + self.mustacheFolder
         
         if module_path != '':
             # Check if last character is 't'

@@ -8,7 +8,7 @@
 # Copyright (c) 2020, OneframeMobile, KoçSistem
 # Email: oneframemobile@gmail.com
 ############################################################
-# Version: 0.1.0
+# Version: 0.7.0
 ############################################################
 from codegenlib.enums import DevelopmentEnvironment
 from codegenlib.environment import Environment
@@ -33,12 +33,13 @@ class Base():
         else:
             # loglar ise sadece debug modda gösterilir
             if Environment.Shared().current() == DevelopmentEnvironment().DEBUG:
-                print("base log çalıştı")
+                print("base log ")
                 Log.i(message=message)
             '''
             else:
-                print("base log çalışmadı")
+                print("base log not ")
+
             '''
-            
+
     def toString(self):
         return self.__class__.__name__

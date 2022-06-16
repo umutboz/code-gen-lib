@@ -17,26 +17,29 @@ import sys
 import numpy as np
 
 # Own modules
-
+'''
 from lib.enums import MessageType
 from lib.enums import CodeLine
 from lib.log import Log
 from lib.fileOperation import FileOperation
 from lib.environment import Environment
 
+'''
 
 
 
-MESSAGE = MessageType()
 
-CODE = CodeLine()
+
+#MESSAGE = MessageType()
+
+#CODE = CodeLine()
 
 path = "/"
 fileName = "test.swift"
 #eger bir path belirlenmis ise
 #op = FileOperation("/Users/umut/Desktop/Architecture/CodeGenerationCore/lib")
 #run path kullanılmak isteniyorsa
-op = FileOperation()
+#op = FileOperation()
 
 #get content of file with relative Path
 #print(op.getFileContentWithPath(filePath=path + CODE.SLASH + fileName))
@@ -158,4 +161,33 @@ print(x)
 print(x.dtype)
 y = np.transpose(np.arange(4))
 '''
+
+import numpy as np
+
+x1 = (2,2,4,5)
+x2 = (3,2,4,6)
+
+print(np.dot(x1,x2))
+
+liste = [5,5,6,8,13] 
+sayi = len(liste)
+
+def varyans_hesap(liste,ort):
+    toplam = 0
+    for i in liste:
+        toplam += (ort - liste[i])**2
+        
+    print("Listenin Varyansı ==> {}".format(toplam / len(liste)))
+
+
+toplam = sum(liste)
+ortalama = toplam / sayi
+varyans_hesap(liste,ortalama)
+print(np.var(liste))
+
+print(len("Programlama"))
+#print(varyans_hesap([5,5,6,8,13],))
+
+print(np.std([12,17,1,8]))
+
 

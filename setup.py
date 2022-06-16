@@ -7,7 +7,7 @@ setuptools.setup(
     name='codegenlib',
     author='Umut Boz',
     author_email='umut.boz@outlook.com',
-    version="0.6.2",
+    version="0.8.0",
     description='Code Generation library written by python. can use bash script, can be extend python code, can use mustache files or can use any string content for any code generation structure.',
     keywords='code generation, file generation, pypi, package',
     long_description=long_description,
