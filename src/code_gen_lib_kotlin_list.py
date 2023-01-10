@@ -81,3 +81,5 @@ else:
     Log.e("must be use min. 2 parameters ")
     Log.i("or u can use params --info")
 
+#https://raw.githubusercontent.com/umutboz/code-gen-lib/master/modules/android-kotlin-list/list_item_xml_mustache
+
