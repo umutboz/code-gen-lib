@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 class {{activity_name}} : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.{{list_activity_layout_xml_name}})
 
         val cities = listOf("Istanbul", "Ankara", "Izmir", "Mugla", "Ardagan")
         val adapter = CityAdapter(cities)
