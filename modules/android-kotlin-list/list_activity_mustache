@@ -15,4 +15,8 @@ class {{activity_name}} : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recycler)
         recyclerView.adapter = adapter
     }
+    
+     companion object{
+        fun newIntent(context: Context) = Intent(context, {{activity_name}}::class.java)
+    }
 }
