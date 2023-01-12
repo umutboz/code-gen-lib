@@ -11,5 +11,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_city" />
+        tools:listitem="@layout/{{list_item_xml_name}}" />
 </androidx.constraintlayout.widget.ConstraintLayout>
