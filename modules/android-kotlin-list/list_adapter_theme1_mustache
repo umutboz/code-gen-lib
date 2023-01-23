@@ -1,0 +1,27 @@
+package {{package_name}}
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+
+class {{adapter_name}}(val list: List<String>) : RecyclerView.Adapter<{{adapter_name}}.Holder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+        val inflater = LayoutInflater.from(parent.context)
+        val view = inflater.inflate(R.layout.{{list_item_xml_name}}, parent, false)
+        return Holder(view)
+    }
+
+    override fun onBindViewHolder(holder: Holder, position: Int) {
+        val item = list[position]
+        holder.textView.text = item
+    }
+
+    override fun getItemCount() = list.size
+
+    class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textView = itemView as TextView
+    }
+}
