@@ -1,0 +1,5 @@
+     //{{summary}}
+     @SuppressLint("DefaultLocale")
+     public GenericObjectRequest {{func_name}}({{request_parameter}}final NetworkResponseListener<{{result_model}}, ErrorModel<String>> listener) {
+         return manager.post({{query_path}}, {{request_model_naming}}listener);
+     }

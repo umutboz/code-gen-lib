@@ -1,0 +1,48 @@
+//
+//
+//  Networking-Swagger Code Generate Creater v3
+//  [SERVICE_NAME]ServiceManager.java
+//  Copyright © 2023 OneFrame Mobile - Koçsistem All rights reserved.
+//
+
+package {{package_name}};
+
+import com.oneframe.android.networking.HttpHeader;
+import com.oneframe.android.networking.HttpHeaderFactory;
+import com.oneframe.android.networking.NetworkConfig;
+import com.oneframe.android.networking.NetworkConfigFactory;
+import com.oneframe.android.networking.NetworkManager;
+import com.oneframe.android.networking.NetworkingFactory;
+import com.oneframe.android.networking.listener.NetworkResponseListener;
+import com.oneframe.android.networking.volleywrapper.GenericObjectRequest;
+import com.oneframe.android.networking.model.ErrorModel;
+import android.annotation.SuppressLint;
+import java.util.List;
+import java.util.Map;
+
+
+import {{package_name}}.{{model_package}}.*;
+
+public class {{service_name}}ServiceManager {
+
+    private String baseUrl = "{{base_url}}";
+
+    private NetworkManager manager;
+
+    public {{service_name}}ServiceManager() {
+        manager = NetworkingFactory
+                .create();
+        //manager.setJsonKey("multidata","singleData");
+
+        Map defaultHeaders =  HttpHeaderFactory.createHeaders(
+                new HttpHeader("headerName", "headerValue"),
+                new HttpHeader("headerName2", "headerValue")
+        );
+        NetworkConfig networkConfig = NetworkConfigFactory.create(baseUrl, defaultHeaders, "application/json; charset=utf-8");
+        networkConfig.setConnectionTimeout(60000);
+        manager.setNetworkConfig(networkConfig);
+        //manager.setNetworkLearning(new NoConnectionNetworkLearning());
+    }
+
+    {{request_functions_add}}
+}

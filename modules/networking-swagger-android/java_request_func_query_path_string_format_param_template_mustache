@@ -1,0 +1,1 @@
+String.format("{{query_path}}", {{query_path_parameter_name}})

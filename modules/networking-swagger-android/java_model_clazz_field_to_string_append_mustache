@@ -1,0 +1,1 @@
+sb.append("    {{field_name}}: ").append(toIndentedString({{field_name}})).append("\n");
