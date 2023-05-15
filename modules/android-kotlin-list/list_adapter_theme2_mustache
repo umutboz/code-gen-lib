@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.constraintlayout.widget.ConstraintLayout
-import {{package_name}}.R
+
 
 class {{adapter_name}}(val list: List<{{model_upper}}ListItem>, val listener: {{model_upper}}ItemClickListener) : RecyclerView.Adapter<{{adapter_name}}.Holder>() {
 

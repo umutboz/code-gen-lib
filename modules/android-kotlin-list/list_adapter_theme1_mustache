@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.RecyclerView
-import {{package_name}}.R
+
 
 class {{adapter_name}}(val list: List<String>, val listener: {{model_upper}}ItemClickListener) : RecyclerView.Adapter<{{adapter_name}}.Holder>() {
 
