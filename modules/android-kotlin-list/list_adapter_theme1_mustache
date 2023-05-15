@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.FrameLayout
 import androidx.recyclerview.widget.RecyclerView
+import {{package_name}}.R
 
-class {{adapter_name}}(val list: List<String>) : RecyclerView.Adapter<{{adapter_name}}.Holder>() {
+class {{adapter_name}}(val list: List<String>, val listener: {{model_upper}}ItemClickListener) : RecyclerView.Adapter<{{adapter_name}}.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val inflater = LayoutInflater.from(parent.context)
@@ -17,11 +19,20 @@ class {{adapter_name}}(val list: List<String>) : RecyclerView.Adapter<{{adapter_
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val item = list[position]
         holder.textView.text = item
+
+        holder.containerView.setOnClickListener {
+            listener.on{{model_upper}}ItemClickListener(item)
+        }
     }
 
     override fun getItemCount() = list.size
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView = itemView as TextView
+        val textView = itemView.findViewById(R.id.{{model}}TitleTextView) as TextView
+        val containerView = itemView.findViewById(R.id.{{model}}ContainerFrameLayout) as FrameLayout
     }
+}
+
+interface {{model_upper}}ItemClickListener {
+    fun on{{model_upper}}ItemClickListener(item: String)
 }
