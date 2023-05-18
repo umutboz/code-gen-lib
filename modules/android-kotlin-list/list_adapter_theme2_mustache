@@ -39,5 +39,5 @@ class {{adapter_name}}(val list: List<{{model_upper}}ListItem>, val listener: {{
 data class {{model_upper}}ListItem(val title: String, val description: String)
 
 interface {{model_upper}}ItemClickListener {
-    fun on{{model_upper}}ItemClickListener(item: String)
+    fun on{{model_upper}}ItemClickListener(item: {{model_upper}})
 }
