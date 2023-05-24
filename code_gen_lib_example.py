@@ -14,11 +14,11 @@
 # Built-in/Generic Imports
 import os
 import sys
-from os.path import dirname,join, abspath,sys
+from os.path import dirname,join, abspath
 current_file = os.path.dirname(__file__)
 lib_dir_path =  os.path.join(current_file, 'src')
 lib_dir_module = os.path.abspath(lib_dir_path)
-sys.path.insert(0, lib_dir_module) 
+sys.path.insert(0, lib_dir_module)
 # Own modules
 #from codenums import MUSTACHE
 from src.codegenlib.enums import MUSTACHE
