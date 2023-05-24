@@ -15,7 +15,7 @@ class {{activity_name}} : AppCompatActivity() {
         val items = listOf("Istanbul", "Ankara", "Izmir", "Mugla", "Ardagan")
 
         val adapter = {{adapter_name}}(items, object :{{model_upper}}ItemClickListener{
-            override fun on{{model_upper}}ItemClickListener(item: {{model_upper}}ListItem) {
+            override fun on{{model_upper}}ItemClickListener(item: String) {
                 // clicked do something
                 Toast.makeText(applicationContext, item, Toast.LENGTH_SHORT).show()
             }
