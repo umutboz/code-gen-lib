@@ -1,0 +1,60 @@
+package {{package_name}}
+
+import android.util.Log
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
+
+
+class {{project_name}}PagingSource (private var loadingListener: {{project_name}}PagingAdapter.{{project_name}}PagingLoadingListener): PagingSource<Int, {{project_name}}Data>() {
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, {{project_name}}Data> {
+        val page = params.key ?: 1
+        val pageSize = params.loadSize
+
+        return try {
+            loadingListener.on{{project_name}}PagingLoading(true)
+            val data = {{project_name}}DummyDataList.getDataList() // api example -> serviceManager.getList(page, pageSize)
+            val prevKey = if (page == 1) null else page - 1
+            val nextKey = if (data.dataList.isEmpty()) null else page + 1
+            Log.d("PAGING","New Request Success")
+            loadingListener.on{{project_name}}PagingLoading(false)
+            LoadResult.Page(data = data.dataList, prevKey = prevKey, nextKey = nextKey)
+
+        } catch (e: Exception) {
+            LoadResult.Error(e)
+        }
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, {{project_name}}Data>): Int? {
+        if (state.anchorPosition != null) {
+            val anchorPage = state.closestPageToPosition(state.anchorPosition!!)
+            if (anchorPage != null) {
+                return if (anchorPage.prevKey != null) {
+                    anchorPage.prevKey?.plus(1)
+                } else {
+                    anchorPage.nextKey?.minus(1)
+                }
+            }
+        }
+        return null
+    }
+
+}
+
+data class {{project_name}}Data(
+    val name: String,
+)
+
+data class {{project_name}}DataRepository(
+    val dataList: ArrayList<{{project_name}Data>
+)
+
+object {{project_name}}DummyDataList {
+    fun getDataList(): {{project_name}}DataRepository {
+        val dataList = ArrayList<{{project_name}}Data>()
+        repeat(30) {
+            dataList.add({{project_name}}Data("Data $it"))
+        }
+        return {{project_name}}DataRepository(dataList)
+    }
+}

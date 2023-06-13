@@ -1,0 +1,54 @@
+package {{package_name}}
+
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.recyclerview.widget.RecyclerView
+import {{package_name}}.R
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+
+
+class {{activity_name}}PagingActivity : AppCompatActivity(), {{adapter_name}}PagingAdapter.{{model_name}}PagingLoadingListener{
+
+    private val adapterPaging = {{adapter_name}}PagingAdapter(object : {{adapter_name}}PagingAdapter.{{model_name}}ItemClickListener{
+        override fun onItemClickListener(data: {{model_name}}Data) {
+            Toast.makeText(applicationContext,""+ data.name,Toast.LENGTH_SHORT).show()
+        }
+    })
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.{{paging_activity_layout_xml_name}})
+
+        setupRecyclerView()
+
+    }
+
+    private fun setupRecyclerView() {
+        val pagingSource = PagingSource(this) // val pagingSource = {{model_name}}PagingSource(this)
+        val pager = Pager(PagingConfig(10)) {
+            pagingSource
+        }
+        val pagingData: Flow<PagingData<{{model_name}}Data>> = pager.flow
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler)
+        recyclerView.adapter =  adapterPaging
+
+        lifecycleScope.launch {
+            pagingData.collectLatest { pagingData ->
+                adapterPaging.submitData(pagingData)
+            }
+        }
+
+    }
+
+    override fun on{{model_name}}PagingLoading(loading: Boolean) {
+        Toast.makeText(baseContext, "New Requested", Toast.LENGTH_SHORT).show();
+    }
+}

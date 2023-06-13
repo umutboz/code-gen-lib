@@ -1,0 +1,61 @@
+package {{package_name}}
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import {{package_name}}.R
+
+
+class {{project_name}}PagingAdapter( val listener: {{project_name}}ItemClickListener) : {{project_name}}PagingDataAdapter<{{project_name}}Data, PagingAdapter.ViewHolder>(DIFF_UTIL) {
+
+    companion object {
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<{{project_name}}Data>() {
+            // views are same?
+            override fun areItemsTheSame(oldItem: {{project_name}}Data, newItem: {{project_name}}Data): Boolean {
+                return oldItem.name == newItem.name
+            }
+
+            // view content's is same?
+            override fun areContentsTheSame(oldItem: {{project_name}}Data, newItem: {{project_name}}Data): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textView = itemView.findViewById(R.id.{{project_name_lower}}TitleTextView) as TextView
+        val textView = itemView.findViewById(R.id.{{project_name_lower}}DescriptionTextview) as TextView
+        val containerView = itemView.findViewById(R.id.{{project_name_lower}}containerConstraintLayout) as ConstraintLayout
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        if (item != null){
+            holder.textView.text = item.name
+            holder.description.text = "# description"
+            holder.containerView.setOnClickListener {
+                listener.on{{project_name}}ItemClickListener(item)
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val view = inflater.inflate(R.layout.{{list_item_xml_name}}, parent, false)
+        return ViewHolder(view)
+
+    }
+
+    interface {{project_name}}ItemClickListener{
+        fun on{{project_name}}ItemClickListener(data: {{project_name}}Data)
+    }
+    interface {{project_name}}PagingLoadingListener{ 
+        fun on{{project_name}}PagingLoading
+    }
+
+}
