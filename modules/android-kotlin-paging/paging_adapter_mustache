@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import {{package_name}}.R
 
 
-class {{project_name}}PagingAdapter( val listener: {{project_name}}ItemClickListener) : {{project_name}}PagingDataAdapter<{{project_name}}Data, PagingAdapter.ViewHolder>(DIFF_UTIL) {
+class {{adapter_name}}( val listener: {{project_name}}PagingItemClickListener) : PagingDataAdapter<{{project_name}}Data, {{adapter_name}}.ViewHolder>(DIFF_UTIL) {
 
     companion object {
         val DIFF_UTIL = object : DiffUtil.ItemCallback<{{project_name}}Data>() {
@@ -28,9 +28,9 @@ class {{project_name}}PagingAdapter( val listener: {{project_name}}ItemClickList
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView = itemView.findViewById(R.id.{{project_name_lower}}TitleTextView) as TextView
-        val textView = itemView.findViewById(R.id.{{project_name_lower}}DescriptionTextview) as TextView
-        val containerView = itemView.findViewById(R.id.{{project_name_lower}}containerConstraintLayout) as ConstraintLayout
+        val textView = itemView.findViewById(R.id.{{project_name_lower}}ItemTitleTextView) as TextView
+        val description = itemView.findViewById(R.id.{{project_name_lower}}ItemDescriptionTextview) as TextView
+        val containerView = itemView.findViewById(R.id.{{project_name_lower}}ContainerConstraintLayout) as ConstraintLayout
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -39,7 +39,7 @@ class {{project_name}}PagingAdapter( val listener: {{project_name}}ItemClickList
             holder.textView.text = item.name
             holder.description.text = "# description"
             holder.containerView.setOnClickListener {
-                listener.on{{project_name}}ItemClickListener(item)
+                listener.on{{project_name}}PagingItemClickListener(item)
             }
         }
     }
@@ -51,11 +51,11 @@ class {{project_name}}PagingAdapter( val listener: {{project_name}}ItemClickList
 
     }
 
-    interface {{project_name}}ItemClickListener{
-        fun on{{project_name}}ItemClickListener(data: {{project_name}}Data)
+    interface {{project_name}}PagingItemClickListener{
+        fun on{{project_name}}PagingItemClickListener(data: {{project_name}}Data)
     }
     interface {{project_name}}PagingLoadingListener{ 
-        fun on{{project_name}}PagingLoading
+        fun on{{project_name}}PagingLoading(loading: Boolean)
     }
 
 }

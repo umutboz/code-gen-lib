@@ -46,14 +46,14 @@ data class {{project_name}}Data(
 )
 
 data class {{project_name}}DataRepository(
-    val dataList: ArrayList<{{project_name}Data>
+    val dataList: ArrayList<{{project_name}}Data>
 )
 
 object {{project_name}}DummyDataList {
     fun getDataList(): {{project_name}}DataRepository {
         val dataList = ArrayList<{{project_name}}Data>()
-        repeat(30) {
-            dataList.add({{project_name}}Data("Data $it"))
+        repeat(30) { index ->
+            dataList.add({{project_name}}Data("Data  ${index + 1}"))
         }
         return {{project_name}}DataRepository(dataList)
     }

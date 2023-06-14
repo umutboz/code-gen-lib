@@ -14,10 +14,10 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
-class {{activity_name}}PagingActivity : AppCompatActivity(), {{adapter_name}}PagingAdapter.{{model_name}}PagingLoadingListener{
+class {{activity_name}} : AppCompatActivity(), {{adapter_name}}.{{model_name}}PagingLoadingListener{
 
-    private val adapterPaging = {{adapter_name}}PagingAdapter(object : {{adapter_name}}PagingAdapter.{{model_name}}ItemClickListener{
-        override fun onItemClickListener(data: {{model_name}}Data) {
+    private val adapterPaging = {{adapter_name}}(object : {{adapter_name}}.{{model_name}}PagingItemClickListener{
+        override fun on{{model_name}}PagingItemClickListener(data: {{model_name}}Data) {
             Toast.makeText(applicationContext,""+ data.name,Toast.LENGTH_SHORT).show()
         }
     })
@@ -31,7 +31,7 @@ class {{activity_name}}PagingActivity : AppCompatActivity(), {{adapter_name}}Pag
     }
 
     private fun setupRecyclerView() {
-        val pagingSource = PagingSource(this) // val pagingSource = {{model_name}}PagingSource(this)
+        val pagingSource = {{model_name}}PagingSource(this) // val pagingSource = {{model_name}}PagingSource(this)
         val pager = Pager(PagingConfig(10)) {
             pagingSource
         }
