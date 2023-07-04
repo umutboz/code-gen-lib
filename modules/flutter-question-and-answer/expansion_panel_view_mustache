@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '{{controller_file_name}}';
+import '{{model_file_name}}';
+
+class {{module_name}}View extends GetView<{{module_name}}Controller> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("{{module_title}}"),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.only(top: 10, bottom: 20),
+          child: Obx(
+            () => ExpansionPanelList(
+              expansionCallback: (panelIndex, isExpanded) {
+                controller.list[panelIndex].isExpanded!.value = !isExpanded;
+              },
+              children: controller.list.map<ExpansionPanel>(
+                ({{module_name}}Model item) {
+                  return ExpansionPanel(
+                      canTapOnHeader: true,
+                      headerBuilder: ((context, isExpanded) {
+                        return ListTile(
+                          leading: const Icon(Icons.question_answer_outlined),
+                          title: Text(item.question!),
+                        );
+                      }),
+                      body: ListTile(
+                        title: Text(item.answer!),
+                        contentPadding: const EdgeInsets.all(10),
+                      ),
+                      backgroundColor: Color.fromARGB(255, 233, 231, 231),
+                      isExpanded: item.isExpanded!.value);
+                },
+              ).toList(),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

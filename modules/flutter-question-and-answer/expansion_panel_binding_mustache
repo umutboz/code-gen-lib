@@ -1,0 +1,9 @@
+import 'package:get/get.dart';
+import '{{controller_file_name}}';
+
+class {{module_name}}Binding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut<{{module_name}}Controller>(() => {{module_name}}Controller());
+  }
+}

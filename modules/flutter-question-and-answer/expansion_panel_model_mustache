@@ -1,0 +1,9 @@
+import 'package:get/state_manager.dart';
+
+class {{module_name}}Model {
+  String? question;
+  String? answer;
+  int? id;
+  RxBool? isExpanded;
+  {{module_name}}Model({this.question, this.answer, this.isExpanded});
+}
