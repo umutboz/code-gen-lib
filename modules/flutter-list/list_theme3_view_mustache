@@ -1,0 +1,82 @@
+import 'package:flutter/material.dart';
+//import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '{{model_file_name}}';
+import '{{controller_file_name}}';
+
+class {{module_name}}View extends GetView<{{module_name}}Controller> {
+  {{module_name}}View({Key? key}) : super(key: key);
+
+  @override
+  final controller = Get.find();
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              backgroundColor: Colors.black,
+              expandedHeight: 200,
+              floating: true,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Image.network(
+                  'https://source.unsplash.com/random?monochromatic+dark',
+                  fit: BoxFit.cover,
+                ),
+                title: const Text('Title-3'),
+                centerTitle: true,
+              ),
+              leading: InkWell(
+                  onTap: (){
+                    Get.snackbar("Back", "");
+                  },
+                  child: Icon(Icons.arrow_back)),
+              actions: [
+                InkWell(
+                    onTap: (){
+                      Get.snackbar("Settings", "");
+                    },
+                    child: Icon(Icons.settings)),
+                const SizedBox(width: 12),
+              ],
+            ),
+            Obx(() => buildImages())
+          ],
+        ),
+      );
+
+  Widget buildImages() => SliverToBoxAdapter(
+        child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1, mainAxisExtent: 80),
+            primary: false,
+            shrinkWrap: true,
+            itemCount: controller.tempList.length,
+            itemBuilder: (context, index) {
+              {{module_name}}Model? item = controller.tempList[index];
+              return InkWell(
+                onTap: () {
+                  Get.snackbar(item.title ?? "", item.description ?? "");
+                },
+                child: ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.blueGrey.shade100,
+                    child: Text(item.title?[0] ?? ""),
+                  ),
+                  title: Text(
+                    item.title ?? "",
+                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 60), // TextStyle(fontWeight: FontWeight.w900, fontSize: 60.sp), // with ScreenUtil
+                  ),
+                  subtitle: Text(
+                    item.description ?? "",
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 46), // TextStyle(fontWeight: FontWeight.w700, fontSize: 46.sp), // with ScreenUtil
+                  ),
+                  trailing: Text(
+                    item.date ?? "",
+                    style: TextStyle(fontSize: 36), // TextStyle(fontSize: 36.sp), // with ScreenUtil
+                  ),
+                ),
+              );
+            }),
+      );
+}

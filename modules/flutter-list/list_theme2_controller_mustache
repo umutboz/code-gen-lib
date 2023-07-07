@@ -1,0 +1,33 @@
+import 'package:get/get.dart';
+
+import '{{model_file_name}}';
+
+class {{module_name}}Controller extends GetxController {
+  {{module_name}}Controller();
+
+  RxList<{{module_name}}Model> tempList = <{{module_name}}Model>[].obs;
+
+  @override
+  void onInit() {
+    tempList.add({{module_name}}Model(title: "Apple", description: "Description1", date: "01.02.2023"));
+    tempList.add({{module_name}}Model(title: "Banana", description: "Description2", date: "24.06.2021"));
+    tempList.add({{module_name}}Model(title: "Fig", description: "Description3", date: "06.10.2023"));
+    tempList.add({{module_name}}Model(title: "Hazelnut", description: "Description4", date: "13.06.2020"));
+    tempList.add({{module_name}}Model(title: "Apricot", description: "Description5", date: "17.07.2023"));
+    tempList.add({{module_name}}Model(title: "Grapefruit", description: "Description6", date: "05.02.2021"));
+    tempList.add({{module_name}}Model(title: "Grape", description: "Description7", date: "13.06.2023"));
+    tempList.add({{module_name}}Model(title: "Blueberry", description: "Description8", date: "09.03.2019"));
+    tempList.add({{module_name}}Model(title: "Coconut", description: "Description9", date: "22.06.2007"));
+    tempList.add({{module_name}}Model(title: "Lime", description: "Description10", date: "22.03.2011"));
+    tempList.add({{module_name}}Model(title: "Peanut", description: "Description11", date: "13.06.2015"));
+    tempList.add({{module_name}}Model(title: "Quince", description: "Description12", date: "14.02.2020"));
+    tempList.add({{module_name}}Model(title: "Kiwi", description: "Description13", date: "25.06.2007"));
+    tempList.add({{module_name}}Model(title: "Cranberry", description: "Description14", date: "29.03.2012"));
+    tempList.add({{module_name}}Model(title: "Chestnut", description: "Description15", date: "31.06.2009"));
+    tempList.add({{module_name}}Model(title: "Watermelon", description: "Description16", date: "28.05.2007"));
+    tempList.add({{module_name}}Model(title: "Cherry", description: "Description17", date: "01.06.2002"));
+    tempList.add({{module_name}}Model(title: "Dragon fruit", description: "Description18", date: "20.09.2005"));
+    tempList.add({{module_name}}Model(title: "Lemon", description: "Description19", date: "12.11.2007"));
+    super.onInit();
+  }
+}

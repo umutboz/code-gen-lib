@@ -1,0 +1,65 @@
+import 'package:flutter/material.dart';
+//import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '{model_file_name}};
+import '{{controller_file_name}}';
+
+class {{module_name}}View extends GetView<{{module_name}}Controller> {
+  {{module_name}}View({Key? key}) : super(key: key);
+
+  @override
+  final controller = Get.find();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey.shade100,
+      body: SafeArea(
+        child: Obx(
+          () => Column(
+            children: [
+              Flexible(
+                flex: 5,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 120, bottom: 120), // EdgeInsets.only(top: 120.h, bottom: 120.h) with ScreenUtil
+                      child: Text(
+                        "List-1",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: 100), // TextStyle(fontWeight: FontWeight.w900, fontSize: 100.sp),  with ScreenUtil
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: controller.tempList.length,
+                        itemBuilder: (context, index) {
+                          ListModel item = controller.tempList[index];
+                          return InkWell(
+                            onTap: () {
+                              Get.snackbar(item.title ?? "", item.description ?? "");
+                            },
+                            child: ListTile(
+                              title: Text(
+                                item.title ?? "",
+                                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 44), // TextStyle(fontWeight: FontWeight.w900, fontSize: 44.sp),  with ScreenUtil
+                              ),
+                              subtitle: Text(
+                                item.description ?? "",
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

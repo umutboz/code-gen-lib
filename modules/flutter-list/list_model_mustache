@@ -1,0 +1,25 @@
+class {{module_name}}Model {
+  String? title;
+  String? description;
+  String? date;
+
+  {{module_name}}Model({
+    this.title,
+    this.description,
+    this.date,
+  });
+
+  {{module_name}}Model.fromJson(Map<String, dynamic> json) {
+    title = json['title'] as String;
+    description = json['description'] as String;
+    date = json['date'] as String;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['title'] = title;
+    data['description'] = description;
+    data['date'] = date;
+    return data;
+  }
+}

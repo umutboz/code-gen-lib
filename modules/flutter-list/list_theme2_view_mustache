@@ -1,0 +1,75 @@
+import 'package:flutter/material.dart';
+//import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '{{model_file_name}}';
+import '{{controller_file_name}}';
+
+class {{module_name}}View extends GetView<{{module_name}}Controller> {
+  {{module_name}}View({Key? key}) : super(key: key);
+
+  @override
+  final controller = Get.find();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey.shade100,
+      body: SafeArea(
+        child: Obx(
+          () => Column(
+            children: [
+              Flexible(
+                flex: 5,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 120, bottom: 120), // EdgeInsets.only(top: 120.h, bottom: 120.h) with ScreenUtil
+                      child: Text(
+                        "List-2",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: 100), // TextStyle(fontWeight: FontWeight.w900, fontSize: 100.sp) with ScreenUtil
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: controller.tempList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          {{module_name}}Model? item = controller.tempList[index];
+                          return InkWell(
+                            onTap: (){
+                              Get.snackbar(item.title ?? "", item.description ?? "");
+                            },
+                            child: ListTile(
+                              leading: CircleAvatar(
+                                backgroundColor: Colors.blueGrey.shade100,
+                                child: Text(item.title?[0] ?? ""),
+                              ),
+                              title: Text(
+                                item.title ?? "",
+                                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 60), // TextStyle(fontWeight: FontWeight.w900, fontSize: 60.sp) with ScreenUtil
+                              ),
+                              subtitle: Text(
+                                item.description ?? "",
+                                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 46), // TextStyle(fontWeight: FontWeight.w700, fontSize: 46.sp) with ScreenUtil
+                              ),
+                              trailing:  Text(
+                                item.date ?? "",
+                                style: TextStyle(fontSize: 36), // TextStyle(fontSize: 36.sp) with ScreenUtil
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
