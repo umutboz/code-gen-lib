@@ -1,0 +1,18 @@
+import 'package:get/get.dart';
+
+{{feature_imports}}
+part './{{app_routes_dart_file_name}}';
+
+class AppPages {
+  static final pages = [
+{{feature_app_pages_items}}
+
+    // other pages
+    /*
+    , GetPage(
+      name: AppRoutes.feature_name,
+      page: () => FeatureNameView(),
+      binding: FeatureNameBinding(),
+    )*/
+  ];
+}

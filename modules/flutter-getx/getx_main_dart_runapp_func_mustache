@@ -1,0 +1,1 @@
+  runApp(const {{project_name}}App());
