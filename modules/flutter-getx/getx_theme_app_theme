@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+
+final ThemeData darkThemeData = ThemeData(
+  scaffoldBackgroundColor: Colors.black,
+  iconTheme: IconThemeData(color: Colors.white54),
+  brightness: Brightness.dark,
+);
+
+final ThemeData lightThemeData = ThemeData(
+  scaffoldBackgroundColor: Colors.white,
+  iconTheme: IconThemeData(color: Colors.black54),
+  brightness: Brightness.light,
+);

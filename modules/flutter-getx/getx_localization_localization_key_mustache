@@ -1,0 +1,42 @@
+class LocalizationKey {
+  //Home View
+  static const String Home = 'Home';
+  static const String Notification = 'Notification';
+  static const String Location = 'Location';
+  static const String Settings = 'Settings';
+  static const String Unknown = 'Unknown';
+
+  //Select Template View
+  static const String Template1 = 'Template_1';
+  static const String Template2 = 'Template_2';
+
+  //Temp1 & Temp2 Auth View
+  static const String Login = 'Login';
+  static const String Register = 'Register';
+  static const String Welcome = 'Welcome'; // HOŞGELDİNİZ
+  static const String Password = 'Password'; // Şifre
+  static const String ForgotPassword = 'ForgotPassword'; // "Şifremi Unuttum"
+  static const String Or = 'Or'; //veya
+  static const String NoAccount = 'NoAccount'; //Hesabın yok mu?
+  static const String CreateAccount = 'CreateAccount'; //Hemen Üye Ol!
+  static const String Name = 'Name';
+  static const String Surname = 'Surname';
+
+  //Temp1 & Temp2 Forgot Password View
+  static const String RemindPassword = 'RemindPassword'; //Şifre Hatırlatma
+  static const String SendWithEmail = 'SendWithEmail'; //E-Posta ile Gonder
+  static const String SendWithSms = 'SendWithSms'; //Sms ile Gonder
+
+//Temp1 & Temp2 Email View
+  static const String RenewPasswordWithEmail =
+      'RenewPasswordWithEmail'; //E-Posta ile Sifre Yenileme
+  static const String Email = 'Email'; //E-Posta
+  static const String SendEmail = 'SendEmail'; //E-Posta  Gonder
+
+//Temp1 & Temp2 Sms View
+  static const String RenewPasswordWithPhone =
+      'RenewPasswordWithPhone'; //Telefon ile Sifre Yenileme
+  static const String Phone = 'Phone'; //Telefon
+  static const String SendSms = 'SendSms'; //Sms  Gonder
+
+}

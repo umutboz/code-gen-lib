@@ -1,0 +1,41 @@
+import '../localization_key.dart';
+
+final Map<String, String> trTr = {
+  //Home Page
+  LocalizationKey.Home: 'Anasayfa',
+  LocalizationKey.Notification: 'Bildirim',
+  LocalizationKey.Location: 'Konum',
+  LocalizationKey.Settings: 'Ayarlar',
+  LocalizationKey.Unknown: 'Bilinmeyen',
+
+  //Select Template Page
+  LocalizationKey.Template1: 'OneFrame Taslak 1',
+  LocalizationKey.Template2: 'OneFrame Taslak 2',
+
+  //Temp1 & Temp2 Auth View
+  LocalizationKey.Login: 'Giriş',
+  LocalizationKey.Register: 'Kayıt Ol',
+  LocalizationKey.Welcome: 'Hoşgeldiniz',
+  LocalizationKey.Password: 'Şifre',
+  LocalizationKey.ForgotPassword: 'Şifremi Unuttum',
+  LocalizationKey.Or: 'Veya',
+  LocalizationKey.NoAccount: 'Hesabın yok mu?',
+  LocalizationKey.CreateAccount: 'Hemen Üye Ol!',
+  LocalizationKey.Name: 'İsim',
+  LocalizationKey.Surname: 'Soyisim',
+
+  //Temp1 & Temp2 Forgot Password View
+  LocalizationKey.RemindPassword: 'Şifre Hatırlatma',
+  LocalizationKey.SendWithEmail: 'E-Posta ile Gönder',
+  LocalizationKey.SendWithSms: 'Sms ile Gönder',
+
+  //Temp1 & Temp2 Email View
+  LocalizationKey.RenewPasswordWithEmail: 'E-Posta ile Sifre Yenileme',
+  LocalizationKey.Email: 'E-Posta',
+  LocalizationKey.SendEmail: 'E-Posta  Gönder',
+
+  //Temp1 & Temp2 Sms View
+  LocalizationKey.RenewPasswordWithPhone: 'Telefon ile Şifre Yenileme',
+  LocalizationKey.Phone: 'Telefon',
+  LocalizationKey.SendSms: 'Sms  Gönder',
+};
