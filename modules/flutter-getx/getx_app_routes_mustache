@@ -1,7 +1,6 @@
+/* AUTO - GENERATED FILE, DO NOT MANUALLY EDIT */
 part of './{{app_pages_dart_file_name}}';
 
 abstract class AppRoutes {
 {{app_routes_features_consts}}
-  // other routes
-  //static const feature_name = '/feature_name';
 }
