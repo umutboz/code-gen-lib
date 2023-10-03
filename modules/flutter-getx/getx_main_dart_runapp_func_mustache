@@ -1,1 +1,1 @@
-  runApp(const {{project_name}}App());
+  runApp({{project_name}}App());
