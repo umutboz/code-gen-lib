@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import 'core/base/binding/{{base_binding_file_name}}';
 import 'core/route/{{app_pages_file_name}}';
-import 'core/route/{{app_routes_file_name}}';
+//import 'core/route/{{app_routes_file_name}}';
 
 // NEXT VERSION - COMING SOON
 //import 'core/style/app_theme.dart';
