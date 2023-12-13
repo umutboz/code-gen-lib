@@ -1,0 +1,8 @@
+class FCMChannelConstants {
+  static const String androidChannelId = "channelId";
+  static const String androidChannelName = "channelName";
+  static const String androidChannelDescription = "channelDescription";
+  static const String androidIcon = "launch_background";
+
+  static const String iosThreadIdentifier = "threadId";
+}

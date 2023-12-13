@@ -1,0 +1,5 @@
+    GetPage(
+          name: AppRoutes.{{feature_name_lower}},
+          page: () => {{feature_name}}View(),
+          binding: {{feature_name}}Binding()
+    ),

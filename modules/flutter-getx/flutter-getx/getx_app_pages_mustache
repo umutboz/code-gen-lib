@@ -1,0 +1,12 @@
+/* AUTO - GENERATED FILE, DO NOT MANUALLY EDIT */
+import 'package:get/get.dart';
+
+{{feature_imports}}
+part './{{app_routes_dart_file_name}}';
+
+class AppPages {
+  static final pages = [
+{{feature_app_pages_items}}
+
+  ];
+}

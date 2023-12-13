@@ -1,0 +1,11 @@
+import 'package:get/get.dart';
+
+import '../controller/{{feature_name_lower}}_controller.dart';
+import '../../../core/base/binding/{{base_binding_dart_file_name}}';
+
+class {{feature_name}}Binding implements BaseBinding {
+  @override
+  void dependencies() {
+    Get.lazyPut<{{feature_name}}Controller>(() => {{feature_name}}Controller());
+  }
+}
