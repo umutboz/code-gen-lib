@@ -1,4 +1,0 @@
-  networking:
-    git:
-      url: https://github.com/oneframemobile/networking.git
-      ref: new_async

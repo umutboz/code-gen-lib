@@ -7,7 +7,7 @@ class BaseController extends GetxController {
   BuildContext get currentContext =>
       Get.context != null ? Get.context! : Get.overlayContext!;
 
-  void showProressBar() {
+  void showProgressBar() {
     showDialog(
       context: currentContext,
       barrierDismissible: false,

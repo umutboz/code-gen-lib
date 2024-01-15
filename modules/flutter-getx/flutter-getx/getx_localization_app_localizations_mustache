@@ -1,9 +1,0 @@
-import 'en_US/en_us_localizations.dart';
-import 'tr_TR/tr_tr_localizations.dart';
-
-abstract class AppLocalization {
-  static Map<String, Map<String, String>> localizations = {
-    'tr_TR': trTr,
-    'en_US': enUs
-  };
-}

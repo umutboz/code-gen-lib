@@ -1,4 +1,4 @@
-class FCMChannelConstants {
+class FirebasePushChannelConstants {
   static const String androidChannelId = "channelId";
   static const String androidChannelName = "channelName";
   static const String androidChannelDescription = "channelDescription";

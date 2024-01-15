@@ -1,0 +1,37 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
+
+class CrashlyticsService {
+  static bool kTestingCrashlytic = false;
+  CrashlyticsService._();
+
+  static Future<void> init() async {
+    if (kTestingCrashlytic) {
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+    } else {
+      await FirebaseCrashlytics.instance
+          .setCrashlyticsCollectionEnabled(!kTestingCrashlytic);
+    }
+
+    Function? originalOnError = FlutterError.onError;
+    FlutterError.onError = (FlutterErrorDetails errorDetails) async {
+      await FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
+      originalOnError!(errorDetails);
+    };
+  }
+
+  Future<void> reportError(
+    dynamic exception,
+    StackTrace stack,
+  ) async {
+    await FirebaseCrashlytics.instance.recordError(exception, stack);
+  }
+
+  Future<void> reportFlutterError(FlutterErrorDetails error) async {
+    await FirebaseCrashlytics.instance.recordFlutterError(error);
+  }
+
+  Future<void> log(dynamic error) async {
+    FirebaseCrashlytics.instance.log(error);
+  }
+}

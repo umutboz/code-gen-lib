@@ -1,1 +1,0 @@
-  static const {{feature_name_lower}} = '/{{feature_name_lower}}';
