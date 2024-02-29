@@ -1,0 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controller/{{feature_controller_output_file_name}}';
+
+class {{feature_name}}View extends GetView<{{feature_name}}Controller> {
+  final controller = Get.find();
+
+{{ai_content}}
