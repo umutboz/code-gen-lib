@@ -14,7 +14,7 @@ class {{feature_name}}View extends GetView<{{feature_name}}Controller> {
       home: Scaffold(
         backgroundColor: Colors.black,
         body: Center(
-          child: Text({{project_name}}, style: TextStyle(fontWeight: FontWeight.w900, fontSize: 40, color: Colors.white54), textAlign: TextAlign.center,)
+          child: Text("{{project_name}}", style: TextStyle(fontWeight: FontWeight.w900, fontSize: 40, color: Colors.white54), textAlign: TextAlign.center,)
         ).paddingZero
       )
     );
