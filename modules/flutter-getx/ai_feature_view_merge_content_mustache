@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../../core/extensions/scaffold_extensions.dart';
+import '../../../core/route/app_pages.dart';
 import '../controller/{{feature_controller_output_file_name}}';
 
 class {{feature_name}}View extends GetView<{{feature_name}}Controller> {

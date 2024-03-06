@@ -1,0 +1,97 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+extension ScaffoldInkWellExtension on Scaffold {
+  navigateTo(String path, BuildContext currentContext) {
+    var newScaffold = Scaffold(
+      appBar: appBar,
+      backgroundColor: backgroundColor,
+      body: InkWell(
+        onTap: (){
+          navigateOffView(path: path, currentContext: currentContext);
+        },
+        child: body,
+      ),
+      floatingActionButton:floatingActionButton,
+      floatingActionButtonLocation:floatingActionButtonLocation,
+      floatingActionButtonAnimator:floatingActionButtonAnimator,
+      persistentFooterButtons:persistentFooterButtons,
+      drawer: drawer,
+      persistentFooterAlignment: persistentFooterAlignment,
+      onDrawerChanged: onDrawerChanged,
+      endDrawer:endDrawer,
+      onEndDrawerChanged:onEndDrawerChanged,
+      bottomNavigationBar:bottomNavigationBar,
+      bottomSheet:bottomSheet,
+      resizeToAvoidBottomInset:resizeToAvoidBottomInset,
+      primary : primary,
+      drawerDragStartBehavior: drawerDragStartBehavior,
+      extendBody: extendBody,
+      extendBodyBehindAppBar: extendBodyBehindAppBar,
+      drawerScrimColor: drawerScrimColor,
+      drawerEdgeDragWidth: drawerEdgeDragWidth,
+      drawerEnableOpenDragGesture: drawerEnableOpenDragGesture,
+      endDrawerEnableOpenDragGesture: endDrawerEnableOpenDragGesture,
+      restorationId: restorationId,
+    );
+    return Container(
+        child: newScaffold);
+  }
+
+  navigateOffView({required String path, required BuildContext currentContext}) async {
+    FocusScope.of(currentContext).unfocus();
+    await Get.offNamed(path);
+  }
+}
+
+extension MaterialAppInkWellExtension on MaterialApp {
+  navigateTo(String path , BuildContext currentContext) {
+    var newMaterialApp = MaterialApp(
+      navigatorKey: navigatorKey,
+      scaffoldMessengerKey: scaffoldMessengerKey,
+      home: InkWell(
+        onTap: (){
+          navigateOffView(path: path, currentContext: currentContext);
+        },
+        child: home,
+      ),
+      initialRoute: initialRoute,
+      onGenerateRoute: onGenerateRoute,
+      onGenerateInitialRoutes: onGenerateInitialRoutes,
+      onUnknownRoute: onUnknownRoute,
+      builder: builder,
+      title: title,
+      onGenerateTitle: onGenerateTitle,
+      color: color,
+      theme: theme,
+      darkTheme: darkTheme,
+      highContrastTheme: highContrastTheme,
+      highContrastDarkTheme: highContrastDarkTheme,
+      themeMode: themeMode,
+      themeAnimationDuration: themeAnimationDuration,
+      themeAnimationCurve: themeAnimationCurve,
+      locale: locale,
+      localizationsDelegates: localizationsDelegates,
+      localeListResolutionCallback: localeListResolutionCallback,
+      localeResolutionCallback: localeResolutionCallback,
+      supportedLocales: supportedLocales,
+      debugShowMaterialGrid: debugShowMaterialGrid,
+      showPerformanceOverlay: showPerformanceOverlay,
+      checkerboardRasterCacheImages: checkerboardRasterCacheImages,
+      checkerboardOffscreenLayers: checkerboardOffscreenLayers,
+      showSemanticsDebugger: showSemanticsDebugger,
+      debugShowCheckedModeBanner: debugShowCheckedModeBanner,
+      shortcuts: shortcuts,
+      actions: actions,
+      restorationScopeId: restorationScopeId,
+      scrollBehavior: scrollBehavior,
+    );
+    return Material(
+        child: newMaterialApp);
+  }
+
+  navigateOffView({required String path , required BuildContext currentContext}) async {
+    FocusScope.of(currentContext).unfocus();
+    await Get.offNamed(path);
+  }
+}
