@@ -19,6 +19,7 @@ class {{feature_name}}View extends GetView<{{feature_name}}Controller> {
             IconButton(
               icon: Icon(Icons.arrow_forward, color: Colors.blue),
               onPressed: () {
+                controller.navigateToView(path: AppRoutes.{{next_screen}});
                 // Navigate to the next page.
                 // Note that you need to define the route for the next page in your main.dart file
               },
@@ -38,7 +39,7 @@ class {{feature_name}}View extends GetView<{{feature_name}}Controller> {
                 style:
                     TextButton.styleFrom(backgroundColor: Colors.blue),
                 onPressed: () {
-
+                    controller.navigateToView(path: AppRoutes.{{next_screen}});
                 },
                 child:
                     Text('Next Page -> {{next_screen_not_lower}}', style: TextStyle(color: Colors.white)),
